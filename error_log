@@ -1,0 +1,34 @@
+[11-Sep-2017 18:09:14 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:09:14 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:09:14 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:09:14 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:09:20 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:09:20 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:09:20 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:09:20 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:09:54 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:09:54 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:09:55 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:09:55 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:10:39 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:10:39 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:10:39 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:10:39 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:36:59 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:36:59 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:36:59 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:36:59 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:40:01 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:40:01 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[11-Sep-2017 18:40:01 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 809
+[11-Sep-2017 18:40:01 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 826
+[13-Sep-2017 11:13:21 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 1975
+[13-Sep-2017 11:13:21 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 2047
+[13-Sep-2017 11:18:16 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 1975
+[13-Sep-2017 11:18:16 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 2047
+[13-Sep-2017 14:32:51 Europe/Amsterdam] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 1975
+[13-Sep-2017 14:32:51 Europe/Amsterdam] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home/stoppart/public_html/index.php on line 2047
+[13-Sep-2017 15:45:21 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Unsupported operand types in /home/stoppart/public_html/index.php:932
+Stack trace:
+#0 {main}
+  thrown in /home/stoppart/public_html/index.php on line 932

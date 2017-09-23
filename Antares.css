@@ -1,0 +1,92 @@
+﻿FORM { MARGIN: 0px }
+table {border: 0px;}
+img  {border: 0px;}
+iframe{margin : 0px;padding : 0px;}
+TD {BORDER-RIGHT: none; BORDER-TOP: none; FONT-SIZE: 8pt; BORDER-LEFT: none; BORDER-BOTTOM: none; FONT-FAMILY: Arial, 'Arial Cyr', 'MS Sans Serif';FONT-WEIGHT: normal;BACKGROUND-COLOR: White;color : #000000;}
+P {BORDER-RIGHT: none; BORDER-TOP: none; FONT-SIZE: 10pt; BORDER-LEFT: none; BORDER-BOTTOM: none; FONT-FAMILY: Arial, 'Arial Cyr', 'MS Sans Serif';}
+
+
+.checkbox {
+	position:relative;
+	padding-left:25px;
+}
+.checkbox input[type=checkbox] {
+	display:none;
+}
+.checkbox label:after {
+	content:'';
+	display:block;
+	height:14px;
+	width:14px;
+	outline:1px solid #939598;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.checkbox input[type=checkbox]:checked + label:after {
+	outline:1px solid #939598;
+	border:3px solid #fff;
+	width:8px;
+	height:8px;
+	background-color:#63849F;
+}
+
+H1 {FONT-SIZE: 26px;TEXT-DECORATION: none; align: "left";margin-top : 0; margin-bottom : 0;FONT-FAMILY: Arial, 'Arial Cyr', 'MS Sans Serif';}
+H2 {FONT-SIZE: 20px;TEXT-DECORATION: none;	align: "left";margin-top : 0;margin-bottom : 0; COLOR: red;FONT-FAMILY: Arial, 'Arial Cyr', 'MS Sans Serif';}
+H3 {FONT-SIZE: 12px; 	TEXT-DECORATION: none; 	align: "left"; 	margin-top : 0; 	margin-bottom : 0;FONT-FAMILY: Arial, 'Arial Cyr', 'MS Sans Serif';}
+P {	FONT-SIZE: 8pt;  align: left;FONT-FAMILY: Arial, 'Arial Cyr', 'MS Sans Serif';}
+A:visited {	COLOR: blue;}
+A:hover {	COLOR: red;}
+A:link {	COLOR: blue;}
+A.link1 {COLOR: black; TEXT-DECORATION: none;}
+A.link1:link {	COLOR: black; TEXT-DECORATION: none;}
+A.link1:visited {COLOR: black; TEXT-DECORATION: none;}
+A.link1:hover {	COLOR: black; TEXT-DECORATION: none;}
+A.linkh {COLOR: white; TEXT-DECORATION: none;}
+A.linkh:link {COLOR: white; TEXT-DECORATION: none;}
+A.linkh:visited {COLOR: white; TEXT-DECORATION: none;}
+A.linkh:hover {COLOR: black; TEXT-DECORATION: none;}
+TD.top {FONT-SIZE: 16px;font-weight : bold;border-left: 3px solid White;background-color: #666699; color:#ffffff;cursor: pointer;vertical-align: middle;text-align: center;width: 138px;}
+TD.topua {FONT-SIZE: 16px;font-weight : bold;border-left: 3px solid White; color:#666699;cursor: default;vertical-align: middle;text-align: center;width: 138px;}
+TD.credit {PADDING-LEFT:8px;PADDING-Right:5px;PADDING-BOTTOM: 8px;VERTICAL-ALIGN: top;PADDING-TOP: 8px;HEIGHT: 33px;TEXT-ALIGN: left;BORDER-LEFT: white 1px solid;border-right : #cccccc 2px solid ;border-top : #cccccc 2px solid;font-size : 12px;}
+TD.rascr {VERTICAL-ALIGN: middle;HEIGHT: 20px;TEXT-ALIGN: center;BORDER-LEFT: white 1px solid;border-right : #cccccc 1px solid ;border-top : #cccccc 1px solid;font-size : 9px;}
+TD.komp {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right : #cccccc 1px solid ;border-bottom : #cccccc 1px solid;	font-size : 11px;PADDING-LEFT: 5px;PADDING-bottom: 3px;PADDING-top: 3px;}	
+TD.kb {VERTICAL-ALIGN: middle;HEIGHT: 24px;;border-bottom : #cccccc 1px solid;font-size : 11px;align: center;text-align: center;}
+TD.ki {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#cccccc 1px solid  ;border-bottom : #cccccc 1px solid;font-size : 11px;PADDING-LEFT: 5px;}
+TD.kin{VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#666666 1px solid  ;border-bottom : #666666 1px solid;font-size : 11px;PADDING-LEFT: 5px;cursor: pointer;}
+TD.ku {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#cccccc 1px solid  ;border-bottom : #cccccc 1px solid;font-size : 11px;align: right;	padding-right: 5px;text-align: right;}
+TD.ke {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#cccccc 1px solid  ;border-bottom : #cccccc 1px solid;font-size : 11px;align: center;text-align: center;}
+TD.zr {VERTICAL-ALIGN: middle;border-right :#000000 1px solid ;border-bottom : #cccccc 1px solid;font-size : 20px;font-weight : bold;text-align: center;	width : 20px;}
+TD.zv {VERTICAL-ALIGN: middle;border-bottom : #cccccc 1px solid;font-size : 20px;font-weight : bold;text-align: center;	width : 20px;}
+TD.credit2 {BORDER-RIGHT: white 1px solid;BORDER-TOP: white 1px solid;font-size : 13px;text-align : left;vertical-align : middle;}
+TD.credit3 {VERTICAL-ALIGN: top;	HEIGHT: 20px;TEXT-ALIGN: left;font-size : 11px;}
+TD.credit4 {VERTICAL-ALIGN: middle;	HEIGHT: 21px;WIDTH: 81px;TEXT-ALIGN: center;font-size : 11px;}
+TD.kompl {VERTICAL-ALIGN: middle;	TEXT-ALIGN: center; font-size : 14px;}	
+TD.kompl1 {VERTICAL-ALIGN: middle;	TEXT-ALIGN: left; font-size : 12px;	 PADDING-LEFT:24px;}	
+TD.kompl11 {VERTICAL-ALIGN: middle;	TEXT-ALIGN: left; font-size : 12px;	 PADDING-LEFT:12px;border-bottom : #cccccc 1px solid;}	
+TD.kompl2 {VERTICAL-ALIGN: middle;	TEXT-ALIGN: center; font-size : 11px;}		
+TD.sc1 {font-size:11pt; border-bottom: #cccccc 2px solid; text-align: right; color: #666699; font-weight: bold;}
+TD.sc2 {font-size:9pt; border-bottom: #cccccc 2px solid; padding-left: 22px;}
+TD.warr {VERTICAL-ALIGN: middle;HEIGHT: 23px;WIDTH: 33%;TEXT-ALIGN: center;font-size : 13px;BORDER-TOP: white 3px solid;BORDER-LEFT: white 3px solid;}
+TD.model {FONT-SIZE: 12pt;  HEIGHT: 30px; BACKGROUND-COLOR: #cccccc; TEXT-ALIGN: center}
+TD.catshop{BORDER-TOP: #8c8c8c 1px solid;  FONT-SIZE: 8pt; CURSOR: pointer;   TEXT-ALIGN: left; padding-left: 10px;padding-right: 14px;}
+TD.shop{ FONT-SIZE: 8pt; BORDER-LEFT: #8c8c8c 1px solid; WIDTH: 25%; CURSOR: pointer; HEIGHT: 35px;  TEXT-ALIGN: center;}
+TD.shop2 { FONT-SIZE: 8pt; WIDTH: 25%; CURSOR: pointer;  HEIGHT: 35px;  TEXT-ALIGN: center;}
+TD.shop0 { BORDER-TOP: #8c8c8c 1px solid;  FONT-SIZE: 8pt; BORDER-LEFT: #8c8c8c 1px solid; WIDTH: 25%; CURSOR: pointer;   HEIGHT: 35px;  TEXT-ALIGN: center;}
+TD.shop20 { BORDER-TOP: #8c8c8c 1px solid;  FONT-SIZE: 8pt; WIDTH: 25%; CURSOR: pointer;  HEIGHT: 35px; TEXT-ALIGN: center;}
+TD.lm {	FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;	HEIGHT: 42px;PADDING-RIGHT:25px;TEXT-ALIGN: right;}
+TD.lmc {FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;HEIGHT: 71px;PADDING-RIGHT:25px;	TEXT-ALIGN: right;vertical-align:middle;}
+TD.lml {FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;HEIGHT: 71px;PADDING-LEFT:7px;PADDING-RIGHT:5px;	TEXT-ALIGN: left;vertical-align:middle; }
+TD.lml2 {FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;HEIGHT: 42px;PADDING-LEFT:10px;PADDING-RIGHT:5px;	TEXT-ALIGN: left;vertical-align:middle; }
+TD.lmn {FONT-SIZE: 12px;CURSOR: pointer;TEXT-ALIGN: right;vertical-align:middle;}
+TD.tm { FONT-SIZE: 12pt; BORDER-LEFT: white 3px solid; WIDTH: 138px; CURSOR: pointer; HEIGHT: 28px; BACKGROUND-COLOR: #ff9900; TEXT-ALIGN: center;}
+TD.tml{ FONT-WEIGHT: bold; FONT-SIZE: 12pt; WIDTH: 199px; CURSOR: pointer; HEIGHT: 28px; BACKGROUND-COLOR: #ff9900; TEXT-ALIGN: center;}
+		td.h{font-size : 10pt;height : 25px ;border-bottom: 2px solid black;   border-right: 1px solid #cccccc;text-align:center;}
+		td.hb{font-size : 10pt;height : 28px ;border-bottom: 2px solid black; border-top: 2px solid black;  border-right: 2px solid black;text-align:right;}
+		td.p{font-size : 8pt;height : 24; border-bottom: 1px solid #cccccc; border-right: 1px solid #cccccc; text-align:center;}
+		td.q{font-size : 8pt;height : 24; border-bottom: 1px solid #cccccc; border-right: 1px solid #cccccc; text-align:center;}
+		td.s{font-size : 8pt;height : 24; border-bottom: 1px solid #cccccc; border-right: 2px solid black; text-align:center;}
+		td.a1{font-size : 8pt;height : 24; border-bottom: 1px solid #cccccc; border-right: 1px solid #cccccc; text-align:center; }	
+		td.a2{font-size : 8pt;height : 24; border-bottom: 1px solid #cccccc;   text-align:center;}
+		td.no{	border: none;	}
+		td.t{border-left: 1px solid black; border-bottom: 1px solid #cccccc; border-right: 0px solid #cccccc; 	}
