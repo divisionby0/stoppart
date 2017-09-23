@@ -1,6 +1,12 @@
 <?php
 session_set_cookie_params(1080000);
-require_once("shop_func.php");require_once("box_func.php");	require_once("parser.php");	require_once("gui.php");prepare_parse("box.inc.html");
+require_once("shop_func.php");
+require_once("box_func.php");
+require_once("parser.php");
+require_once("gui.php");
+//require_once("php/div0/views/menu/SiteMenu.php");
+//require_once("php/div0/views/menu/SmallSiteMenu.php");
+prepare_parse("box.inc.html");
 
 session_start();set_session_vars();
 $HotStr='';
@@ -224,6 +230,8 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();</script>";
 
+//echo "<script type='text/javascript'src='js/div0/menu.js'></script>";
+
 echo"<script>function LikeEngine(tag){
 var html = $.ajax({url: '/le.php?id=' +tag+'&uid=".$userid.$addlang."',async: false}).responseText;
 document.getElementById(tag).innerHTML=html;}</script>";
@@ -277,6 +285,56 @@ $("input[name*=\'optionRadio\']").change(function (event) {
 		
         console.log("update complete !");
     });
+    
+    // menu
+    var scrollMax = 160;
+    var currentState;
+    var NORMAL = "NORMAL";
+    var EXTENDED = "EXTENDED";
+
+    var menuInitPositionY = $("#menuContainer").css("top");
+    console.log("menuInitPositionY",menuInitPositionY);
+
+    function onStateChanged(){
+        switch(currentState){
+            case NORMAL:
+                $("#menuContainer").removeClass("absolutePositionMenu");
+                $("#menuContainer").addClass("relativePositionMenu");
+                break;
+            case EXTENDED:
+                $("#menuContainer").removeClass("relativePositionMenu");
+                $("#menuContainer").addClass("absolutePositionMenu");
+                break;
+        }
+    }
+
+    function updateMenuPosition(positionY){
+        if(currentState == EXTENDED){
+            $("#menuContainer").css("top",positionY);
+        }
+        else{
+            $("#menuContainer").css("top",menuInitPositionY);
+        }
+    }
+
+    $(window).scroll(function(){
+        var currentScrollPosition = window.pageYOffset;
+        updateMenuPosition(currentScrollPosition);
+
+        if(currentScrollPosition > scrollMax){
+            if(currentState!=EXTENDED){
+                currentState = EXTENDED;
+                onStateChanged();
+            }
+        }
+        else{
+            if(currentState!=NORMAL){
+                currentState = NORMAL;
+                onStateChanged();
+            }
+        }
+    });
+    
     
 });//1
 </script>';
@@ -370,21 +428,24 @@ echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspac
 echo '</td></tr>
 </table>';
 echo '<img src="/empty.gif" width="155px" height="1px"></td></tr></table>';
-if($menuname!='cabinet')
-	echo '<table align="center" bgcolor="#FFFFFF" width="100%" height="56px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
-<tr><td width="17%" height="1" style="padding-left:47px;"><img src="/empty.gif" width="150px" height="1px"></td>
-<td width="66%"><img src="/empty.gif" width="100px" height="1px"></td>
-<td width="17%" height="1" style="padding-right:47px;"><img src="/empty.gif" width="150px" height="1px"></td></tr>
-<tr><td class="top1">'.$am[0].'</td>
-<td align="center">
-<table align="center" bgcolor="#AD9E82" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0"  style="padding-left:24px;padding-right:18px;"><tr>
-<td class="top2">'.$am[1].'</td>
-<td class="top3">'.$am[2].'</td>
-<td class="top4">'.$am[3].'</td>
-<td class="top5">'.$am[4].'</td>
-<td class="top6">'.$am[5].'</a></td></tr></table></td>
-<td class="top7">'.$am[6].'</a></td>
-</tr></table>';
+if($menuname!='cabinet'){
+	//new SiteMenu($am);
+	echo '<table id="menuContainer" class="normalSiteMenu relativePositionMenu" cellspacing="0" cellpadding="0" border="0">
+                <tr><td width="17%" height="1" style="padding-left:47px;"><img src="/empty.gif" width="150px" height="1px"></td>
+                <td width="66%"><img src="/empty.gif" width="100px" height="1px"></td>
+                <td width="17%" height="1" style="padding-right:47px;"><img src="/empty.gif" width="150px" height="1px"></td></tr>
+                <tr><td class="top1">'.$am[0].'</td>
+                <td align="center">
+                <table align="center" bgcolor="#AD9E82" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0"  style="padding-left:24px;padding-right:18px;"><tr>
+                <td class="top2" data-foo="data[1]">'.$am[1].'</td>
+                <td class="top3">'.$am[2].'</td>
+                <td class="top4">'.$am[3].'</td>
+                <td class="top5">'.$am[4].'</td>
+                <td class="top6">'.$am[5].'</a></td></tr></table></td>
+                <td class="top7">'.$am[6].'</a></td>
+                </tr></table>';
+}
+
 if($menuname=="search"){
 	$qu=printsearch($searchline);
 	echo $qu;

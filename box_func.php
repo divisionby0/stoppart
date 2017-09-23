@@ -416,7 +416,6 @@ $ans="<script type='text/javascript'>window.onload = function() { // после 
 	};
 // show button
 	window.onscroll = function () { // при скролле показывать и прятать блок
-		console.log(scrollUp);
 		if ( window.pageYOffset > 300 ) {
 			scrollUp.style.display = 'block';
 		} else {
