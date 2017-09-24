@@ -709,14 +709,14 @@ $rowboxid=$row['boxid'];$rowkol=$row['kol'];
 		<td style="text-align:center;vertical-align:middle;border-bottom: 1px solid gray;font-size:20px;"><b>'.ToRub($row['price1s'],14).'</b></td>
 		<td style="text-align:center;vertical-align:middle;border-bottom: 1px solid gray;font-size:18px;">';
 		if ($rowkol>1) 
-			$ans.='<a style="font-size:18px;FONT-FAMILY:tahoma;padding-top:10px;" title="'.$NDec.'" target="_self" href="'.aPSID('/set.php?oper=sub_tov&boxid='.$rowboxid.$langadd).'">–</a>';
+			$ans.='<a style="font-size:18px;padding-top:10px;" title="'.$NDec.'" target="_self" href="'.aPSID('/set.php?oper=sub_tov&boxid='.$rowboxid.$langadd).'">–</a>';
 		else $ans.='&nbsp;&nbsp;&nbsp;';
 		$ans.='&nbsp; <input type="text" style="width:25px;height:25px;border:1px solid black;font-size:16px;text-align:center;" value="'.$rowkol.'" name="TOVAR'.$rowboxid.'" readonly="true">&nbsp;
-		<a target="_self" title="'.$NAdd.'" style="font-size:18px;FONT-FAMILY:tahoma;margin-bottom:10px;" href="'.aPSID('/set.php?oper=add_tovs&boxid='.$rowboxid.$langadd).'">+</a> </td>
+		<a target="_self" title="'.$NAdd.'" style="font-size:18px;margin-bottom:10px;" href="'.aPSID('/set.php?oper=add_tovs&boxid='.$rowboxid.$langadd).'">+</a> </td>
 		<td style="text-align:center;vertical-align:middle;border-bottom: 1px solid gray;font-size:20px;"><b>'.ToRub($rowkol*$row['price1s'],14).'</b></td>
 		<td style="text-align:center;cursor: pointer;vertical-align:middle;border-bottom: 1px solid gray;color:red;font-size:24px;"
-		onClick="if(confirm(\''.$NRem.' \n'.$rowname.'?\'))document.location=\''.aPSID($link2).'\'"
-		><span title="'.$NRemove.'">X</span></td></tr>';
+		onClick="document.location=\''.aPSID($link2).'\'"
+		><a href="'.aPSID($link2).'" target="_self" style="font-size:18px;color:red;" title="'.$NRemove.'"><b>X</b></a></td></tr>';
 		$sum=$sum+($row['price1s']*$rowkol);
 		}
 mysqli_free_result($r);

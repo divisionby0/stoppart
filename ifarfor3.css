@@ -1,0 +1,215 @@
+
+html, body {width: 100%;FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif; font-weight: 300; font-size: 14px; background: #FFFFFF; color: #000000;}
+select {width: 100%;FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif; font-weight: 300; font-size: 14px; background-color: #FFFFFF; color: #000000;}
+input {FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif; font-weight: 300; font-size: 16px; }
+
+.checkbox {
+	position:relative;
+	padding-left:25px;
+}
+.checkbox input[type=checkbox] {
+	display:none;
+}
+.checkbox label:after {
+	content:'';
+	display:block;
+	height:14px;
+	width:14px;
+	outline:1px solid #939598;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.checkbox input[type=checkbox]:checked + label:after {
+	outline:1px solid #939598;
+	border:3px solid #fff;
+	width:8px;
+	height:8px;
+	background-color:#63849F;
+}
+ul{list-style:none;display: block;margin-top: 1em;margin-bottom: 1 em;margin-left: 0;margin-right: 0;font-size: 16px;padding-bottom:5px;padding-top:5px;
+border-radius: 4px;border:0px solid #DDD5CC;
+background: #FFFFFF; }
+li{padding-bottom:5px;padding-left:15px;}
+
+.menu ul {margin: 0;list-style: none;padding-left: 17px;padding-top: 0px;display: none;}
+.menu .title {font-size: 15px;cursor: pointer;}
+.menu .title::before {content: '_ _';background:white url("img/aright.png") no-repeat top left;color: white;}
+.menu.open .title::before {content: '___';background: white url("img/ardown.png") no-repeat top left;}
+.menu.open ul {display: block;}
+
+a.mumnu {font-size: 16px;}
+#scrollup2 {
+position: fixed; /* фиксированная позиция */
+opacity: 0.5; /* прозрачность */
+float: right;
+padding: 5px 5px 5px 5px; /* отступы */
+background: #aaa;
+border-radius: 5px; /* скругление углов */
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+right: 10px; /* отступ слева */
+bottom: 10px; /* отступ снизу */
+display: none; /* спрятать блок */
+cursor: pointer;
+color:black;
+vertical-align:top;
+}
+#scrollup {
+position: fixed; /* фиксированная позиция */
+opacity: 0.5; /* прозрачность */
+float: right;
+padding: 0px 0px 0px 0px; /* отступы */
+background: #aaa;
+border-radius: 0px; /* скругление углов */
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+right: 10px; /* отступ слева */
+bottom: 10px; /* отступ снизу */
+display: none; /* спрятать блок */
+cursor: pointer;
+color:black;
+vertical-align:top;
+}
+#bag {
+position: fixed; /* фиксированная позиция */
+opacity: 1.0; /* прозрачность */
+float: right;
+padding: 5px 5px 5px 5px; /* отступы */
+background: #ffffff;
+border-radius: 5px; /* скругление углов */
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+right: 10px; /* отступ слева */
+top: 30px; /* отступ снизу */
+
+cursor: pointer;
+color:black;
+vertical-align:top;
+}
+
+
+    
+FORM { MARGIN: 0px;}
+table {border: 0px;}
+TD {
+	BORDER: 0px;FONT-SIZE: 15px;FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif;font-weight: 300; 
+	BACKGROUND-COLOR: White;color: #000000;vertical-align: middle;margin: 0px;text-align: left;
+}
+td.errtxt{padding-left:9px;width:50%;color:red;}
+table.cat{width:100%;cellspacing:0; cellpadding:0; margin:0; margin-bottom:10px;background-color:#FFFFFF;border: 1px solid #DDDDDD;border-radius: 4px;}
+table.cat:hover{width:100%;cellspacing:0; cellpadding:0; margin:0; margin-bottom:10px;background-color:#FFFFFF;box-shadow: 0 1px 11px 1px; ;}
+td.top1{height:55px;text-align:left;padding-left:40px;vertical-align:middle;background-color:#AD9E82;}
+td.top2{width:25%;text-align:center;vertical-align:middle;background-color:#AD9E82;padding-left:7px;padding-right:11px;}
+td.top3{width:25%;text-align:center;vertical-align:middle;background-color:#AD9E82;padding-left:7px;padding-right:7px;}
+td.top4{width:50%;text-align:center;vertical-align:middle;background-color:#AD9E82;padding-left:7px;padding-right:7px;}
+td.top5{text-align:left;vertical-align:middle;background-color:#AD9E82;}
+
+td.cat1{width:100%;height:100px;vertical-align: top;padding:10px;}
+td.cat2{width:100%;height:60px;text-align:center;padding-right:3px;vertical-align: bottom;background-color:#FFFFFF;}
+td.cat3{width:100%;height:60px;vertical-align: top;text-align:left; padding:10px;}
+td.ifzshop{width:33%;vertical-align: top;background-color:#FFFFFF;}
+td.ifzsearch{width:25%;vertical-align: top;background-color:#FFFFFF;}
+
+td.bagHL{width:23px;background-color:#7F7355;color:white;text-align:center;}
+td.bagN{width:23px;background-color:#CCCCCC;color:white;text-align:center;}
+td.bagLine{text-align:center;width:33%;height:27px;}
+td.bagLine2{border-top:1px solid #999999;height:12px;}
+td.bagSide{text-align:center;width:40%;}
+
+img  {border: 0px; padding:0px; margin:0px;}
+iframe{margin : 0px;padding : 0px;}
+div {FONT-SIZE: 17px;TEXT-DECORATION: none; align: "left";padding-bottom:5px;}
+div.hot {FONT-SIZE: 14px;TEXT-DECORATION: none; align: "left";padding-bottom:5px;margin-bottom:4px;padding-left:25px;}
+
+TD.BAG {
+	BORDER: 0px;FONT-SIZE: 12px;font-weight: 500;
+	BACKGROUND-COLOR: #887150;color: #000000;vertical-align: middle;margin: 0px;text-align: center;border-radius: 0px;
+}
+TD.BAG:HOVER {
+	BORDER: 0px;FONT-SIZE: 12px;
+	font-weight: 500;BACKGROUND-COLOR: #563B32;color: #000000;vertical-align: middle;margin: 0px;text-align: center;
+}
+TD.ifshop{HEIGHT: 200px; width: 34%; font-size : 14px; margin-left: 3px;margin-right: 5px;}
+
+
+
+H1 {FONT-SIZE: 26px;TEXT-DECORATION: none; align: "left";margin-top : 0; margin-bottom : 0;font-weight: 700;}
+H2 {FONT-SIZE: 20px;TEXT-DECORATION: none;	align: "left";margin-top : 0;margin-bottom : 0;font-weight: 700;}
+H3 {FONT-SIZE: 12px;TEXT-DECORATION: none; 	align: "left";margin-top : 0;margin-bottom : 0;}
+P {
+	FONT-SIZE: 17px;
+	text-align: left;
+	padding-left: 15px;
+}
+P1 {
+FONT-SIZE: 18px;
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	vertical-align: middle;
+}
+A:visited {	COLOR: black;TEXT-DECORATION: none;FONT-SIZE: 15px;}
+A:link {	COLOR: black;TEXT-DECORATION: none;FONT-SIZE: 15px;}
+A:hover {	COLOR: #1F5099;TEXT-DECORATION: underline;FONT-SIZE: 15px;}
+A:focus { COLOR: #1F5099;}
+A.link1:visited {	FONT-SIZE:14px;FONT-weight:300px;color:#000000;TEXT-DECORATION: none;}
+A.link1:link {	FONT-SIZE:14px;FONT-weight:300px;color:#000000;TEXT-DECORATION: none;}
+A.link1:hover {	FONT-SIZE:14px;FONT-weight:300px;color:blue;TEXT-DECORATION: underline;}
+A.link1:focus {	FONT-SIZE:14px;FONT-weight:300px;color:blue;TEXT-DECORATION: underline;}
+A.usuallink:visited {	FONT-SIZE:16px;FONT-weight:400px;color:#99;TEXT-DECORATION: none;}
+A.usuallink:link {	FONT-SIZE:16px;FONT-weight:400px;color:#99;TEXT-DECORATION: none;}
+A.usuallink:hover {	FONT-SIZE:16px;FONT-weight:400px;color:#99;TEXT-DECORATION: underline;}
+A.usuallink:focus {	FONT-SIZE:16px;FONT-weight:400px;color:#99;TEXT-DECORATION: underline;}
+A.usuallink1:visited {	FONT-SIZE:16px;FONT-weight:400px;color:purple;TEXT-DECORATION: underline;}
+A.usuallink1:link {	FONT-SIZE:16px;FONT-weight:400px;color:blue;TEXT-DECORATION: underline;}
+A.usuallink1:hover {	FONT-SIZE:16px;FONT-weight:400px;color:blue;TEXT-DECORATION: underline;}
+A.usuallink1:focus {	FONT-SIZE:16px;FONT-weight:400px;color:blue;TEXT-DECORATION: underline;}
+font.price{
+	FONT-SIZE: 20px;
+	font-weight: 800;
+	text-align: left;
+}
+A.linkh {COLOR: white; TEXT-DECORATION: none;}
+A.linkh:link {COLOR: white; TEXT-DECORATION: none;}
+A.linkh:visited {COLOR: white; TEXT-DECORATION: none;}
+A.linkh:hover {COLOR: black; TEXT-DECORATION: none;}
+TD.top {FONT-SIZE: 14px;border-left: 0px solid White;background-color: #ffffff; color:#000000;vertical-align: middle;text-align: center;}
+TD.topua {FONT-SIZE: 16px;font-weight : bold;border-left: 3px solid White; color:#666699;cursor: default;vertical-align: middle;text-align: center;width: 138px;}
+TD.credit {PADDING-LEFT:8px;PADDING-Right:5px;PADDING-BOTTOM: 8px;VERTICAL-ALIGN: top;PADDING-TOP: 8px;HEIGHT: 33px;TEXT-ALIGN: left;BORDER-LEFT: white 1px solid;border-right : #cccccc 2px solid ;border-top : #cccccc 2px solid;font-size : 12px;}
+TD.rascr {VERTICAL-ALIGN: middle;HEIGHT: 20px;TEXT-ALIGN: center;BORDER-LEFT: white 1px solid;border-right : #cccccc 1px solid ;border-top : #cccccc 1px solid;font-size : 9px;}
+TD.komp {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right : #cccccc 1px solid ;border-bottom : #cccccc 1px solid;	font-size : 11px;PADDING-LEFT: 5px;PADDING-bottom: 3px;PADDING-top: 3px;}	
+TD.kb {VERTICAL-ALIGN: middle;HEIGHT: 24px;;border-bottom : #cccccc 1px solid;font-size : 11px;align: center;text-align: center;}
+TD.ki {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#cccccc 1px solid  ;border-bottom : #cccccc 1px solid;font-size : 11px;PADDING-LEFT: 5px;}
+TD.kin{VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#666666 1px solid  ;border-bottom : #666666 1px solid;font-size : 11px;PADDING-LEFT: 5px;cursor: pointer;}
+TD.ku {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#cccccc 1px solid  ;border-bottom : #cccccc 1px solid;font-size : 11px;align: right;	padding-right: 5px;text-align: right;}
+TD.ke {VERTICAL-ALIGN: middle;HEIGHT: 24px;border-right :#cccccc 1px solid  ;border-bottom : #cccccc 1px solid;font-size : 11px;align: center;text-align: center;}
+TD.zr {VERTICAL-ALIGN: middle;border-right :#000000 1px solid ;border-bottom : #cccccc 1px solid;font-size : 20px;font-weight : bold;text-align: center;	width : 20px;}
+TD.zv {VERTICAL-ALIGN: middle;border-bottom : #cccccc 1px solid;font-size : 20px;font-weight : bold;text-align: center;	width : 20px;}
+TD.credit2 {BORDER-RIGHT: white 1px solid;BORDER-TOP: white 1px solid;font-size : 13px;text-align : left;vertical-align : middle;}
+TD.credit3 {VERTICAL-ALIGN: top;	HEIGHT: 20px;TEXT-ALIGN: left;font-size : 11px;}
+TD.credit4 {VERTICAL-ALIGN: middle;	HEIGHT: 21px;WIDTH: 81px;TEXT-ALIGN: center;font-size : 11px;}
+TD.kompl {VERTICAL-ALIGN: middle;	TEXT-ALIGN: center; font-size : 14px;}	
+TD.kompl1 {VERTICAL-ALIGN: middle;	TEXT-ALIGN: left; font-size : 12px;	 PADDING-LEFT:24px;}	
+TD.kompl11 {VERTICAL-ALIGN: middle;	TEXT-ALIGN: left; font-size : 12px;	 PADDING-LEFT:12px;border-bottom : #cccccc 1px solid;}	
+TD.kompl2 {VERTICAL-ALIGN: middle;	TEXT-ALIGN: center; font-size : 11px;}		
+TD.sc1 {font-size:11pt; border-bottom: #cccccc 2px solid; text-align: right; color: #666699; font-weight: bold;}
+TD.sc2 {font-size:9pt; border-bottom: #cccccc 2px solid; padding-left: 22px;}
+TD.warr {VERTICAL-ALIGN: middle;HEIGHT: 23px;WIDTH: 33%;TEXT-ALIGN: center;font-size : 13px;BORDER-TOP: white 3px solid;BORDER-LEFT: white 3px solid;}
+TD.model {FONT-SIZE: 12pt;  HEIGHT: 30px; BACKGROUND-COLOR: #cccccc; TEXT-ALIGN: center}
+TD.catshop{BORDER-TOP: #8c8c8c 1px solid;  FONT-SIZE: 8pt; CURSOR: pointer;   TEXT-ALIGN: left; padding-left: 10px;padding-right: 14px;}
+TD.shop{ FONT-SIZE: 8pt; BORDER-LEFT: #8c8c8c 1px solid; WIDTH: 25%; CURSOR: pointer; HEIGHT: 35px;  TEXT-ALIGN: center;}
+TD.shop2 { FONT-SIZE: 8pt; WIDTH: 25%; CURSOR: pointer;  HEIGHT: 35px;  TEXT-ALIGN: center;}
+TD.shop0 { BORDER-TOP: #8c8c8c 1px solid;  FONT-SIZE: 8pt; BORDER-LEFT: #8c8c8c 1px solid; WIDTH: 25%; CURSOR: pointer;   HEIGHT: 35px;  TEXT-ALIGN: center;}
+TD.shop20 { BORDER-TOP: #8c8c8c 1px solid;  FONT-SIZE: 8pt; WIDTH: 25%; CURSOR: pointer;  HEIGHT: 35px; TEXT-ALIGN: center;}
+TD.lm {	FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;	HEIGHT: 42px;PADDING-RIGHT:25px;TEXT-ALIGN: right;}
+TD.lmc {FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;HEIGHT: 71px;PADDING-RIGHT:25px;	TEXT-ALIGN: right;vertical-align:middle;}
+TD.lml {FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;HEIGHT: 71px;PADDING-LEFT:7px;PADDING-RIGHT:5px;	TEXT-ALIGN: left;vertical-align:middle; }
+TD.lml2 {FONT-SIZE: 14px;CURSOR: pointer;BORDER-BOTTOM: #8c8c8c 1px solid;HEIGHT: 42px;PADDING-LEFT:10px;PADDING-RIGHT:5px;	TEXT-ALIGN: left;vertical-align:middle; }
+TD.lmn {FONT-SIZE: 12px;CURSOR: pointer;TEXT-ALIGN: right;vertical-align:middle;}
+TD.tm { FONT-SIZE: 12pt; BORDER-LEFT: white 3px solid; WIDTH: 138px; CURSOR: pointer; HEIGHT: 28px; BACKGROUND-COLOR: #ff9900; TEXT-ALIGN: center;}
+TD.tml{ FONT-WEIGHT: bold; FONT-SIZE: 12pt; WIDTH: 199px; CURSOR: pointer; HEIGHT: 28px; BACKGROUND-COLOR: #ff9900; TEXT-ALIGN: center;}
+
+
+

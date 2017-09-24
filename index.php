@@ -287,7 +287,7 @@ $("input[name*=\'optionRadio\']").change(function (event) {
     });
     
     // menu
-    var scrollMax = 160;
+    var scrollMax = 154;
     var currentState;
     var NORMAL = "NORMAL";
     var EXTENDED = "EXTENDED";

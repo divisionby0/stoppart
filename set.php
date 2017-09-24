@@ -46,15 +46,17 @@ switch($oper){
 		if(mysqli_num_rows($r)>0){//добавляем количество
 			$row = mysqli_fetch_array($r);
 			$r=sql("UPDATE box SET kol=kol+$kol WHERE boxidd='".$row['boxidd']."'");
+			mysqli_free_result($r);
 		}
 		else{//добавляем новый
 			$shid=whichshop();$rO=sql("SELECT boxid FROM box WHERE shopid='$shid' ORDER BY boxid DESC LIMIT 1");
 			$row0= mysqli_fetch_array($rO);$boxidMAX=(integer)$row0['boxid'];$boxidMAX=$boxidMAX+1;$boxidd=$shid."/".$boxidMAX;
 			sql("INSERT INTO box (boxidd,idd,boxid,shopid,tov_id,kol,userid,comp_id) VALUES ('$boxidd','$idd',$boxidMAX,'$shid','$tov_id',$kol,'$userid',$comp_id)");
+			mysqli_free_result($rO);
 		}
 	}
-	mysqli_free_result($rO);
-	mysqli_free_result($r);
+	
+	
 	go_box_fr2($language);			
 	exit;
 	break;
