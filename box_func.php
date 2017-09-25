@@ -33,10 +33,10 @@ if(mysqli_num_rows($r)!=0){
 mysqli_free_result($r);
 if($language=="en") {$regstr="Join";$lkstr="My ifarfor";$entstr="Sign in";$langstr="/en";}
 else  {$regstr="Регистрация";$lkstr="Личный кабинет";$entstr="Вход";$langstr="";}
-if($hash=='425' or $hash==''){ $echo='<a href="'.aPSID("$langstr/cabinet/signin").'" style="vertical-align:top;"  target="_self"><img height="18" src="/img/lk.png">'.$entstr.'</a>';
-//if($userid!='')
-$echo.='&nbsp;<a href="'.aPSID("$langstr/cabinet/create").'"  style="vertical-align:top;"  target="_self">&nbsp;/&nbsp;&nbsp;'.$regstr.'</a>';}
-else $echo='<a href="'.aPSID("$langstr/cabinet/edit").'" style="vertical-align:top;"  target="_self"><img height="18" src="/img/lk.png"> '.$lkstr.'</a>';///
+if($hash=='425' or $hash==''){ $echo='<a href="'.aPSID("$langstr/cabinet/signin").'" style="vertical-align:top;"  target="_self">'.$entstr.'</a>';
+//if($userid!='')<img height="18" src="/img/lk.png">
+$echo.='&nbsp;/&nbsp;<a href="'.aPSID("$langstr/cabinet/create").'"  style="vertical-align:top;"  target="_self">'.$regstr.'</a>';}
+else $echo='<a href="'.aPSID("$langstr/cabinet/edit").'" style="vertical-align:top;"  target="_self"> '.$lkstr.'</a>';///<img height="18" src="/img/lk.png">
 return $echo;
 }
 function GetCurentKursDolars(){

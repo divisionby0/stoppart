@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1251">
+    <meta http-equiv="Content-language" content="ru-RU">
+    <!--<meta charset="UTF-8">-->
+    <title>Small menu markup</title>
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&amp;subset=cyrillic,latin" rel="stylesheet" type="text/css">
+    <link href="/ifarfor2.css" type="text/css" rel="stylesheet">
+</head>
+
+<body style="background-color: red; width: 100%; height: 500px; padding: 0; margin: 0;">
+<div class="smallSiteMenu relativePositionMenu">
+    <div class="smallSiteMenuItem smallSiteMenuSearchContainer">
+        <div id="searchInputLabel">Поиск</div>
+        <?php echo parse("search1.box","@searchline=$searchline@left="); ?>
+    </div>
+
+    <div class="smallSiteMenuItem"><div class="smallSiteMenuItemVerticalCenteredContent"><a href="#">ДЕКОРАТИВНЫЕ ТАРЕЛКИ</a></div></div>
+    <div class="smallSiteMenuItem"><div class="smallSiteMenuItemVerticalCenteredContent"><a href="#">ПОДСТАВКИ</a></div></div>
+    <div class="smallSiteMenuItem"><div class="smallSiteMenuItemVerticalCenteredContent"><a href="#">УСЛОВИЯ СОТРУДНИЧЕСТВА</a></div></div>
+    <div class="smallSiteMenuItem"><div class="smallSiteMenuItemVerticalCenteredContent"><a href="#">СКАЧАТЬ ПРАЙС ЛИСТ</a></div></div>
+    <div class="smallSiteMenuItem smallSiteMenuAuthContainer"><div class="smallSiteMenuItemVerticalCenteredContent"><a href="#">Вход/Регистрация</a></div></div>
+    <div class="smallSiteMenuItem smallSiteMenuTrashContainer">
+        <a class="basketIcon" href="#"></a>
+        <div id="totalBasketItems">3</div>
+    </div>
+</div>
+
+</body>
+</html>

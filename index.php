@@ -1,17 +1,21 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_set_cookie_params(1080000);
 require_once("shop_func.php");
 require_once("box_func.php");
 require_once("parser.php");
 require_once("gui.php");
-//require_once("php/div0/views/menu/SiteMenu.php");
+require_once("php/div0/views/menu/SiteMenu.php");
 //require_once("php/div0/views/menu/SmallSiteMenu.php");
 prepare_parse("box.inc.html");
 
 session_start();set_session_vars();
 $HotStr='';
 //$searchline=post('search');if($searchline!=''){new_header('location:index.php?search='.$searchline);}
-$searchline=$_GET['search'];
+$searchline=$_GET['search'];if($searchline=='')$searchline=$_GET['search1'];
 $shiftleftmenu='23';$sizebetweenfilters='3';$sizebottomleftmenu='10';
 $shiftleftedge='40';//
 if($searchline!='') $HotStr=$searchline;
@@ -199,10 +203,20 @@ for($i=0;$i<7;$i++){
 	if($menuLink=="interior") $menuLink="interior/vases";
 	$tekname=$menu[$i][1];
 	if($language=="") $tekname=$menu[$i][1]; elseif($language=="en") $tekname=$menuenglish[$i][1];
-	if($m2==$i) $strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:19px;color:#FFFFFF;" ><B>'.my_strtoupper($tekname).'</B></a>';
-	//$strokas='<font style="FONT-SIZE:19px;color:#FFFFFF;" ><b>'.my_strtoupper($tekname).'</b></font>';
-	else $strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:19px;FONT-weight:300px;color:#FFFFFF;" >'.my_strtoupper($tekname).'</a>';
+	if($m2==$i) 
+	{
+		$strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:19px;color:#FFFFFF;" ><B>'.my_strtoupper($tekname).'</B></a>';
+	$cm[$i][0]=aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr);
+	$cm[$i][1]='<b>'.my_strtoupper($tekname).'</b>';
+	}
+	else 
+	{
+	$strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:19px;FONT-weight:300px;color:#FFFFFF;" >'.my_strtoupper($tekname).'</a>';
+	$cm[$i][0]=aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr);
+	$cm[$i][1]=my_strtoupper($tekname);
+	}
 	$am[$i]=$strokas;
+
 };
 if($language=='en')$addlang="&language=en";
 //Ищем есть ли в строке активация правого меню, с горячими позициями
@@ -242,9 +256,6 @@ var overlay = $("#overlay");var open_modal = $(".openmodal");var close = $(".mod
     var cost1 = 950;
     var cost2 = 1090;
     var cost3 = 2190;
-
-    var modalFormOverlay;
-    var itemAddedDialog;
 
 function CloseModal(){
 $("#modalform").animate({opacity: 0, top: "45%"}, 200,	function(){$(this).css("display", "none");$("#overlay").fadeOut(400);});
@@ -293,17 +304,26 @@ $("input[name*=\'optionRadio\']").change(function (event) {
     var EXTENDED = "EXTENDED";
 
     var menuInitPositionY = $("#menuContainer").css("top");
-    console.log("menuInitPositionY",menuInitPositionY);
+    
+    var currentScrollPosition;
+
+    onScroll();
 
     function onStateChanged(){
         switch(currentState){
             case NORMAL:
                 $("#menuContainer").removeClass("absolutePositionMenu");
                 $("#menuContainer").addClass("relativePositionMenu");
+                $("#normalSiteMenu").show();
+                $("#smallSiteMenu").hide();
+                
                 break;
             case EXTENDED:
                 $("#menuContainer").removeClass("relativePositionMenu");
                 $("#menuContainer").addClass("absolutePositionMenu");
+
+                $("#normalSiteMenu").hide();
+                $("#smallSiteMenu").show();
                 break;
         }
     }
@@ -317,8 +337,8 @@ $("input[name*=\'optionRadio\']").change(function (event) {
         }
     }
 
-    $(window).scroll(function(){
-        var currentScrollPosition = window.pageYOffset;
+    function onScroll(){
+        currentScrollPosition = window.pageYOffset;
         updateMenuPosition(currentScrollPosition);
 
         if(currentScrollPosition > scrollMax){
@@ -333,9 +353,11 @@ $("input[name*=\'optionRadio\']").change(function (event) {
                 onStateChanged();
             }
         }
+    }
+    
+    $(window).scroll(function(){
+        onScroll();
     });
-    
-    
 });//1
 </script>';
 echo '<style type="text/css">.big-link { display:block; margin-top: 100px; text-align: center; font-size: 20px; color: #06f; }
@@ -350,35 +372,13 @@ echo '</HEAD>
 <body bgcolor="#FFFFFF" link="#333366" alink="#333366" vlink="#990099" text="#000000" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
 <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=cyrillic,latin" rel=stylesheet type=text/css>
 <link href="/'.cssname().'" type=text/css rel=stylesheet>';//Конец заголовка
-/*
-<div id="myModal" class="reveal-modal">
-<h1>Добавление в корзину</h1>
-<p>Товар успешно добавлен в корзину.</p>
-<a class="close-reveal-modal">&#215;</a>
-</div>
-<a style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" 
-href="/cabinet/basket" target="_parent">Перейти в корзину</a>
-*/
+
 if($searchline!='' and $language=="en") $unstroka_sort="/?search=$searchline";
 if($searchline!='' and $language=="") $unstroka_sort="/en/?search=$searchline";
 if($unstroka_sort=="" and $language=="") $unstroka_sort="/en";
 elseif($unstroka_sort=="" and $language=="en") $unstroka_sort="/";
 if($language=="en")$engtext="Русский"; else $engtext="English";
 $hrefen='<a style="font-size:14px;TEXT-DECORATION: underline;" href="'.$unstroka_sort.'" target="_top">'.$engtext.'</a>';
-//Место для ссылок на социальные сети			<span id="modalclose2">Продолжить покупки</span>
-/*echo '<table align="right" bgcolor="#FFFFFF" width="100%" height="20px" cellspacing="0" cellpadding="0" border="0">
-<tr><td style="text-align:center;">
-<div id="modalform"><h2>'.$tovarstr.'</h2><span style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" 
-id="modalclose">X</span></div><div id="overlay"></div>';
-
-//<div id="modalDialogText" style="display: none;">'.$tovarstr.'</div>
-//<div id="modalform" style="display: none;"><h2>'.$tovarstr.'</h2>
-//<span style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" id="modalclose">X</a></div>
-//<div id="overlay"></div>
-echo '	</td>
-<td style="text-align:right;FONT-SIZE: 14px;padding-right:10px;padding-top:5px;">'.$hrefen.'</td></tr></table>';
-//Начало шапки*/
-//Место для ссылок на социальные сети			<span id="modalclose2">Продолжить покупки</span>
 echo '<table align="right" bgcolor="#FFFFFF" width="100%" height="20px" cellspacing="0" cellpadding="0" border="0">
 <tr><td style="text-align:center;">   
 <div id="modalform"><h2>'.$tovarstr.'</h2><span style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" 
@@ -429,21 +429,7 @@ echo '</td></tr>
 </table>';
 echo '<img src="/empty.gif" width="155px" height="1px"></td></tr></table>';
 if($menuname!='cabinet'){
-	//new SiteMenu($am);
-	echo '<table id="menuContainer" class="normalSiteMenu relativePositionMenu" cellspacing="0" cellpadding="0" border="0">
-                <tr><td width="17%" height="1" style="padding-left:47px;"><img src="/empty.gif" width="150px" height="1px"></td>
-                <td width="66%"><img src="/empty.gif" width="100px" height="1px"></td>
-                <td width="17%" height="1" style="padding-right:47px;"><img src="/empty.gif" width="150px" height="1px"></td></tr>
-                <tr><td class="top1">'.$am[0].'</td>
-                <td align="center">
-                <table align="center" bgcolor="#AD9E82" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0"  style="padding-left:24px;padding-right:18px;"><tr>
-                <td class="top2" data-foo="data[1]">'.$am[1].'</td>
-                <td class="top3">'.$am[2].'</td>
-                <td class="top4">'.$am[3].'</td>
-                <td class="top5">'.$am[4].'</td>
-                <td class="top6">'.$am[5].'</a></td></tr></table></td>
-                <td class="top7">'.$am[6].'</a></td>
-                </tr></table>';
+	new SiteMenu($am,$cm,$language,$searchline,$userid);
 }
 
 if($menuname=="search"){

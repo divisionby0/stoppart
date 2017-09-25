@@ -8,6 +8,7 @@ $(document).ready(function(){
     var open_modal = $(".openmodal");
     var close = $(".modalclose, #overlay");
     var modal;
+    //var modal = $(".modaldiv");
 
     var modalFormOverlay;
     var itemAddedDialog;

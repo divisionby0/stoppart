@@ -1,7 +1,7 @@
 <?php
 //header("location:http://www.myantares.ru");/
 //exit; ///////////////b - myantares ////////// a - antares.avtograd ///////c - ifarfor ////
-function whichshop2(){return "c";}
+function whichshop2(){return "stoppart";}//return "ifarfor";
 Error_Reporting(E_ALL & ~E_NOTICE);
 //session_start();
 function get_s_var($id){// возвращает безопасную переменную сессии
@@ -170,11 +170,7 @@ function is_manager(){
 }
 function sql_logon(){
 	global $link;
-	$host = "localhost";
-	$user = "root";
-	$password = "kljh76RRenJh7";
-	$db = "stoppart";
-	$link = mysqli_connect($host, $user, $password,$db);
+	$link = mysqli_connect('localhost', 'stoppart_farfor', 'newstepof2017','stoppart_farfor');
 	if (mysqli_connect_errno()) {    printf("Не удалось подключиться: %s\n", mysqli_connect_error());    exit();}
 	return $link; 
 }

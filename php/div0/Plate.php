@@ -37,6 +37,7 @@ class Plate
     
     public function getImage()
     {
+    	//$this->image = str_replace("/icons/noimage.jpg", '', $this->image);
         return $this->image;
     }
     

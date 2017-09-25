@@ -4,9 +4,9 @@
 class DBConnection
 {
     private $serverName = "localhost";
-    private $dbName = "stoppart";
-    private $login = "root";
-    private $password = "kljh76RRenJh7";
+    private $dbName = "stoppart_farfor";
+    private $login = "stoppart_farfor";
+    private $password = "newstepof2017";
     
     private $connection;
     
@@ -20,7 +20,7 @@ class DBConnection
             exit();
         }
         else{
-            echo '<div>db connected</div>';
+			echo '<div>db connected</div>';
             $this->connected = true;
         }
     }

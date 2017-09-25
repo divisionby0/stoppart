@@ -5,10 +5,7 @@ $(document).ready(function(){
     var EXTENDED = "EXTENDED";
 
     var menuInitPositionY = $("#menuContainer").css("top");
-
-    var currentScrollPosition;
-
-    onScroll();
+    console.log("menuInitPositionY",menuInitPositionY);
 
     function onStateChanged(){
         switch(currentState){
@@ -32,9 +29,8 @@ $(document).ready(function(){
         }
     }
 
-
-    function onScroll(){
-        currentScrollPosition = window.pageYOffset;
+    $(window).scroll(function(){
+        var currentScrollPosition = window.pageYOffset;
         updateMenuPosition(currentScrollPosition);
 
         if(currentScrollPosition > scrollMax){
@@ -49,10 +45,5 @@ $(document).ready(function(){
                 onStateChanged();
             }
         }
-    }
-
-
-    $(window).scroll(function(){
-        onScroll();
     });
 });

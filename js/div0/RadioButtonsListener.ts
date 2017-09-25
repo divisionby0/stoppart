@@ -8,15 +8,17 @@ class RadioButtonsListener{
     }
 
     private createListener():void{
-        console.log("create listeners");
-        this.$j("input[name*='optionRadio']").change((event)=>this.onChange(event));
+
+        this.$j("input[name='optionRadio']").change((event)=>this.onChange(event));
+
+        /*
+        this.$j("input[name='optionRadio']").change(function() {
+            alert("radio button changed "+this);
+        });
+        */
     }
 
     private onChange(event:any):void{
-        var element:any = this.$j(event.target);
-        var itemId:string = element.data( "itemid" );
-        var value:string = element.val();
-        console.log("itemId=",itemId, "value=",value);
-        alert("Item id: "+itemId+"  selected value: "+value);
+        alert("onChange");
     }
 }

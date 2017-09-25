@@ -6,15 +6,15 @@ var RadioButtonsListener = (function () {
     }
     RadioButtonsListener.prototype.createListener = function () {
         var _this = this;
-        console.log("create listeners");
-        this.$j("input[name*='optionRadio']").change(function (event) { return _this.onChange(event); });
+        this.$j("input[name='optionRadio']").change(function (event) { return _this.onChange(event); });
+        /*
+        this.$j("input[name='optionRadio']").change(function() {
+            alert("radio button changed "+this);
+        });
+        */
     };
     RadioButtonsListener.prototype.onChange = function (event) {
-        var element = this.$j(event.target);
-        var itemId = element.data("itemid");
-        var value = element.val();
-        console.log("itemId=", itemId, "value=", value);
-        alert("Item id: " + itemId + "  selected value: " + value);
+        alert("onChange");
     };
     return RadioButtonsListener;
 }());

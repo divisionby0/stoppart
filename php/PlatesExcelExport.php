@@ -19,9 +19,9 @@ echo '<div>'.$baseUrl.'</div>';
 $platesSelector = new PlatesDBSelector();
 $plates = $platesSelector->select();
 
-$cost1 = 100; // 150 mm cost
-$cost2 = 200; // 200 mm cost
-$cost3 = 300; // 250 mm cost
+$cost1 = 950; // 150 mm cost
+$cost2 = 1090; // 200 mm cost
+$cost3 = 2190; // 250 mm cost
 
 if(!isset($plates) || !$plates){
     echo '<div>Empty results !!!</div>';
@@ -40,6 +40,8 @@ function createCollection($plates){
     $collection = new IndexedList("plates");
     while($row = $plates->fetch_assoc()) {
         $link = "http://stoppart.com/shop/view".$row["ida"];
+        $imgFile=$row["imageFile"];
+        if($imgFile=='/icons/noimage.jpg')$imgFile='';
         $plate = new Plate($row["ida"], $row["name"], $row["image"], $row["imageFile"], $row["author"], $link);
         $collection->add($plate);
     }

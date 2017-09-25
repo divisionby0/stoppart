@@ -119,18 +119,18 @@ class ExportPlatesToExcel
 
     private function setColumnWidth(){
         $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(38);
-        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
-        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(38);
+        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(9);
+        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(22);
 
         $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
-        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(14);
 
-        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
-        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
-        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
-        $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
-        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(15);
-        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(40);
+        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(14);
+        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(11);
+        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(11);
+        $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(11);
+        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(11);
+        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(11);
     }
 
     private function createHeader(){
