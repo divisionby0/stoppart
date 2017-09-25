@@ -2,17 +2,31 @@ $(document).ready(function(){
     var dragAnimationDuration = 600;
     var destroyAnimationDuration = 100;
 
+    var totalBasketElements = parseInt($(".totalBasketElements").text());
+
+    if(isNaN(totalBasketElements)){
+        totalBasketElements = 0;
+    }
+
+    function updateTotalBasketElements(){
+
+        $(".totalBasketElements").each(function(index, element){
+            $(element).text(totalBasketElements.toString());
+        });
+
+    }
+
     $("[id*=ishop]").click(function(){
 
         var basketElement = $("#basketcontain");
         var idPostfix = $(this).attr("id").split("ishop")[1];
+
 
         if(idPostfix){
             var imageElement = $("#img"+idPostfix);
 
             var basketTop = basketElement.offset().top;
             var basketLeft = $(document).width() - 80;
-
 
             var imgclone = imageElement.clone()
                 .offset({
@@ -32,7 +46,11 @@ $(document).ready(function(){
                     'left': basketLeft + 10,
                     'width': 21,
                     'height': 15
-                }, dragAnimationDuration);
+                }, dragAnimationDuration,function(){
+                    totalBasketElements++;
+                    console.log("totalBasketElements="+totalBasketElements);
+                    updateTotalBasketElements();
+                });
 
             imgclone.animate({
                 'width': 0,

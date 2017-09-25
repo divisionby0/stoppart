@@ -3,14 +3,19 @@ require_once("box_func.php");
 
 class SiteMenu
 {
+    private static $STOPPART_VERSION = "stoppart";
+    private static $IFARFOR_VERSION = "ifarfor";
     public function __construct($data,$data2,$language,$searchline,$userid)
-    {	if(whichshop()=='stoppart')	{
+    {
+        $menuVersion = whichshop3();
+
+        if($menuVersion==self::$STOPPART_VERSION)	{
          echo '<div id="menuContainer" class="siteMenu">'; echo '<div id="normalSiteMenu" class="normalSiteMenu relativePositionMenu">';
          $this->createNormalMenu($data,$data2,$language,$searchline,$userid);  echo '</div>';
          echo '<div id="smallSiteMenu" class="smallSiteMenu relativePositionMenu" style="display: none;">';
          $this->createTipMenu($data,$data2,$language,$searchline,$userid);  echo '</div>';echo '</div>';			
 		}
-		if(whichshop()=='ifarfor') 	{
+		if($menuVersion==self::$IFARFOR_VERSION) 	{
          echo '<div id="menuContainer" class="siteMenu">'; echo '<div id="normalSiteMenu" class="normalSiteMenu relativePositionMenu">';
          $this->createNormalMenuifarfor($data,$data2,$language,$searchline,$userid);  echo '</div>';
          echo '<div id="smallSiteMenu" class="smallSiteMenu relativePositionMenu" style="display: none;">';
@@ -51,7 +56,7 @@ class SiteMenu
          <td class="tinstop4">
          <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
          <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <span style="float:right;"><i class="shopping-cart"></i></span><img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
+         <img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> <div class="totalBasketElements">0</div></div></a></td>
                 </tr></table></FORM>';
     }
         
@@ -71,7 +76,7 @@ class SiteMenu
          <td class="tinstop4">
          <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
          <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <span style="float:right;"><i class="shopping-cart"></i></span><img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
+         <img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> <div class="totalBasketElements">0</div></div></a></td>
                 </tr></table></FORM>';
     }
       protected function createTipMenuifarfor($data,$data2,$language,$searchline,$userid){
@@ -93,10 +98,7 @@ class SiteMenu
          <td class="tintop9">
           <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
          <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <span style="float:right;"><i class="shopping-cart"></i></span><img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
+         <img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> <div class="totalBasketElements">0</div></div></a></td>
                 </tr></table></FORM>';
     }
-
-    
-
 }
