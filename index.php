@@ -236,7 +236,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 ';//<link href="/bitrix/templates/gipertwo_/favicon.ico" rel="shortcut icon">
 //Счетчик Гугла
 echo '	<script type="text/javascript" src="/jquery-1.8.2.min.js"></script>';
-
+echo '	<script type="text/javascript" src="js/div0/basket.js"></script>';
 echo "<script type='text/javascript'>
 var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-21694937-1']);_gaq.push(['_trackPageview']);
 (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -1815,7 +1815,7 @@ function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,
 				$Height,$Capacity,$Diameter,$Width,$engtip,$engvid,$language);
 			$bottomname=MakeBottomName($brandid,$newprice1,$language);
 			if($perem=='/icons/noimage.jpg') $imginsert="";
-			else $imginsert="<img width='100%' src='$perem'>";
+			else $imginsert="<img width='100%' id='img".$id."' src='$perem'>";
 			if($i<=3) $sti="padding-right:10px;";else $sti='';$Prov=ProverkaNal($id,'5');
 			$result=sql("SELECT * FROM likeengine WHERE id='$id'");
 			$countQuantStr=mysqli_num_rows($result);

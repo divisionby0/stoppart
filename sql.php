@@ -170,7 +170,7 @@ function is_manager(){
 }
 function sql_logon(){
 	global $link;
-	$link = mysqli_connect('localhost', 'stoppart_farfor', 'newstepof2017','stoppart_farfor');
+	$link = mysqli_connect('localhost', 'root', 'kljh76RRenJh7','stoppart');
 	if (mysqli_connect_errno()) {    printf("Не удалось подключиться: %s\n", mysqli_connect_error());    exit();}
 	return $link; 
 }

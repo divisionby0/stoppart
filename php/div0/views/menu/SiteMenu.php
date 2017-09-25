@@ -51,7 +51,7 @@ class SiteMenu
          <td class="tinstop4">
          <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
          <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <img src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
+         <span style="float:right;"><i class="shopping-cart"></i></span><img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
                 </tr></table></FORM>';
     }
         
@@ -71,7 +71,7 @@ class SiteMenu
          <td class="tinstop4">
          <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
          <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <img src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
+         <span style="float:right;"><i class="shopping-cart"></i></span><img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
                 </tr></table></FORM>';
     }
       protected function createTipMenuifarfor($data,$data2,$language,$searchline,$userid){
@@ -93,7 +93,7 @@ class SiteMenu
          <td class="tintop9">
           <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
          <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <img src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
+         <span style="float:right;"><i class="shopping-cart"></i></span><img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> 2</div></a></td>
                 </tr></table></FORM>';
     }
 
