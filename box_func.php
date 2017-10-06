@@ -10,6 +10,394 @@ session_start();
 								Функции, обслуживающие всё 
 *********************************************************************************************************/
 function my_strtoupper($str){$str=mb_strtoupper($str);return $str;}
+function dealer()
+{//#d5d8df
+	$echo='<table align="center" width="720" cellspacing="7" cellpadding="0" border="0">
+	<tr><td width="67%"><a href="/shop/artplate/stoppard/redute" target="_self"><img width="472" src="/img/redute.jpg"></a></td>
+	<td width="33%" style="background:#8aa6a0;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-FAMILY: \'Roboto Condensed\';FONT-size:20px;">
+	<img width="80" src="/img/logo_stoppard_white.gif">
+	<hr noshade>Декоративные тарелки Stoppard<hr noshade>
+	Произведения более тридцати художников с мировым именем<hr noshade>
+	Продукция представлена в восьми регионах России<hr noshade>
+	Ассортимент из более, чем 500 наименований<hr  noshade>
+	Бесплатная доставка*
+	</div></td></tr>
+	<tr><td style="background:#d5d8df;vertical-align:top;">
+	<H1 style="padding:10 20 0 20;FONT-size:48px;text-align:justify;FONT-FAMILY: \'Arial black\';text-align:center;">ПРЕДЛОЖЕНИЕ</H1>
+	<H1 style="padding:0 20 10 20;FONT-size:24px;text-align:justify;FONT-FAMILY: \'Arial black\';text-align:center;">ДЛЯ РОЗНИЧНЫХ МАГАЗИНОВ</H1>
+		<div style="padding:10 25 0 25 ;vertical-align:top;FONT-size:16px;FONT-weight:400;line-height: 1.5;">
+		Декоративные тарелки Stoppard производятся в России с 2014 года. 
+		Продукция представлена коллекциями декоративных тарелок из фарфора, декорированных по мотивам картин знаменитых художников. </div>
+		<div style="padding:10 25 0 25 ;vertical-align:top;FONT-size:16px;FONT-weight:400;line-height: 1.5;">
+Сотрудничество возможно, как по договору поставки, так  и по договору комиссии.
+</div><div style="padding:10 25 25 25 ;vertical-align:top;FONT-size:16px;FONT-weight:400;line-height: 2;">
+Гарантия качества. Бесплатный обмен боя при поставке.
+<br>
+Возможен обмен и возврат продукции. 
+<br>
+Прайс в формате xls доступен по ссылке <a target="_blank" class="usuallink" href="stoppart.com/price">stoppart.com/price</a>
+<br>
+В каталоге указаны рекомендуемые розничные цены.
+<br>
+*Бесплатная доставка при отгрузке от 10000 рублей.
+	</div>
+	</td>
+	<td style="background:#86afc4;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-size:18px;">
+	Декоративные тарелки Stoppard<br><br>
+	Отдел продаж<br>
+	+7(937)232-07-84<br>
+	с 10:00 до 20:00<br>
+	без выходных<br>
+	opt@stoppart.com<br><br>
+	Офис<br>
+	+7(8482)78-06-78<br>
+	Понедельник-пятница<br>
+	с 14:00 до 18:00<br>
+	office@stoppart.com<br><br>
+	www.stoppart.com<br>
+	<br>
+
+
+	</div></td></tr>
+	<tr><td width="67%"><a href="/shop/artplate/stoppard/redute" target="_self"><img width="472" src="/img/redute.jpg"></a></td>
+	<td width="33%" style="background:#8aa6a0;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-FAMILY: \'Roboto Condensed\';FONT-size:20px;">
+	<img width="80" src="/img/logo_stoppard_white.gif">
+	<hr noshade>Декоративные тарелки Stoppard<hr noshade>
+	Произведения более тридцати художников с мировым именем<hr noshade>
+	Продукция представлена в восьми регионах России<hr noshade>
+	Ассортимент из более, чем 500 наименований<hr  noshade>
+	Бесплатная доставка*
+	</div></td></tr>
+	</table>';
+	return $echo;
+}
+function about()
+{//#5c96b1 //8aa6a0
+	$echo='<table align="center" width="820" cellspacing="7" cellpadding="0" border="0">
+	<tr><td width="57%"><a href="/shop/artplate/stoppard/vangogh" target="_self"><img width="472" src="/img/vangogh.jpg"></a></td>
+	<td width="43%" style="background:#8aa6a0;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-FAMILY: \'Roboto Condensed\';FONT-size:20px;">
+	<img width="80" src="/img/logo_stoppard_white.gif">
+	<hr noshade>
+	В середине двадцатого века европейские производители начали создавать коллекции тарелок, предназначенных исключительно для украшения, а совсем не для еды. Этот удачный коммерческий ход изменил отношение к тарелкам, как к предметам, используемым только в обиходе. Сегодня украшение интерьера декоративными тарелками является модным, изысканным и креативным решением.<hr noshade>
+	</div></td></tr>
+	<tr><td width="57%"><a href="/shop/artplate/stoppard/modil" target="_self"><img width="472" src="/img/modigliani.jpg"></a></td>
+	<td width="43%" style="background:#ADACA0;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-FAMILY: \'Roboto Condensed\';FONT-size:20px;">
+	<img width="80" src="/img/logo_stoppard_white.gif">
+	<hr noshade>
+	Чем более сдержан по цветовой гамме ваш интерьер, — тем более разнообразной может быть ваша коллекция тарелок на стене. Там, где цвета и так уже достаточно, — лучше выбрать однотонные модели.
+	<hr noshade>
+Разумеется, желателен контраст фона. Достаточно оригинально смотрятся декоративные тарелки на полосатых обоях, прерывая их монотонность и жесткий ритм.
+<hr noshade>
+	</div></td></tr>
+	<tr><td width="57%"><a href="/shop/artplate/stoppard/beardsley" target="_self"><img width="472" src="/img/beardsley.jpg"></a></td>
+	<td width="43%" style="background:#767567;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-FAMILY: \'Roboto Condensed\';FONT-size:20px;">
+	<img width="80" src="/img/logo_stoppard_white.gif">
+	<hr noshade>
+	Те обои, что издалека смотрятся как однотонные (фактурные) — самый идеальный фон для любых декоративных тарелок.
+	<hr noshade>
+Из «форм» для композиций самые выигрышные — вертикаль, симметрия вокруг зеркала или картины, а также асимметричное «облако».
+<hr noshade>
+	</div></td></tr>
+	<tr><td width="57%"><a href="/shop/artplate/stoppard/redute" target="_self"><img width="472" src="/img/redute.jpg"></a></td>
+	<td width="43%" style="background:#799EAC;">
+	<div style="padding:20 20 20 20;color:white;text-align:center;vertical-align:top;FONT-weight:300;FONT-FAMILY: \'Roboto Condensed\';FONT-size:20px;">
+	<img width="80" src="/img/logo_stoppard_white.gif">
+	<hr noshade>
+	На обоях с мелким пестрым рисунком не советуем размещать пестрые тарелки, особенно те, что не слишком подходят по цветовой гамме. Лучше выбрать однотонные или двухцветные. 
+	<hr noshade>
+В последнем случае желательно, чтобы хотя бы один из оттенков «поддерживался» в цвете другого, достаточно крупного предмета интерьера, например, в обивке дивана или скатерти на столе.
+<hr noshade>
+	</div></td></tr>
+	
+	</table>';
+	return $echo;
+}
+function updatetovs(){
+	sql('UPDATE tovsNew SET zakaz="0", sklad="0" WHERE 1=1');
+	//	sql("COMMIT");
+	//$PRRid='OOO';
+	if(whichshop3()=='ifarfor') $lines = file('http://ifarfor.ru/tovs.txt');
+	else $lines = file('http://stoppart.com/tovs.txt');
+	$qq = array();
+	foreach($lines as $line_num => $line){
+		// echo "Строка #<b>{$line_num}</b> : " .rtrim($line) . "<br />\n";//htmlspecialchars(
+		$qq[$line_num]=$line;
+	}
+	//	$qq=explode("\r\n",$HTTP_RAW_POST_DATA); 
+	$num = count($qq);
+	for($i = 0; $i < $num;){
+		$Pid=sqlp($qq[$i++]);//1
+		$Pidg=sqlp($qq[$i++]);//2
+		$Pida=sqlp($qq[$i++]);//3
+		$Pname=sqlp($qq[$i++]);	//4
+		if( $i < 500){$PRRid.=$i.$Pname;	}
+		if($Pname=='Не определен!' or $Pname=='Не определен')$Pname='';	
+		$Pprice=sqlp($qq[$i++]);	//5
+		$Pprice1s=sqlp($qq[$i++]);	//6
+		$Pgrp=sqlp($qq[$i++]);	//7
+		$Ptip=sqlp($qq[$i++]);	//Родитель=Родитель.Родитель;Текст.ДобавитьСтроку(Родитель1);//tip   8
+		$Pquant=sqlp($qq[$i++]);	//9
+		$Pzakaz=sqlp($qq[$i++]);	//10
+		$Psklad=sqlp($qq[$i++]);	//11
+		$PWidth=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Ширина);12
+		$PHeight=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Высота);13
+		$PCapacity=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Объем);14
+		$PForm=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Форма);Form` varchar(30) character set cp1251 default NULL15
+		if($PForm=='Не определен!' or $PForm=='Не определен')$PForm='';	
+		$PPicture=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Рисунок);Picture` varchar(30) character set cp1251 default NULL,16
+		if($PPicture=='Не определен!' or $PPicture=='Не определен')$PPicture='';
+		$PMetodOfMade=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.МетодИзготовления);`Vid` varchar(10) character set cp1251 default NULL,//17
+		$PTipOfMaterial=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ТипМатериала);Tip` varchar(21) character set cp1251 default NULL, 18
+		$PFactory=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Изготовитель);Factory` varchar(30) character set cp1251 default NULL,19
+		$Pkomplekt=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Комплект);20
+		$PmemberID1=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта01);21
+		$PmemberID2=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта02);22
+		$PmemberID3=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта03);23
+		$PmemberID4=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта04);24
+		$PmemberID5=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта05);25
+		$PmemberID6=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта06);26
+		$PmemberID7=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта07);27
+		$PmemberID8=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта08);28
+		$PmemberID9=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта09);29
+		$PmemberID10=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта010);30
+		$PmemberID11=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.СоставКомплекта011);31
+		$PmemberQuant1=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта01);32
+		$PmemberQuant2=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта02);33
+		$PmemberQuant3=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта03);34
+		$PmemberQuant4=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта04);35
+		$PmemberQuant5=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта05);36
+		$PmemberQuant6=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта06);37
+		$PmemberQuant7=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта07);38
+		$PmemberQuant8=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта08);39
+		$PmemberQuant9=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта09);40
+		$PmemberQuant10=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта010);41
+		$PmemberQuant11=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.КолКомплекта011);42
+		$PDiameter=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Диаметр);43
+		$PPerson=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Персон);44
+		$PPredmetov=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Предметов);45
+		$PCovering=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Покрытие);46
+		$PTipAss=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ТипАссортимента);47
+		$PTip=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ТипИзделия);48
+		//$PTip='ho';
+		$PVid=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ВидИзделия);49
+		$PAutorForm=sqlp($qq[$i++]);	//	  `AutorForm` varchar(30) character set cp1251 default NULL,  50
+		$PAutorPicture=sqlp($qq[$i++]);	//  `AutorPicture` varchar(30) character set cp1251 default NULL,51
+		$PAutorFormEnglish=sqlp($qq[$i++]);	//	  `AutorForm` varchar(30) character set cp1251 default NULL,  50
+		$PAutorPictureEnglish=sqlp($qq[$i++]);	//  `AutorPicture` varchar(30) character set cp1251 default NULL,51
+		$PStrana=sqlp($qq[$i++]);	// `Strana` varchar(15) character set cp1251 default NULL,52
+		$PRstyle=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Комплект);53
+		$PNY=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.НовыйГод);54
+		$PInLove=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Влюбленный);55
+		$PPancakeWeek=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Масленица);56
+		$PEaster=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Пасха);57
+		$PVictoryDay=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньПобеды);58
+		$PDefenderDay=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ЗащитникОтечества);59
+		$PWomanDay=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ЖенскийДень);60
+		$PWedding=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.Свадьба);61
+		$PTeacherDay=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньУчителя);62
+		$PBirthday=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньРождения);63
+		$PKids=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньРождения);63
+		$PLiterature=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньРождения);63
+		$PTheatre=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньУчителя);62
+		$PFlower=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньРождения);63
+		$PPeterburg=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньУчителя);62
+		$PMoscow=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку(Спр.ДеньРождения);63
+		$PEnglish=sqlp($qq[$i++]);		
+		$PMaterialEnglish=sqlp($qq[$i++]);	//+
+		$PFormEnglish=sqlp($qq[$i++]);	//+
+		$PPictureEnglish=sqlp($qq[$i++]);	//+
+		$PTipEnglish=sqlp($qq[$i++]);//$PTipEnglish='.';	
+		$PVidEnglish=sqlp($qq[$i++]);	
+		/*$PFactoryEnglish=sqlp($qq[$i++]);	//+*/
+		$Pustyshka=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку("");//профилактика 20 52
+		$Pustyshka=sqlp($qq[$i++]);	//Текст.ДобавитьСтроку("");//профилактика 21 */  idd varchar(17),53
+		//	if($Pkomplekt=="")$Pkomplekt=0;
+		//	if($PmemberQuant11=="")$PmemberQuant11=0;
+		/*    create("picture"); 
+		create("form"); 
+		create("creator");
+		create("brand");
+		create("material");*/
+		switch($PVid){
+			case "Сервиз":
+			switch($PTip){
+				case "чайн.": $PTip="чайный";break;
+				case "кофейн.": $PTip="кофейный";break;
+				case "стол.": $PTip="столовый";break;
+				default: break;
+			}
+			break;
+			default: $PTip=$PTip;break;
+		}
+		switch($PForm){
+			case "Молодежная 1":
+			$PForm="Молодежная";	break;
+			default: break;
+		}
+		/*
+		switch($PTipOfMaterial)
+		{
+		case "костяной":$PTipOfMaterial="Костяной фарфор.";	break;
+		case "Костяной фарфор":$PTipOfMaterial="Костяной фарфор.";	break;
+		case "Фр костяной":$PTipOfMaterial="Костяной фарфор.";	break;
+		case "твердый":$PTipOfMaterial="Твердый фарфор.";	break;
+		case "Фр твердый":$PTipOfMaterial="Твердый фарфор.";	break;
+		case "Твердый фарфор":$PTipOfMaterial="Твердый фарфор.";	break;
+		case "<>":$PTipOfMaterial="";	break;
+		case "мягкий":$PTipOfMaterial="Мягкий фарфор.";	break;
+		case "Мягкий фарфор":$PTipOfMaterial="Мягкий фарфор.";	break;
+		default: break;
+		}*/
+		$ida=$row['ida'];
+		$id=$row['id'];
+		$id_crop = substr($Pida, 2,5);
+		if(substr($Pida, 0,1)=='8') $id_crop = substr($Pida, 2,5);
+		else $id_crop = substr($Pida, 0,1).substr($Pida, 2,5);
+		$filename0 ="ico/".$Pida.".jpg";		
+		$filename ="images/".$id_crop."_resize.jpg";
+		$filename2 ="images/".$id_crop."_resize.JPG";
+		$filename3 ="images/".$id_crop.".jpg";
+		$filename4 ="foto/".$Pida.".jpg";
+		$filename5 ="ico/".$Pida."S.jpg";
+		$filename6 ="ico/".$Pida."B.jpg";
+		
+		$last=substr($Pida, -1);
+		$Pida1 = substr($Pida, 0, -1);
+		$filename7 ="ico/".$Pida1.".jpg";	
+		if(file_exists($filename0)) $perem="/".$filename0;
+		elseif(file_exists($filename)) $perem="/".$filename;
+		elseif(file_exists($filename2)) $perem="/".$filename2;
+		elseif(file_exists($filename3)) $perem="/".$filename3;
+		elseif(file_exists($filename4)) $perem="/".$filename4;	
+		elseif(file_exists($filename5)) $perem="/".$filename5;	
+		elseif(file_exists($filename6)) $perem="/".$filename6;
+		elseif(file_exists($filename7) AND ($last=='S' or $last==' B')) $perem="/".$filename7;		
+		else $perem="/icons/noimage.jpg";
+		sql("INSERT IGNORE INTO picture (name) VALUES ('".$PPicture."')");$r=sql("SELECT id FROM picture WHERE name='".$PPicture."'");
+		$row=mysqli_fetch_array($r);$idPPicture=$row[id];
+		sql("UPDATE picture SET English = '$PPictureEnglish' WHERE id = '$idPPicture'");
+		sql("INSERT IGNORE INTO form (name) VALUES ('$PForm')");$r=sql("SELECT id FROM form WHERE name='$PForm'");
+		$row=mysqli_fetch_array($r);$idPForm=$row[id];
+		sql("UPDATE form SET English = '$PFormEnglish' WHERE id = '$idPForm'");
+		sql("INSERT IGNORE INTO creator (name) VALUES ('$PAutorPicture')");$r=sql("SELECT id FROM creator WHERE name='$PAutorPicture'");
+		$row=mysqli_fetch_array($r);$idPAutorPicture=$row[id];
+		sql("UPDATE creator SET english = '$PAutorPictureEnglish' WHERE id = '$idPAutorPicture'");
+		sql("INSERT IGNORE INTO creator (name) VALUES ('$PAutorForm')");$r=sql("SELECT id FROM creator WHERE name='$PAutorForm'");
+		$row=mysqli_fetch_array($r);$idPAutorForm=$row[id];
+		sql("UPDATE creator SET english = '$PAutorFormEnglish' WHERE id = '$idPAutorForm'");
+		sql("INSERT IGNORE INTO brand (name,Strana) VALUES ('$PFactory','$PStrana')");$r=sql("SELECT id FROM brand WHERE name='$PFactory'");
+		$row=mysqli_fetch_array($r);$idPFactory=$row[id];
+		sql("UPDATE brand SET English = '$PFactoryEnglish' WHERE id = '$idPFactory'");
+		sql("INSERT IGNORE INTO material (name) VALUES ('$PTipOfMaterial')");$r=sql("SELECT id FROM material WHERE name='$PTipOfMaterial'");
+		$row=mysqli_fetch_array($r);$idPTipOfMaterial=$row[id];
+		sql("UPDATE material SET English = '$PMaterialEnglish' WHERE id = '$idPTipOfMaterial'");
+		if($PEnglish==""){$PEnglish="$PTipEnglish $PVidEnglish $PFormEnglish $PPictureEnglish $PAutorPictureEnglish";
+			if($PPerson!='' and $PPredmetov!='' and $PPerson!='1' and $PPredmetov!='1' and $PPerson!='0' and $PPredmetov!='0') $PEnglish.=' '.$PPerson.'/'.$PPredmetov;
+		}
+		$Pname=str_replace ("/"," ", $Pname);
+		$Pname=str_replace (","," ", $Pname);
+		$Pname=str_replace ("  "," ", $Pname);
+		$Pname=str_replace ("Не определен!","", $Pname);
+		$Pname=str_replace ("Не определен","", $Pname);
+		$Pname = str_replace("\r", "", $Pname); // удаляем переносы
+		$Pname = str_replace("\n", "", $Pname); // удаляем переносы
+		$Plowername=mb_strtolower($Pname);
+		if($PFactory=='Stoppard' and $PVid=="Декоративная тарелка" and $PDiameter=='200') {$Pprice='990';$Pprice1s='990';}
+		if($PFactory=='Stoppard' and $PVid=="Декоративная тарелка" and $PDiameter=='260') {$Pprice='2190';$Pprice1s='2190';}
+		if($PFactory=='Stoppard' and $PVid=="Декоративная тарелка" and $PDiameter=='150') {$Pprice='890';$Pprice1s='890';}
+		$q="REPLACE INTO tovsNew (id,idg,ida,name,price,price1s,grp,tip,quant,zakaz,sklad,Picture,Form,Vid,Factory,komplekt,
+		AutorForm,AutorPicture,MetodOfMade,TipOfMaterial,Covering,Diameter,Person,Predmetov,Width,Height,Capacity,
+		memberID1,memberID2,memberID3,memberID4,memberID5,memberID6,memberID7,memberID8,memberID9,memberID10,memberID11,
+		memberQuant1,memberQuant2,memberQuant3,memberQuant4,memberQuant5,memberQuant6,memberQuant7,memberQuant8,
+		memberQuant9,memberQuant10,memberQuant11,RStyle,NY,InLove,PancakeWeek,Easter,VictoryDay,DefenderDay,WomanDay,
+		Wedding,TeacherDay,Birthday,Literature,Theatre,Flower,Peterburg,Moscow,TipAss,Imagefile,Kids,tipenglish,videnglish,english,lowername)
+		VALUES ('$Pid','$Pidg','$Pida','$Pname','$Pprice','$Pprice1s','$Pgrp','$PTip','$Pquant','$Pzakaz','$Psklad',
+		'$idPPicture','$idPForm','$PVid','$idPFactory','$Pkomplekt',
+		'$idPAutorForm','$idPAutorPicture','$PMetodOfMade','$idPTipOfMaterial','$PCovering',
+		'$PDiameter','$PPerson','$PPredmetov','$PWidth','$PHeight','$PCapacity','$PmemberID1','$PmemberID2','$PmemberID3',
+		'$PmemberID4','$PmemberID5','$PmemberID6','$PmemberID7','$PmemberID8','$PmemberID9','$PmemberID10','$PmemberID11',
+		'$PmemberQuant1','$PmemberQuant2','$PmemberQuant3','$PmemberQuant4','$PmemberQuant5','$PmemberQuant6','$PmemberQuant7',
+		'$PmemberQuant8','$PmemberQuant9','$PmemberQuant10','$PmemberQuant11','$PRstyle','$PNY','$PInLove','$PPancakeWeek',
+		'$PEaster','$PVictoryDay','$PDefenderDay','$PWomanDay','$PWedding','$PTeacherDay','$PBirthday',
+		'$PLiterature','$PTheatre','$PFlower','$PPeterburg','$PMoscow','$PTipAss','$perem','$PKids','$PTipEnglish','$PVidEnglish','$PEnglish','$Plowername')\r\n";
+		sql($q);
+		if($PFactory=='Stoppard' and $PVid=="Декоративная тарелка" )//and $PDiameter==200
+			{//1
+			if($PDiameter==200) $NeedId=$Pid; else $NeedId=substr($Pid, 0, -1);
+			if($PDiameter==200 or $PDiameter==260) {//2
+				$r=sql("SELECT * FROM tovsNew WHERE id='".$NeedId."S'");    
+      			if(mysqli_num_rows($r)==0){//3
+        $q="REPLACE INTO tovsNew (id,idg,ida,name,price,price1s,grp,tip,quant,zakaz,sklad,Picture,Form,Vid,Factory,komplekt,
+		AutorForm,AutorPicture,MetodOfMade,TipOfMaterial,Covering,Diameter,Person,Predmetov,Width,Height,Capacity,
+		memberID1,memberID2,memberID3,memberID4,memberID5,memberID6,memberID7,memberID8,memberID9,memberID10,memberID11,
+		memberQuant1,memberQuant2,memberQuant3,memberQuant4,memberQuant5,memberQuant6,memberQuant7,memberQuant8,
+		memberQuant9,memberQuant10,memberQuant11,RStyle,NY,InLove,PancakeWeek,Easter,VictoryDay,DefenderDay,WomanDay,
+		Wedding,TeacherDay,Birthday,Literature,Theatre,Flower,Peterburg,Moscow,TipAss,Imagefile,Kids,tipenglish,videnglish,english,lowername)
+		VALUES ('".$NeedId."S','$Pidg','".$NeedId."S','$Pname','890','890','$Pgrp','$PTip','$Pquant','$Pzakaz','$Psklad',
+		'$idPPicture','$idPForm','$PVid','$idPFactory','$Pkomplekt',
+		'$idPAutorForm','$idPAutorPicture','$PMetodOfMade','$idPTipOfMaterial','$PCovering',
+		'150','$PPerson','$PPredmetov','$PWidth','$PHeight','$PCapacity','$PmemberID1','$PmemberID2','$PmemberID3',
+		'$PmemberID4','$PmemberID5','$PmemberID6','$PmemberID7','$PmemberID8','$PmemberID9','$PmemberID10','$PmemberID11',
+		'$PmemberQuant1','$PmemberQuant2','$PmemberQuant3','$PmemberQuant4','$PmemberQuant5','$PmemberQuant6','$PmemberQuant7',
+		'$PmemberQuant8','$PmemberQuant9','$PmemberQuant10','$PmemberQuant11','$PRstyle','$PNY','$PInLove','$PPancakeWeek',
+		'$PEaster','$PVictoryDay','$PDefenderDay','$PWomanDay','$PWedding','$PTeacherDay','$PBirthday',
+		'$PLiterature','$PTheatre','$PFlower','$PPeterburg','$PMoscow','$PTipAss','$perem','$PKids','$PTipEnglish','$PVidEnglish','$PEnglish','$Plowername')\r\n";
+		sql($q);	
+			    } 	//3
+			}		//2
+		if($PDiameter==150 or $PDiameter==260) {//2
+				$r=sql("SELECT * FROM tovsNew WHERE id='".$NeedId."'");    
+      			if(mysqli_num_rows($r)==0){//3
+        $q="REPLACE INTO tovsNew (id,idg,ida,name,price,price1s,grp,tip,quant,zakaz,sklad,Picture,Form,Vid,Factory,komplekt,
+		AutorForm,AutorPicture,MetodOfMade,TipOfMaterial,Covering,Diameter,Person,Predmetov,Width,Height,Capacity,
+		memberID1,memberID2,memberID3,memberID4,memberID5,memberID6,memberID7,memberID8,memberID9,memberID10,memberID11,
+		memberQuant1,memberQuant2,memberQuant3,memberQuant4,memberQuant5,memberQuant6,memberQuant7,memberQuant8,
+		memberQuant9,memberQuant10,memberQuant11,RStyle,NY,InLove,PancakeWeek,Easter,VictoryDay,DefenderDay,WomanDay,
+		Wedding,TeacherDay,Birthday,Literature,Theatre,Flower,Peterburg,Moscow,TipAss,Imagefile,Kids,tipenglish,videnglish,english,lowername)
+		VALUES ('$NeedId','$Pidg','$NeedId','$Pname','990','990','$Pgrp','$PTip','$Pquant','$Pzakaz','$Psklad',
+		'$idPPicture','$idPForm','$PVid','$idPFactory','$Pkomplekt',
+		'$idPAutorForm','$idPAutorPicture','$PMetodOfMade','$idPTipOfMaterial','$PCovering',
+		'200','$PPerson','$PPredmetov','$PWidth','$PHeight','$PCapacity','$PmemberID1','$PmemberID2','$PmemberID3',
+		'$PmemberID4','$PmemberID5','$PmemberID6','$PmemberID7','$PmemberID8','$PmemberID9','$PmemberID10','$PmemberID11',
+		'$PmemberQuant1','$PmemberQuant2','$PmemberQuant3','$PmemberQuant4','$PmemberQuant5','$PmemberQuant6','$PmemberQuant7',
+		'$PmemberQuant8','$PmemberQuant9','$PmemberQuant10','$PmemberQuant11','$PRstyle','$PNY','$PInLove','$PPancakeWeek',
+		'$PEaster','$PVictoryDay','$PDefenderDay','$PWomanDay','$PWedding','$PTeacherDay','$PBirthday',
+		'$PLiterature','$PTheatre','$PFlower','$PPeterburg','$PMoscow','$PTipAss','$perem','$PKids','$PTipEnglish','$PVidEnglish','$PEnglish','$Plowername')\r\n";
+		sql($q);	
+			    } 	//3
+			}		//2
+		if($PDiameter==200 or $PDiameter==150) {//2
+				$r=sql("SELECT * FROM tovsNew WHERE id='".$NeedId."B'");    
+      			if(mysqli_num_rows($r)==0){//3
+        $q="REPLACE INTO tovsNew (id,idg,ida,name,price,price1s,grp,tip,quant,zakaz,sklad,Picture,Form,Vid,Factory,komplekt,
+		AutorForm,AutorPicture,MetodOfMade,TipOfMaterial,Covering,Diameter,Person,Predmetov,Width,Height,Capacity,
+		memberID1,memberID2,memberID3,memberID4,memberID5,memberID6,memberID7,memberID8,memberID9,memberID10,memberID11,
+		memberQuant1,memberQuant2,memberQuant3,memberQuant4,memberQuant5,memberQuant6,memberQuant7,memberQuant8,
+		memberQuant9,memberQuant10,memberQuant11,RStyle,NY,InLove,PancakeWeek,Easter,VictoryDay,DefenderDay,WomanDay,
+		Wedding,TeacherDay,Birthday,Literature,Theatre,Flower,Peterburg,Moscow,TipAss,Imagefile,Kids,tipenglish,videnglish,english,lowername)
+		VALUES ('".$NeedId."B','$Pidg','".$NeedId."B','$Pname','2190','2190','$Pgrp','$PTip','$Pquant','$Pzakaz','$Psklad',
+		'$idPPicture','$idPForm','$PVid','$idPFactory','$Pkomplekt',
+		'$idPAutorForm','$idPAutorPicture','$PMetodOfMade','$idPTipOfMaterial','$PCovering',
+		'260','$PPerson','$PPredmetov','$PWidth','$PHeight','$PCapacity','$PmemberID1','$PmemberID2','$PmemberID3',
+		'$PmemberID4','$PmemberID5','$PmemberID6','$PmemberID7','$PmemberID8','$PmemberID9','$PmemberID10','$PmemberID11',
+		'$PmemberQuant1','$PmemberQuant2','$PmemberQuant3','$PmemberQuant4','$PmemberQuant5','$PmemberQuant6','$PmemberQuant7',
+		'$PmemberQuant8','$PmemberQuant9','$PmemberQuant10','$PmemberQuant11','$PRstyle','$PNY','$PInLove','$PPancakeWeek',
+		'$PEaster','$PVictoryDay','$PDefenderDay','$PWomanDay','$PWedding','$PTeacherDay','$PBirthday',
+		'$PLiterature','$PTheatre','$PFlower','$PPeterburg','$PMoscow','$PTipAss','$perem','$PKids','$PTipEnglish','$PVidEnglish','$PEnglish','$Plowername')\r\n";
+		sql($q);	
+			    } 	//3
+			}		//2
+			
+			}//1
+	}
+	echo ('Y'.$PRRid);echo ("OK");
+}
 function LK($userid,$language)
 {
 $r=sql("SELECT * FROM users WHERE userid='$userid' LIMIT 1");
@@ -241,22 +629,7 @@ FUNCTION cssname()
 $name='ifarfor2.css';
 return $name;
 }
-function PrintTopLeftMenu($showphoto,$bgColorOfBottom)
-{
-	$echo='<table align="center" bgcolor="#F6F6F4" width="100%" cellspacing="0" cellpadding="0" border="0" 
-	style="background-color:#F6F6F4;vertical-align:top;padding-bottom:25;">
-	<tr><td width="17%" height="37" style="padding-left:17px;BACKGROUND-COLOR: '.$bgColorOfBottom.';"><img src="/empty.gif" width="255px" height="1px"></td>
-	<td width="83%" style="text-align:left;padding-left:10px;BACKGROUND-COLOR: '.$bgColorOfBottom.';">
-	<table align="center" width="100%"><tr><td width="65%" style="text-align:left;padding-left:0px;BACKGROUND-COLOR: '.$bgColorOfBottom.';">'.$stroka.'</td>
-	<td width="35%" style="text-align:right;padding-right:35px;BACKGROUND-COLOR: '.$bgColorOfBottom.';">'.$showphoto.'</td></tr></table>
-	</tr>';
-		//=========================размещаем нижнюю часть странички=====================================================
-	$echo.= '<tr><td width="240px" height="408px" align="left" style="padding-left:7px;vertical-align: top;BACKGROUND-COLOR: '.$bgColorOfBottom.';">
-	<table align="left" width="240px" height="208px" cellspacing="0" cellpadding="0" border="0">
-		<tr><td height="158px" align="left" style="PADDING:10px;border :none;
-			VERTICAL-ALIGN: top;BACKGROUND-COLOR: #FFFFFF;text-align: left;">';
-	return $echo;
-}
+
 function PrintLeftMenu($activemenu)
 {$echo='&nbsp;';
 global $language;
@@ -737,7 +1110,7 @@ onclick="order.submit();" value="'.$NPromoApply.'">
 </td>
 <td colspan="2" style="padding-bottom:24px;">&nbsp;</td>
 </tr><tr>
-<td style="width:1%;height:32px;text-align:center;background-color:#7F7355;"><a href="'.aPSID($langstr.'/shop').'" target="_top" style="color:white;"><b>'.$NContinue.'</b><br><img src="/empty.gif" width="200px" height="0px"></td>
+<td style="width:1%;height:32px;text-align:center;background-color:#7F7355;"><a href="'.aPSID($langstr.'/').'" target="_top" style="color:white;"><b>'.$NContinue.'</b><br><img src="/empty.gif" width="200px" height="0px"></td>
 <td colspan="2">&nbsp;</td>
 </tr>';
 };
@@ -831,14 +1204,14 @@ if(mysqli_num_rows($r)!=0){
 	$custName=$familia+' '+$imya+' '+$otchestvo;
 	$custEmail=$row['email'];
 	}
-mysqli_free_result($r);
+//mysqli_free_result($r);
 $r=sql("SELECT boxid,orderid FROM box WHERE idd='$idd' AND userid='$userid'"); 
 if(mysqli_num_rows($r)==0) $echo=$BasketisEmpty;
 else{
 	$sum=0;
 	$r=sql("SELECT box.comp_id,box.tov_id,tovsNew.price1s,boxid,kol,tovsNew.name,tovsNew.tip,tovsNew.sklad,tovsNew.zakaz,tovsNew.ida,tovsNew.Imagefile  FROM box INNER JOIN tovsNew ON box.tov_id = tovsNew.id WHERE  box.idd='$idd' AND comp_id=0 AND userid='$userid' ORDER BY 7,6"); 
 	while ($row = mysqli_fetch_array($r)) $sum=$sum+($row['price1s']*$row['kol']);
-	mysqli_free_result($r);
+//	mysqli_free_result($r);
 }
 mysqli_free_result($r);
 $canpay=0;
@@ -917,9 +1290,12 @@ function get_email($idd)
 }
 function OrderToPrint($idd,$language){
 global $userid;	
+$Version = whichshop3();
+if($Version=='stoppart') $topurl="stoppart.com"; else $topurl="ifarfor.ru";
 $ordernum=$idd;$today = date("d.m.Y");$number=$idd;if ($number=='')$number=0;
 $row=sql("SELECT promo FROM orders WHERE userid='$userid' and idd='$ordernum' LIMIT 1"); 
 if(mysqli_num_rows($row)!=0){$r=mysqli_fetch_array($row);$promo=$r['promo'];}
+
 if($language=="en") {
 $TextPhone2txt="Additional phone";$TipOfDostavka1='Delivery to issue point';$TextAddresstxt1='Issue point:<br>&nbsp;Address';
 $WorkingHours='Working hours';$PhoneN='Phone';$DeliveryToHome='Delivery to home';$Recipient='Recipient';$IP="IMPERIAL PORCELAIN";
@@ -928,7 +1304,10 @@ The letter contains the details of the order. If you want to change the shipping
 When your order is sent, you will receive an email about it.";$NumberofOrder='Number of the order';$DataTXT='Data';
 $DeliveryKind="Kind of delivery";$NameTXT='Name';$ArticulTXT='Vendor code';$CostTXT='Cost';$ST="PC";$AmountTXT='Amount';$EmptyTXT="Basket is empty";
 $NameLNG='english';$NGrandTotal="GRAND TOTAL";$RURTXT='RUR';$NGrandTotalPromo="Grand Total with promo discount";$ADRTXT='Delivery address';
-$PHONENUM='+7 927 268-15-33';$subject1="Confirmation of the order";$subject2="from the site ifarfor.ru";
+if($Version=='ifarfor') $PHONENUM='+7 927 268-15-33'; else $PHONENUM='+7(937)232-07-84';
+$subject1="Confirmation of the order";
+
+$subject2="from the site $topurl";
 }
 else{
 $TextPhone2txt="Дополнительный телефон";$TipOfDostavka1='Доставка в пункт выдачи';$TextAddresstxt1='Пункт выдачи:<br>&nbsp;Адрес';
@@ -938,9 +1317,10 @@ $CONFIRMATION="ПОДТВЕРЖДЕНИЕ ЗАКАЗА";$CONFIRMATION2="Мы п�
 Когда ваш заказ будет отправлен, вы получите электронное сообщение об этом.";$NumberofOrder='Номер заказа';$DataTXT='Дата';
 $DeliveryKind='Способ доставки';$NameTXT='Наименование';$ArticulTXT='Артикул';$CostTXT='Цена';$ST="Шт";$AmountTXT='Сумма';$EmptyTXT="товары не подобраны";
 $NameLNG='name';$NGrandTotal="Общая сумма заказа";$RURTXT='РУБ';$NGrandTotalPromo="Сумма заказа со скидкой по промокоду";$ADRTXT='Адрес доставки';
-$PHONENUM='8 (800) 2222-850';$subject1="Подтверждение заказа";$subject2="на сайте Императорский фарфор";
+if($Version=='ifarfor') $PHONENUM='8 (800) 2222-850'; else $PHONENUM='+7(937)232-07-84';
+$subject1="Подтверждение заказа";$subject2="на сайте $topurl";
 }
-mysqli_free_result($row);
+//mysqli_free_result($row);
 $r=sql("SELECT * FROM users WHERE userid='$userid' LIMIT 1");
 if(mysqli_num_rows($r)!=0){
 	$row = mysqli_fetch_array($r);
@@ -1042,13 +1422,15 @@ $text.='<tr><td style="text-align:right;FONT-SIZE:16PX;height:60px;border-bottom
 <tr><td style="text-align:left;FONT-SIZE:14PX;height:30px;border-bottom:1px solid black;padding-left:30px;background-color:#7F7355;color:white;padding-top:10px;padding-bottom:10px;">
 '.$PHONENUM.'</td>
 <td colspan="4" style="text-align:right;FONT-SIZE:14PX;border-bottom:1px solid black;padding-right:30px;background-color:#7F7355;color:white;padding-top:10px;padding-bottom:10px;">
-order2 @ ifarfor. ru</td></tr>';
+order2 @ '.$topurl.'. ru</td></tr>';
 return $text;
 }
 function send_order_by_email($idd,$language){
 global $userid;$number=$idd;
+$Version = whichshop3();
+if($Version=='stoppart') $topurl="stoppart.com"; else $topurl="ifarfor.ru";
 $r=sql("SELECT * FROM users WHERE userid='$userid' LIMIT 1");if(mysqli_num_rows($r)!=0){$row = mysqli_fetch_array($r);$email=$row['email'];}
-if($language=="en") {$subject1="Confirmation of the order";$subject2="from the site ifarfor.ru";$IP="IMPERIAL PORCELAIN";}
+if($language=="en") {$subject1="Confirmation of the order";$subject2="from the site ".$topurl.".ru";$IP="IMPERIAL PORCELAIN";}
 else{$subject1="Подтверждение заказа";$subject2="на сайте Императорский фарфор";$IP="ИМПЕРАТОРСКИЙ ФАРФОР";}
 $text=OrderToPrint($idd,$language).'</tr>';
 $textpobeda=$text;
@@ -1073,7 +1455,7 @@ while ($row = mysqli_fetch_array($r)){
 mysqli_free_result($r);
 $textpobeda.='</tr></table></td></tr></td></tr></table></body></html>';
 $subject="$subject1 $number $subject2";
-$sender = "=?utf-8?B?" . base64_encode($IP) . "?= <" . "site@ifarfor.ru" . ">";
+$sender = "=?utf-8?B?" . base64_encode($IP) . "?= <" . "site@".$topurl.".ru" . ">";
 $header="Content-type: text/html; charset=\"utf-8\"\r\n";
 $header.="From: $sender\r\n";
 $header.="Subject: $subject"."\r\n";

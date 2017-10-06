@@ -45,7 +45,7 @@ switch($oper){
 		$r=sql("SELECT boxidd FROM box WHERE tov_id='$tov_id' AND idd='$idd' AND userid='$userid'");
 		if(mysqli_num_rows($r)>0){//добавляем количество
 			$row = mysqli_fetch_array($r);
-			$r=sql("UPDATE box SET kol=kol+$kol WHERE boxidd='".$row['boxidd']."'");
+			sql("UPDATE box SET kol=kol+$kol WHERE boxidd='".$row['boxidd']."'");
 			mysqli_free_result($r);
 		}
 		else{//добавляем новый

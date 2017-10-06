@@ -2,7 +2,15 @@ $(document).ready(function(){
     var dragAnimationDuration = 600;
     var destroyAnimationDuration = 100;
 
-    var totalBasketElements = parseInt($(".totalBasketElements").text());
+    //console.log($(".totalBasketElements"));
+
+    var totalBasketElements;
+
+    $(".totalBasketElements").each(function(index,element){
+        totalBasketElements = parseInt($(element).text());
+    });
+    
+    console.log("totalBasketElements",totalBasketElements);
 
     if(isNaN(totalBasketElements)){
         totalBasketElements = 0;
@@ -10,10 +18,13 @@ $(document).ready(function(){
 
     function updateTotalBasketElements(){
 
+        $(".totalBasketElements").text(totalBasketElements);
+
+        /*
         $(".totalBasketElements").each(function(index, element){
             $(element).text(totalBasketElements.toString());
         });
-
+        */
     }
 
     $("[id*=ishop]").click(function(){

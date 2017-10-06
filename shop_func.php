@@ -15,11 +15,13 @@ function whichshop(){$ret=whichshop2(); return $ret;}
 
 function printlike($id,$countQuantStr,$language)
 {	
-	$colortext='#966D3F';$heart='hheart';
-	if($countQuantStr==0){$countQuantStr='';$colortext='#AD9E82';$heart='heart';}
+	$menuVersion = whichshop3();
+	
+	if($menuVersion=='ifarfor') {$colortext='#966D3F';$heart='hheart3';} else {$colortext='#606060';$heart='hhearts';}
+	if($countQuantStr==0){$countQuantStr='';if($menuVersion=='ifarfor') {$colortext='#AD9E82';$heart='heart3';} else {$colortext='#979797';$heart='hearts';}}
 	if($countQuantStr==1)$countQuantStr='';
 	if($language=='en') $Like='Like'; else $Like='Нравится';
-	$echo.='<span style="display: block; float: left; margin: 10px 0 0 0; text-align: center; vertical-align:middle;"><img src="/img/'.$heart.'3.gif"></span>
+	$echo.='<span style="display: block; float: left; margin: 10px 0 0 0; text-align: center; vertical-align:middle;"><img src="/img/'.$heart.'.gif"></span>
 	<span style="display: block; float: left; margin: 13px 0 10 0; padding-left:5px;text-align: center; color:'.$colortext.';vertical-align:middle;">'.$Like.' '.$countQuantStr.'</span>';
 	return $echo;
 }
@@ -38,11 +40,11 @@ function updateaddtobasketdata($id,$radio,$language){
 	}
 	
 	if($radio=='150'){
-		$price="950";
+		$price="890";
 		$Addsize='S';
 	}
 	elseif($radio=='200'){
-		$price="1 090";
+		$price="990";
 	}
 	elseif($radio=='260'){
 		$price="2 190";
@@ -157,7 +159,7 @@ set_session_var(1);
 }
 function set_session_var($makesql)
 {
-	
+	$menuVersion = whichshop3();if($menuVersion=='stoppart') $topurl="stoppart.com"; else $topurl="ifarfor.ru";
 	global $userid;
 	$page=page_url();
 	if(isset($_COOKIE['userid'])){
@@ -168,7 +170,7 @@ function set_session_var($makesql)
 		elseif(get_s_var('userid')!=$cookieuserid){
 			$userid=get_s_var('userid');
 			session_set_cookie_params(1080000);
-			setcookie('userid',$userid , time()+25920000,"/","ifarfor.ru");
+			setcookie('userid',$userid , time()+25920000,"/",$topurl);
 			if(substr_count($page,'PHPSESSID=')!=0){
 				$page=str_replace('?PHPSESSID='.session_id(),"",$page);
 				$page=str_replace('&PHPSESSID='.session_id(),"",$page);
@@ -197,7 +199,7 @@ function set_session_var($makesql)
 			}
 			set_var('userid',$userid);
 		}
-		setcookie('userid',$userid , time()+25920000,"/","ifarfor.ru");
+		setcookie('userid',$userid , time()+25920000,"/",$topurl);
 		if(substr_count($page,"PHPSESSID")==0){
 			$id=session_id();
 			if(strpos($page,"?")>0)	$page="$page&PHPSESSID=$id";
@@ -222,7 +224,7 @@ if($makesql!=0){
 	mysqli_free_result($r);
 	}	
 }
-function set_session_var3($makesql) {// эта процедура работает с кукой, проверяет есть ли кука, и если есть ставить все переменные
+/*function set_session_var3($makesql) {// эта процедура работает с кукой, проверяет есть ли кука, и если есть ставить все переменные
 global $userid;
 $page=page_url();  
 if (get_s_var('cookie_on')=="")//куков нет
@@ -273,7 +275,7 @@ $r=sql("SELECT userid FROM users WHERE userid='$userid'");
 	if(mysqli_num_rows($r)==0 and $makesql!=0)//and $makesql!=0
 		sql("INSERT INTO users (userid,orderidd,login,password,role,hash) VALUES ('$userid','0','unknown_$userid','$pass','tmp','425')");
 mysqli_free_result($r);		
-}
+}*/
 function get_sql_param_for_tovs(){
         switch(get_var("pick_what")){
                         case "new":$str="(zakaz=1 OR (sklad=1 AND bu=0))";break;
@@ -370,7 +372,7 @@ if ($_GET['oper']!="")
 return $oper;
 }
 function set_my_cookie($name,$value){
-        $y3k = mktime(0,0,0,1,1,2030);
+        $y3k = mktime(0,0,0,1,1,2030);	$menuVersion = whichshop3();if($menuVersion=='stoppart') $topurl="stoppart.com"; else $topurl="ifarfor.ru";
         setcookie($name,$value , time()+25920000,"/","ifarfor.ru");
 };
 function print_fields($paramlist,$test,$errors=0){//печатает и проверяет списки ввода
@@ -528,22 +530,24 @@ sql ("UPDATE user_fl SET imya='',date=NOW() WHERE userid='$Newuserid'");
 sql ("UPDATE users SET password='$password',role='usr',date=NOW() WHERE userid='$Newuserid'");
 }
 function do_logout(){
+		$menuVersion = whichshop3();if($menuVersion=='stoppart') $topurl="stoppart.com"; else $topurl="ifarfor.ru";
     global $userid;
 	$userid='';
         set_var('userid','');
 //		setcookie("userid","", 1);
-		setcookie('userid',"" ,1,"/","ifarfor.ru");
+		setcookie('userid',"" ,1,"/",$topurl);
 		setcookie ("PHPSESSID", "", 1);
-		setcookie('PHPSESSID',"" ,1,"/","ifarfor.ru");		
-		setcookie('cookie_test',"" ,1,"/","ifarfor.ru");		
+		setcookie('PHPSESSID',"" ,1,"/",$topurl);		
+		setcookie('cookie_test',"" ,1,"/",$topurl);		
         set_var('cur_box','');
 //        new_header("Location: index.php");
 }
 function do_login($NewUserid){
 //		session_start();
+$menuVersion = whichshop3();if($menuVersion=='stoppart') $topurl="stoppart.com"; else $topurl="ifarfor.ru";
    		global $userid;$y2k = mktime(0,0,0,1,1,2000);
         $y3k = mktime(0,0,0,1,1,2030);    
-		setcookie('userid',$NewUserid , $y3k,"/","ifarfor.ru");
+		setcookie('userid',$NewUserid , $y3k,"/",$topurl);
         set_var('userid',$NewUserid);
 //		setcookie("userid","", 1);
 		setcookie ("PHPSESSID", "", 1);		

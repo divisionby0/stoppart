@@ -2,6 +2,7 @@
 //header("location:http://www.myantares.ru");/
 //exit; ///////////////b - myantares ////////// a - antares.avtograd ///////c - ifarfor ////
 function whichshop2(){return "stoppart";}//return "ifarfor";
+function whichshop3(){return "stoppart";}//return "ifarfor";stoppart
 Error_Reporting(E_ALL & ~E_NOTICE);
 //session_start();
 function get_s_var($id){// возвращает безопасную переменную сессии
