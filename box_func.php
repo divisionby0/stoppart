@@ -11,7 +11,7 @@ session_start();
 *********************************************************************************************************/
 function my_strtoupper($str){$str=mb_strtoupper($str);return $str;}
 function dealer()
-{//#d5d8df
+{
 	$echo='<table align="center" width="720" cellspacing="7" cellpadding="0" border="0">
 	<tr><td width="67%"><a href="/shop/artplate/stoppard/redute" target="_self"><img width="472" src="/img/redute.jpg"></a></td>
 	<td width="33%" style="background:#8aa6a0;">
@@ -75,7 +75,7 @@ function dealer()
 	return $echo;
 }
 function about()
-{//#5c96b1 //8aa6a0
+{
 	$echo='<table align="center" width="820" cellspacing="7" cellpadding="0" border="0">
 	<tr><td width="57%"><a href="/shop/artplate/stoppard/vangogh" target="_self"><img width="472" src="/img/vangogh.jpg"></a></td>
 	<td width="43%" style="background:#8aa6a0;">

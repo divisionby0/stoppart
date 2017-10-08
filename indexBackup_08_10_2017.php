@@ -1,11 +1,23 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+
 session_set_cookie_params(1080000);
-require_once("shop_func.php");require_once("box_func.php");	require_once("parser.php");	require_once("gui.php");prepare_parse("box.inc.html");
+require_once("shop_func.php");
+require_once("box_func.php");
+require_once("parser.php");
+require_once("gui.php");
+require_once("php/div0/views/menu/SiteMenu.php");
+//require_once("php/div0/views/menu/SmallSiteMenu.php");
+prepare_parse("box.inc.html");
 
 session_start();set_session_vars();
 $HotStr='';
+$menuVersion = whichshop3();
+if($menuVersion=='ifarfor') $bclr='AD9E82'; else $bclr='82a0ae';//8da39e
 //$searchline=post('search');if($searchline!=''){new_header('location:index.php?search='.$searchline);}
-$searchline=$_GET['search'];
+$searchline=$_GET['search'];if($searchline=='')$searchline=$_GET['search1'];
 $shiftleftmenu='23';$sizebetweenfilters='3';$sizebottomleftmenu='10';
 $shiftleftedge='40';//
 if($searchline!='') $HotStr=$searchline;
@@ -40,16 +52,24 @@ else{$langstr="";$unlangstr="/en";$tovarstr="Товар успешно доба�
 	$nameof="name";$Typemat="Тип материала";$Typepic="Рисунок";$Typeform="Форма";$Typefac="Производитель";
 }
 
-if($menuname==''){$menuname='shop';$menuname2='ware';global $HotStr3;
+if($menuname==''){
+if($menuVersion=='ifarfor') 	
+	{$menuname='shop';$menuname2='ware';global $HotStr3;
 	$HotStr3='newyear';$HotStr3='easter';$HotStr3='love';$HotStr3='russianstyle';$HotStr3='cobaltnet';}
+else {
+$menuname='shop';$menuname2='artplate';$menuname3='stoppard';	
+}
+}
+	
+if($menuVersion=='ifarfor'){
 $menu=array(
 	array("ware","Фарфоровая посуда","serv","Сервизы и наборы","stol","Столовые предметы",
 		"grafin","Графины","teacof","Чайные и кофейные предметы","horeca","Посуда для кафе и ресторанов"),
 	array("sculpture","Скульптура","animalist","Анималистическая","janre","Жанровая"),
 	array("crystal","Хрусталь","colour","Цветной хрусталь","bohema","Богемское стекло","tray","Блюда/ подносы","glass","Бокалы/ Фужеры/ Стаканы Рюмки/ Стопки","layout","Вазы для сервировки стола","shtof","Графины/ кувшины/ штофы","caviar","Икорницы/ рыбницы","crset","Хрустальные сервизы"),
-	array("stoppard","Декоративные тарелки","plate200","Декоративные тарелки Stoppard","decoplate","Декоративные тарелки ИФЗ","holder","Подставки для тарелок"),//"vodka","Для водки","water","Для воды","martini","Для мартини","champagne","Для шампанского","glasses","Стеклянная посуда"
+	array("artplate","Декоративные тарелки","stoppard","Декоративные тарелки Stoppard","decoplate","Декоративные тарелки ИФЗ","holder","Подставки для тарелок"),//"vodka","Для водки","water","Для воды","martini","Для мартини","champagne","Для шампанского","glasses","Стеклянная посуда"
 	array("tableware","Столовые приборы","settw","Наборы столовых приборов","single","Отдельные предметы"),
-	array("souvenirs","Сувениры","ariel","Новогодние игрушки Ариэль","majolica","Ярославская майолика","rings","Колокольчики","dymkatoy","Дымковская игрушка","suspens","Подвески","ceramic","Сувениры из керамики","souvenir","Сувениры из фарфора","crsouv","Сувениры из хрусталя","eggs","Яйцо пасхальное"),
+	array("souvenirs","Сувениры","krstrochka","Крестецкая строчка","ariel","Новогодние игрушки Ариэль","majolica","Ярославская майолика","rings","Колокольчики","dymkatoy","Дымковская игрушка","ceramic","Семикаракорская керамика","souvenir","Сувениры из фарфора","crsouv","Сувениры из хрусталя"),
 	array("interior","Предметы интерьера","vases","Вазы","colour","Вазы из цветного хрусталя","ring","Кольцо для салфеток","candlest","Подсвечники","textile","Текстиль","frame","Фоторамки","casket","Шкатулки и коробочки")
 );//"aroma","Ароматы и свечи",
 $menuenglish=array(
@@ -57,12 +77,23 @@ $menuenglish=array(
 		"grafin","Decanters","teacof","Teaware pieces","horeca","Hotel&restaurant ware"),
 	array("sculpture","Sculpture","animalist","Animalistic","janre","Genre"),
 	array("crystal","Crystal","colour","Coloured crystal","bohema","Glass ware","tray","Tray","glass","Drinking glasses","layout","Vases for table","shtof","Decanters","caviar","Dishes for fish","mugs","Mugs","socket","small crystal vases","crset","Crystal set"),
-	array("stoppard","Decorative plates","plate200","Decorative plates Stoppard","decoplate","Decorative plates IPM","holder","Holder for plates"),
+	array("artplate","Decorative plates","stoppard","Decorative plates Stoppard","decoplate","Decorative plates IPM","holder","Holder for plates"),
 	array("tableware","Cutlery (Flatware)","settw","Cutlery set","single","Cutlery pieces"),
-	array("souvenirs","Gifts","ariel","Christmas toys","rings","majolica","Jaroslavl's majolica","Bells","dymkatoy","Dymkovo toys","suspens","Christmas & Easter souvenirs","ceramic","Ceramic gift","souvenir","Porcelain gift","crsouv","Crystal gift","eggs","Easter eggs"),
+	array("souvenirs","Gifts","krstrochka","Kresteckaya strochka","ariel","Christmas toys","majolica","Jaroslavl's majolica","dymkatoy","Dymkovo toys","ceramic","Ceramic gift","souvenir","Porcelain gift","crsouv","Crystal gift"),
 	array("interior","Home & gifts","vases","Vases","colour","Colour crystal vases","ring","Napkin rings","candlest","Candlesticks","textile","Tablecloths & textil napkins","frame","Photo Frames","casket","Boxes & caskets")
 );//"aroma","Home parfum & candles",
-
+}	
+else //STOPPARD
+{
+	$menu=array(
+	array("artplate","Декоративные тарелки","stoppard","Stoppard","holder","Подставки для тарелок"),
+	array("artholder","Подставки","holder","Подставки для тарелок")
+);
+	$menuenglish=array(
+	array("artplate","Decorative plates","stoppard","Stoppard","holder","Holder for plates"),
+	array("artholder","Holder","holder","Holder for plates")
+);
+}
 //Ищем есть ли в строке товар для Превью
 //заканчиваем шапку, начинаем верхнее меню.
 //=======================Определяем какая группа товаров выбрана======================================
@@ -109,7 +140,7 @@ else			$sortstr='sortbyname0142'.$ShAll;//по умолчанию сортиру
 if($Filter!="")  $sortstr=$sortstr."/".$filterstr;
 $stroka_sort="$langstr/shop";$unstroka_sort="$unlangstr/shop";//$Zagolovok='Чайные сервизы';// надо ли это вообще? ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$stroka="ifarfor.ru";
+if($menuVersion =='stoppart') $stroka="stoppart.com"; else $stroka="ifarfor.ru";
 if($language=='en')$marketstr="market2.php?language=en&menuname=$menuname";	else $marketstr="market2.php?&menuname=$menuname";
 if($menuname=="cabinet" or $menuname=="contact" or $menuname=="company" or $menuname=="delivery"){
 	$stroka_unfull="$langstr/$menuname/$menuname2";
@@ -182,21 +213,34 @@ else{$Showpage="<a href='".aPSID("$stroka_unfull/sortby$sortby"."01421")."'>$sho
 
 //====================================Конец работы с сортировкой=============================================
 //==========================================================================================================	
+if($menuVersion=='ifarfor') $FontMenu='19'; else $FontMenu='16'; 
 $am = array();
 for($i=0;$i<7;$i++){
 	$menuLink=$menu[$i][0];
 	if($menuLink=="ware") $menuLink="ware/serv/teaserv";
 	if($menuLink=="sculpture") $menuLink="sculpture/janre/gogol";
-	if($menuLink=="stoppard") $menuLink="stoppard/plate200";
+	if($menuLink=="artplate") $menuLink="artplate/stoppard/vangogh";
+	if($menuLink=="artholder") $menuLink="artholder/holder";
 	if($menuLink=="tableware") $menuLink="tableware/settw";
-	if($menuLink=="souvenirs") $menuLink="souvenirs/ceramic";
+	if($menuLink=="souvenirs") $menuLink="souvenirs/krstrochka";
 	if($menuLink=="interior") $menuLink="interior/vases";
 	$tekname=$menu[$i][1];
+	
 	if($language=="") $tekname=$menu[$i][1]; elseif($language=="en") $tekname=$menuenglish[$i][1];
-	if($m2==$i) $strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:19px;color:#FFFFFF;" ><B>'.my_strtoupper($tekname).'</B></a>';
-	//$strokas='<font style="FONT-SIZE:19px;color:#FFFFFF;" ><b>'.my_strtoupper($tekname).'</b></font>';
-	else $strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:19px;FONT-weight:300px;color:#FFFFFF;" >'.my_strtoupper($tekname).'</a>';
+	if($m2==$i) 
+	{
+		$strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:'.$FontMenu.'px;color:#FFFFFF;" ><B>'.my_strtoupper($tekname).'</B></a>';
+	$cm[$i][0]=aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr);
+	$cm[$i][1]='<b>'.my_strtoupper($tekname).'</b>';
+	}
+	else 
+	{
+	$strokas='<a href="'.aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr).'" style="FONT-SIZE:'.$FontMenu.'px;FONT-weight:300px;color:#FFFFFF;" >'.my_strtoupper($tekname).'</a>';
+	$cm[$i][0]=aPSID($langstr.'/shop/'.$menuLink.'/'.$sortstr);
+	$cm[$i][1]=my_strtoupper($tekname);
+	}
 	$am[$i]=$strokas;
+
 };
 if($language=='en')$addlang="&language=en";
 //Ищем есть ли в строке активация правого меню, с горячими позициями
@@ -207,6 +251,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <meta name="robots" content="index, follow" />
 <meta name="keywords" content="ифз, ломоносовский фарфоровый завод, купить фарфор, лфз, императорский, кобальтовая сетка, сервизы, где купить фарфор, дорогой фарфор, кружки фарфор, элитный фарфор, посуда из фарфора, 
 посуда фарфор, посуда фарфоровая интернет магазин, продажа фарфора, русский фарфор, сервиз фарфор, сервиз фарфор чайный, сервизы из фарфора, советский фарфор статуэтки, столовый сервиз фарфор, фарфор в москве, фарфор купить, 
+посуда фарфор, посуда фарфоровая интернет магазин, продажа фарфора, русский фарфор, сервиз фарфор, сервиз фарфор чайный, сервизы из фарфора, советский фарфор статуэтки, столовый сервиз фарфор, фарфор в москве, фарфор купить, 
 фарфоровая посуда купить, статуэтки из фарфора,
 императорский фарфор, императорский фарфор магазин, фарфор императорского завода, императорский фарфор москва, императорский фарфор купить, фарфор императорского фарфорового завода, императорский фарфор сайт, императорский фарфор спб, императорский фарфор санкт петербург, императорский фарфор адреса магазинов, императорский фарфор интернет магазин, императорский фарфор ростов, императорский фарфоровый завод, магазин фарфора, императорский фарфоровый, ломоносовский фарфор, императорский завод, ломоносовский фарфоровый завод, фарфор лфз, императорский фарфоровый завод официальный сайт, фарфор купить, ломоносовский фарфор купить, фарфор ифз, интернет магазин фарфора, фарфор спб, кобальтовая сетка, магазин фарфоровый завод, ломоносовский завод, сайт императорского фарфорового завода, императорский фарфоровый завод официальный, императорский фарфоровый завод интернет магазин, императорский фарфоровый завод интернет магазин официальный сайт, петербург императорский фарфоровый завод, императорский фарфоровый завод санкт петербург, императорский фарфоровый завод каталог, спб императорский фарфоровый завод, сервиз императорский фарфоровый завод, императорский фарфоровый завод купить, императорский фарфоровый завод москва, императорский фарфоровый завод каталог товаров, магазин фарфора, магазин фарфоровый завод, фарфор лфз, фарфор ифз, ифз, ифз официальный, ифз официальный сайт, ифз санкт петербург, ифз санкт петербург официальный сайт, ифз интернет магазин, сервиз ифз, скульптуры ифз, фарфор купить, фарфор доставка, фарфор уфа, фарфор самара, фарфор тольятти, фарфор казань, фарфор купить интернет магазин, костяной фарфор купить, фарфор сервиз купить, чайная пара фарфор купить, фарфор лфз купить
 " />
@@ -216,6 +261,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 ';//<link href="/bitrix/templates/gipertwo_/favicon.ico" rel="shortcut icon">
 //Счетчик Гугла
 echo '	<script type="text/javascript" src="/jquery-1.8.2.min.js"></script>';
+echo '	<script type="text/javascript" src="/js/div0/basket.js"></script>';
 echo "<script type='text/javascript'>
 var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-21694937-1']);_gaq.push(['_trackPageview']);
 (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -223,103 +269,148 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();</script>";
 
-
-
 echo"<script>function LikeEngine(tag){
 var html = $.ajax({url: '/le.php?id=' +tag+'&uid=".$userid.$addlang."',async: false}).responseText;
 document.getElementById(tag).innerHTML=html;}</script>";
 
 echo '<script type="text/javascript">
 $(document).ready(function(){//1
-var overlay = $("#overlay");var open_modal = $(".openmodal");var close = $(".modalclose, #overlay");var modal = $(".modaldiv"); 
-function CloseModal(){
-$("#modalform").animate({opacity: 0, top: "45%"}, 200,	function(){$(this).css("display", "none");$("#overlay").fadeOut(400);});
-overlay.css("display", "none");
-}
-var a = $(this).text();
-$("a[id^=ishop]").click(function(){console.log("clicked");$("#overlay").css("display", "block");
-$("#modalform").css("display", "block").animate({opacity: 1, top: "50%"}, 200);});
-$("#modalclose, #overlay").click( function(){ CloseModal();});
-$(this).keydown(function(eventObject){if (eventObject.which == 27){CloseModal();}});
 
-$("input[name*=\'optionRadio\']").change(function (event) {
-	var element = $(event.target);
-    var itemId = element.data("itemid");
-    var value = element.val();
-    
-    var responseHtml = $.ajax(
-    {
-		url: "/le.php?id=" +itemId+"&radio="+value,
-		async: false
-    }).responseText;
-    
-    var itemId2="size"+itemId;
-    console.log("element id to update "+itemId2);
-    
-    console.log(responseHtml);
-    
-    try{
-    	$("#"+itemId2).html(responseHtml);
-    }
-    catch(error){
-    	console.error("Error updating elemnt html ",error);
-    }
-    /*$("#"+itemId2).html(responseHtml);*/
-    
-    /*
-    var html = $.ajax({url: "/le.php?id=" +itemId+"&radio="+value,async: false}).responseText;
-	var itemId2="size"+itemId;
-    document.getElementById(itemId2).innerHTML=html;*/
-});
+	var overlay = $("#overlay");var open_modal = $(".openmodal");var close = $(".modalclose, #overlay");var modal = $(".modaldiv"); 
+    var cost1 = 890;    var cost2 = 990;    var cost3 = 2190;
+	function CloseModal(){
+		$("#modalform").animate({opacity: 0, top: "45%"}, 200,	function(){$(this).css("display", "none");$("#overlay").fadeOut(400);});
+		overlay.css("display", "none");
+	}
+	var a = $(this).text();
+	$("a[id^=ishop]").click(function(){overlay.css("display", "block");
+	$("#modalform").css("display", "block").animate({opacity: 1, top: "50%"}, 200);});
+	$("#modalclose, #overlay").click( function(){ CloseModal();});
+	$(this).keydown(function(eventObject){if (eventObject.which == 27){CloseModal();}});
 
+	$("input[name*=\'optionRadio\']").change(function (event) {
+		var element = $(event.target);  var itemId = element.data("itemid");  var value = element.val();
+		var response = $.ajax({url: "/le.php?id=" +itemId+"&radio="+value,async: false}).responseText;
+		var itemId2="size"+itemId; var data = JSON.parse(response); var price = data.price;
+		$("#ishop"+itemId).attr("href", data.link);
+		$(\'*[data-pricevalueelementd="\'+itemId+\'"]\').html(price+" "+data.imageElement);
+    });
+
+	// menu
+	var scrollMax = 154; var currentState; var NORMAL = "NORMAL"; var EXTENDED = "EXTENDED";
+	var menuInitPositionY = $("#menuContainer").css("top"); var currentScrollPosition;
+    
+	onScroll();
+	
+	function onStateChanged(){
+		switch(currentState){
+    		case NORMAL:
+			$("#menuContainer").removeClass("absolutePositionMenu");
+			$("#menuContainer").addClass("relativePositionMenu");
+			$("#normalSiteMenu").show();
+			$("#smallSiteMenu").hide();
+			break;
+			case EXTENDED:
+			$("#menuContainer").removeClass("relativePositionMenu");
+			$("#menuContainer").addClass("absolutePositionMenu");
+			$("#normalSiteMenu").hide();
+			$("#smallSiteMenu").show();
+			break;
+		}
+	}
+
+	function updateMenuPosition(positionY){
+		if(currentState == EXTENDED){ $("#menuContainer").css("top",positionY); }
+		else						{ $("#menuContainer").css("top",menuInitPositionY); }
+	}
+
+	function onScroll(){
+		currentScrollPosition = window.pageYOffset;
+		updateMenuPosition(currentScrollPosition);
+		if(currentScrollPosition > scrollMax){ if(currentState!=EXTENDED){ currentState = EXTENDED; onStateChanged(); } }
+		else{						           if(currentState!=NORMAL)	 { currentState = NORMAL;   onStateChanged(); } }
+	}
+    
+	$(window).scroll(function(){   onScroll();  });
 });//1
 </script>';
+
+echo "<script type='text/javascript'>window.onload = function() { // после загрузки страницы
+	var scrollUp = document.getElementById('scrollup'); 
+	
+	scrollUp.onmouseover = function() {	scrollUp.style.opacity=0.6;	 scrollUp.style.filter  = 'alpha(opacity=30)';};
+	scrollUp.onmouseout = function()  { scrollUp.style.opacity = 0.8;scrollUp.style.filter  = 'alpha(opacity=50)';};
+	scrollUp.onclick = function() { window.scrollTo(0,0);	};
+// show button
+	window.onscroll = function () { // при скролле показывать и прятать блок
+		if ( window.pageYOffset > 300 ) { scrollUp.style.display = 'block';} 
+		else 							{ scrollUp.style.display = 'none'; }
+
+	};
+};</script>";
+
+echo '<style type="text/css">.big-link { display:block; margin-top: 100px; text-align: center; font-size: 20px; color: #06f; }
+#modalform {
+display: none;top: 100px; left: 50%;margin-left: -300px;width: 350px;background: #FFF url("/jquery/reveal/modal-gloss.png") no-repeat -200px -80px;
+position: fixed;z-index: 101;padding: 30px 40px 34px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;
+-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);box-shadow: 0 0 10px rgba(0,0,0,.4);}
+#modalclose {font-size: 22px;line-height: .5;position: absolute;top: 8px;right: 11px;color: #aaa;text-shadow: 0 -1px 1px rbga(0,0,0,.6);font-weight: bold;cursor: pointer;}
+#overlay {position: fixed; height: 100%;width: 100%;background: #000;opacity: 0.1;z-index: 100;display: none;top: 0;left: 0;}</style>';
 echo '</HEAD>
+
 <body bgcolor="#FFFFFF" link="#333366" alink="#333366" vlink="#990099" text="#000000" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
 <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=cyrillic,latin" rel=stylesheet type=text/css>
 <link href="/'.cssname().'" type=text/css rel=stylesheet>';//Конец заголовка
-/*
-<div id="myModal" class="reveal-modal">
-<h1>Добавление в корзину</h1>
-<p>Товар успешно добавлен в корзину.</p>
-<a class="close-reveal-modal">&#215;</a>
-</div>
-<a style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" 
-href="/cabinet/basket" target="_parent">Перейти в корзину</a>
-*/
+
 if($searchline!='' and $language=="en") $unstroka_sort="/?search=$searchline";
 if($searchline!='' and $language=="") $unstroka_sort="/en/?search=$searchline";
 if($unstroka_sort=="" and $language=="") $unstroka_sort="/en";
 elseif($unstroka_sort=="" and $language=="en") $unstroka_sort="/";
 if($language=="en")$engtext="Русский"; else $engtext="English";
 $hrefen='<a style="font-size:14px;TEXT-DECORATION: underline;" href="'.$unstroka_sort.'" target="_top">'.$engtext.'</a>';
-//Место для ссылок на социальные сети			<span id="modalclose2">Продолжить покупки</span>
 echo '<table align="right" bgcolor="#FFFFFF" width="100%" height="20px" cellspacing="0" cellpadding="0" border="0">
 <tr><td style="text-align:center;">   
 <div id="modalform"><h2>'.$tovarstr.'</h2><span style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" 
 id="modalclose">X</a></div><div id="overlay"></div>
 </td>
 <td style="text-align:right;FONT-SIZE: 14px;padding-right:10px;padding-top:5px;">'.$hrefen.'</td></tr></table>';
+
 //Начало шапки
-echo '<table align="center" bgcolor="#FFFFFF" width="100%" height="69px" cellspacing="0" cellpadding="0" border="0" style="">
-<tr><td width="17%" height="132px" style="text-align:left;padding-left:'.$shiftleftedge.'px;FONT-SIZE: 19px;vertical-align:top;">
-<table align="center" bgcolor="#FFFFFF" width="100%" height="69px" cellspacing="0" cellpadding="0" border="0">
-<tr><td width="17%" height="32px" style="text-align:left;FONT-SIZE: 18px;color:#333333;vertical-align:top;">
-'.$phonestr.'</td></tr>
-<tr><td height="20px" style="text-align:left;FONT-SIZE: 20px;vertical-align:top;padding-top:5px;">		
-<a href="'.$langstr.'/contact" target="_blank" style="FONT-SIZE: 17px;">'.$adrstr.'</a>
-<img src="/empty.gif" width="150px" height="1px"></td></tr>';//'.$menu6.$lang.'
-//<font style="color:#AD9E82;font-size:14px;" title="по московскому времени"> (09:00-18:00)</font>
-////////////ПОИСК////////////////////////////////////////////////
-echo '<tr><td valign="top">';echo parse($searchstr,"@searchline=$searchline@left=");echo '</td></tr></table></td>';
-//Логотип
-echo '
-<td width="66%" align="center" style="FONT-SIZE: 40px;text-align:center;vertical-align:top;padding-top:8px;">
-<a href="'.aPSID("$langstr/shop/sculpture/animalist/Dogs/sortbycost0142").'" target="_self">
-<img src="'.$logogif.'" alt="'.$LabelAlt.'"></a><BR>
-<div style="padding-top:20px;FONT-SIZE:17px; color="#A7A9AC;">'.$namestr;
-//Ссылка на Регистрацию и Вход, Корзина тут же в Фрейме
-echo '<td width="17%" align="left" style="vertical-align:top;padding-right:47px;">';
+if($menuVersion=='ifarfor')
+	{
+	echo '<table align="center" bgcolor="#FFFFFF" width="100%" height="69px" cellspacing="0" cellpadding="0" border="0" style="">
+	<tr><td width="17%" height="132px" style="text-align:left;padding-left:'.$shiftleftedge.'px;FONT-SIZE: 19px;vertical-align:top;">
+	<table align="center" bgcolor="#FFFFFF" width="100%" height="69px" cellspacing="0" cellpadding="0" border="0">
+	<tr><td width="17%" height="32px" style="text-align:left;FONT-SIZE: 18px;color:#333333;vertical-align:top;">
+	'.$phonestr.'</td></tr><tr><td height="20px" style="text-align:left;FONT-SIZE: 20px;vertical-align:top;padding-top:5px;">		
+	<a href="'.$langstr.'/contact" target="_blank" style="FONT-SIZE: 17px;">'.$adrstr.'</a>
+	<img src="/empty.gif" width="150px" height="1px"></td></tr>
+	<tr><td valign="top">';echo parse($searchstr,"@searchline=$searchline@left=");echo '</td></tr></table></td>
+	<td width="66%" align="center" style="FONT-SIZE: 40px;text-align:center;vertical-align:top;padding-top:8px;">
+	<a href="'.aPSID("$langstr/shop/sculpture/animalist/Dogs/sortbycost0142").'" target="_self">
+	<img src="'.$logogif.'" alt="'.$LabelAlt.'"></a><BR>
+	<div style="padding-top:20px;FONT-SIZE:17px; color="#A7A9AC;">'.$namestr;
+	//Ссылка на Регистрацию и Вход, Корзина тут же в Фрейме
+	echo '<td width="17%" align="left" style="vertical-align:top;padding-right:47px;">';
+	$LK=LK($userid,$language);
+	// id="vassa" onClick="vassa.height=\'20px\';" onMouseOver="vassa.height=\'20px\';"  onMouseOut="vassa.height=\'20px\';"
+	echo '<table cellspacing="0" cellpadding="0" border="0" width="100%" align="left">
+	<tr><td height="20px" style="FONT-SIZE: 16px;vertical-align: top;text-align:left;">'.$LK.'</td></tr>
+	<tr><td width="150px"><img src="/empty.gif" width="150px" height="10px"></td></tr>
+	<tr><td width="150px">';
+	echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="86px;" id=market name=market src="'.aPSID('/'.$marketstr).'"></IFRAME>';
+	echo '</td></tr></table><img src="/empty.gif" width="155px" height="1px"></td></tr></table>';
+	}
+else
+	{
+	echo '<table align="center" bgcolor="#FFFFFF" width="100%" height="75px" cellspacing="0" cellpadding="0" border="0" style="">
+	<tr><td width="100%" align="center" style="text-align:center;padding-bottom:20px;">
+	<a href="'.aPSID("$langstr/shop/artplate/stoppard/vangogh/sortbyname0142").'" target="_self">
+	<img  height="120px"  src="/icons/logo_stoppard.gif" alt="Stoppard"></a>	
+	</td><td width="0">	
+	<IFRAME hspace="0"  frameborder="0"  scrolling="No" width="100%" height="1px;" id=market name=market src="'.aPSID('/'.$marketstr).'"></IFRAME></td></tr></table>';
+//	echo parse($searchstr,"@searchline=$searchline@left=");//padding-left:40px;
+	} 
 $view='';//$sortway='';$sortstr='';
 if(substr($menuname2, 0, 4)=="view"){$view=substr($menuname2, 4);$menuname2="";}
 elseif(substr($menuname3, 0, 4)=="view"){$view=substr($menuname3, 4);$menuname3="";}
@@ -327,40 +418,19 @@ elseif(substr($menuname4, 0, 4)=="view"){$view=substr($menuname4, 4);$menuname4=
 elseif(substr($menuname5, 0, 4)=="view"){$view=substr($menuname5, 4);$menuname5="";}
 elseif(substr($menuname6, 0, 4)=="view"){$view=substr($menuname6, 4);$menuname6="";};
 if($view!='') $viewstr='view'.$view;
-echo printbuttonup();
-$LK=LK($userid,$language);
-// id="vassa" onClick="vassa.height=\'20px\';" onMouseOver="vassa.height=\'20px\';"  onMouseOut="vassa.height=\'20px\';"
-echo '<table cellspacing="0" cellpadding="0" border="0" width="100%" align="left">
-<tr>
-<td height="20px" style="FONT-SIZE: 16px;vertical-align: top;text-align:left;">
-'.$LK.'
-</td></tr>
-<tr><td width="150px"><img src="/empty.gif" width="150px" height="10px"></td></tr>
-<tr><td width="150px">';
-//if($view=='' and $menuname!="contact")	echo '<div id="bag">';
-echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="86px;" id=market name=market src="'.aPSID('/'.$marketstr).'"></IFRAME>';
-//if($view==''and $menuname!="contact")	echo '</div>';
-echo '</td></tr>
-</table>';
-echo '<img src="/empty.gif" width="155px" height="1px"></td></tr></table>';
-if($menuname!='cabinet')
-	echo '<table align="center" bgcolor="#FFFFFF" width="100%" height="56px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
-<tr><td width="17%" height="1" style="padding-left:47px;"><img src="/empty.gif" width="150px" height="1px"></td>
-<td width="66%"><img src="/empty.gif" width="100px" height="1px"></td>
-<td width="17%" height="1" style="padding-right:47px;"><img src="/empty.gif" width="150px" height="1px"></td></tr>
-<tr><td class="top1">'.$am[0].'</td>
-<td align="center">
-<table align="center" bgcolor="#AD9E82" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0"  style="padding-left:24px;padding-right:18px;"><tr>
-<td class="top2">'.$am[1].'</td>
-<td class="top3">'.$am[2].'</td>
-<td class="top4">'.$am[3].'</td>
-<td class="top5">'.$am[4].'</td>
-<td class="top6">'.$am[5].'</a></td></tr></table></td>
-<td class="top7">'.$am[6].'</a></td>
-</tr></table>';
+if($menuname!='cabinet'){
+	new SiteMenu($am,$cm,$language,$searchline,$userid);
+}
+
 if($menuname=="search"){
 	$qu=printsearch($searchline);
 	echo $qu;
+}
+elseif($menuname=='about'){
+echo about();
+}
+elseif($menuname=='dealer'){
+echo dealer();
 }
 elseif(($menuname=='shop' or $searchline!="") and $view==''){
 	if($HotStr!='') $stroka='&nbsp;';
@@ -369,7 +439,19 @@ elseif(($menuname=='shop' or $searchline!="") and $view==''){
 	{$checksf='checked';} else{$checksf='';}
 	$showphoto="<form name='FFilter' method='post' action=''>$Showpage";
 	//	<input name='ShowFoto' $checksf type='checkbox' value='yes' onclick='FFilter.submit()'>Показывать всё (даже без фотографий)";
-	echo PrintTopLeftMenu($showphoto,$bgColorOfBottom);
+	echo'<table align="center" bgcolor="#F6F6F4" width="100%" cellspacing="0" cellpadding="0" border="0" 
+	style="background-color:#F6F6F4;vertical-align:top;padding-bottom:25;">
+	<tr><td width="17%" height="37" style="padding-left:17px;BACKGROUND-COLOR: '.$bgColorOfBottom.';"><img src="/empty.gif" width="255px" height="1px"></td>
+	<td width="83%" style="text-align:left;padding-left:10px;BACKGROUND-COLOR: '.$bgColorOfBottom.';">
+	<table align="center" width="100%"><tr><td width="65%" style="text-align:left;padding-left:0px;BACKGROUND-COLOR: '.$bgColorOfBottom.';">'.$stroka.'</td>
+	<td width="35%" style="text-align:right;padding-right:35px;BACKGROUND-COLOR: '.$bgColorOfBottom.';">'.$showphoto.'</td></tr></table>
+	</tr>';
+		//=========================размещаем нижнюю часть странички=====================================================
+	echo '<tr><td width="240px" height="408px" align="left" style="padding-left:7px;vertical-align: top;BACKGROUND-COLOR: '.$bgColorOfBottom.';">
+	<table align="left" width="240px" height="208px" cellspacing="0" cellpadding="0" border="0">
+		<tr><td height="158px" align="left" style="PADDING:10px;border :none;
+			VERTICAL-ALIGN: top;BACKGROUND-COLOR: #FFFFFF;text-align: left;">';
+	//echo 'x';	echo PrintTopLeftMenu($showphoto,$bgColorOfBottom);echo 'x';
 	//=========================нижнюю часть левого кадра страницы заносим в переменную $kusokkoda1===================
 	$kusokkoda1='</td></tr>
 	<tr>
@@ -377,8 +459,9 @@ elseif(($menuname=='shop' or $searchline!="") and $view==''){
 	PADDING-LEFT:0px;PADDING-RIGHT:0px;PADDING-TOP:0px;PADDING-BOTTOM:0px;BACKGROUND-COLOR: '.$bgColorOfBottom.'"></td>
 	</tr>
 	<td height="400px" align="left" style="VERTICAL-ALIGN: bottom;color : #999999;font-size:14px;padding-left:0px;BACKGROUND-COLOR: '.$bgColorOfBottom.'">
-	<div style="width: 247px;">
-	© 1744-2017	<div id="scrollup"><img width="50px" alt="'.$Rollupalt.'" src="/img/up.png"></div>
+	<div style="width: 247px;">';
+	if($menuVersion=='ifarfor') $kusokkoda1.='© 1744-2017'; else $kusokkoda1.='© 2014-2017';
+	$kusokkoda1.='<div id="scrollup"><img width="50px" alt="'.$Rollupalt.'" src="/img/up.png"></div>
 	</td></tr></table>
 	</td>';
 	//========================средний кадр страницы добавляем в переменную $kusokkoda1===============================
@@ -393,7 +476,7 @@ elseif(($menuname=='shop' or $searchline!="") and $view==''){
 	<a href="http://www.hermitagemuseum.org/html_Ru/12/2003/hm12_3_3.html" target="_blank"><img src="/img/hermitage.gif"></a>
 	</td></tr>
 	<tr><td width="203px" height="695px" align="left" style="VERTICAL-ALIGN: bottom;BACKGROUND-COLOR: '.$bgColorOfBottom.';color : #999999;">
-	© 1744-2017 ИФ Поволжье</td>';
+	© 1744-2017</td>';
 	//============средний кадр страницы добавляем в переменную $kusokkoda2===================================
 	$kusokkoda2.='<td width="12px" height="708px" align="left" style="BACKGROUND-COLOR: #FFFFFF;">&nbsp;</td>
 	<td width="744px" height="172px" align="left" style="VERTICAL-ALIGN: top;BACKGROUND-COLOR: #FFFFFF;">
@@ -501,7 +584,7 @@ if($view!="") //тут надо поменять на исследование, 
 			$Spoon1="Ложка столовая";$Fork1="Вилка столовая";$Knife1="Нож столовый";$Spoon2="Ложка десертная";$Fork2="Вилка десертная";$Shipzy="Щипцы для сахара";
 			$Spoon3="Сервировочная ложка";$Fork3="Сервировочная вилка";$Spoon4="Лопатка для торта";$Spoon5="Ложка для соуса";$Spoon6="Суповой половник";
 			$textDiameter1='Высота доливного чайника';$textWidth1='Объём заварного чайника';$textHeight1='Высота заварного чайника';$textCapacity1='Объём доливного чайника';
-			$textDiameter2='Диаметр блюдца';$textWidth2='Диаметр десертной тарелки';$textHeight2='Высота чашки';$textCapacity2='Объём чашки';
+			$textDiameter2='Диаметр блюдца';$textWidth2='Диаметр десертной тарелки';$textHeight2='Высота чашки';$textCapacity2='Объём чашки';$KRest1='Дорожка';$KRest2='Салфетка';
 		}
 		$rowVid=$row['Vid'];
 		$rowTip=$row['Tip'];
@@ -566,19 +649,58 @@ if($view!="") //тут надо поменять на исследование, 
 		//$FirstName=$FirstName.$frontname;
 		//$FirstName=$FirstName."1$rowname,2$rowVid,3$rowTip,4$rowPicture,5$rowForm,6$rowTipOfMaterial,7$rowPerson,8$rowPredmetov,9$rowAutorPicture,10$Height,11$Capacity,12$Diameter,13$Width";
 		//заполним как надо
-		if($fname!=''){echo "<tr><td><img src='$fname' width='100%'>";
-			$indeed=2;
+		//echo'1'.$fname;
+		echo "<tr><td>";$fnamesub=substr($view, -1);
+		if(file_exists('foto/'.$view.'.jpg')){echo "<img src='/foto/".$view.".jpg' width='100%'>";}
+		elseif(file_exists("foto/".$view.'S.jpg')){echo "<img src='/foto/".$view."S.jpg' width='100%'>";}
+		elseif(file_exists("foto/".$view.'B.jpg')){echo "<img src='/foto/".$view."B.jpg' width='100%'>";}
+		elseif(file_exists("foto/".$fnamesub.'.jpg')){echo "<img src='/foto/".$fnamesub.".jpg' width='100%'>";}
+			$indeed=2;$howmanytimes=0;
 			while($indeed!=0){
+				
 				$filename5="foto/".$view."-".$indeed.".jpg";
 				if(file_exists($filename5)){
 					$perem="/".$filename5;
 					echo "<br><img src='$perem' width='100%' style='padding-top:0px;'>";
-					$indeed++;
+					$indeed++;$howmanytimes++;
 				}
 				else $indeed=0;
 			}
-			echo "</td>";}
-		else echo "<tr><td>&nbsp;</td>";
+			if($howmanytimes==0 and substr($view, -1)=='S' or substr($view, -1)=='B')
+			while($indeed!=0){
+				
+				$filename5="foto/".substr($view, 0, -1)."-".$indeed.".jpg";
+				if(file_exists($filename5)){
+					$perem="/".$filename5;
+					echo "<br><img src='$perem' width='100%' style='padding-top:0px;'>";
+					$indeed++;$howmanytimes++;
+				}
+				else $indeed=0;
+			}
+			if($howmanytimes==0)
+			while($indeed!=0){
+				
+				$filename5="foto/".$view."B-".$indeed.".jpg";
+				if(file_exists($filename5)){
+					$perem="/".$filename5;
+					echo "<br><img src='$perem' width='100%' style='padding-top:0px;'>";
+					$indeed++;$howmanytimes++;
+				}
+				else $indeed=0;
+			}
+			if($howmanytimes==0)
+			while($indeed!=0){
+				
+				$filename5="foto/".$view."S-".$indeed.".jpg";
+				if(file_exists($filename5)){
+					$perem="/".$filename5;
+					echo "<br><img src='$perem' width='100%' style='padding-top:0px;'>";
+					$indeed++;$howmanytimes++;
+				}
+				else $indeed=0;
+			}		
+			echo "&nbsp;</td>";
+		
 		echo "<td style='FONT-SIZE: 18px;text-align: left;vertical-align:top;padding-left: 20px;'><ul style='padding:0;'>
 		<li style='FONT-SIZE: 18px;'>$FirstName</li>";
 		if($rowVid!="")echo"<li>$rowTipOfMaterial</li>";
@@ -721,6 +843,16 @@ if($view!="") //тут надо поменять на исследование, 
 				}
 			}
 		}
+		elseif($rowVid=='Набор' and $rowTip=='чайный'){
+			echo"<li><b>$SostavKomp:</b></li>";
+			foreach($rowID as $kbr1 => $tbr){
+				$kbr=substr($kbr1, 0, -1);
+				if($tbr>0){		
+					if($kbr=='B00847'){echo"<li>$KRest1 $rowWidth $MM х $rowHeight $MM: $tbr $ST</li>";}
+					elseif($kbr=='C001060'){echo"<li>$KRest2 $rowDiameter $MM х $rowCapacity $MM: $tbr $ST</li>";}
+				}
+			}
+		}
 		elseif($rowVid=='Набор столовых приборов'){
 			echo"<li><b>$SostavKomp:</b></li>";
 			foreach($rowID as $kbr1 => $tbr){
@@ -792,16 +924,17 @@ if($view!="") //тут надо поменять на исследование, 
 		echo"$legend";
 	}//////////////////////конец заглушки на пустое превью
 	else{echo '<div style="padding-left:40px;">'.$NotOnStock1.$view.$NotOnStock2.'</div>';
-		$query1=sql("SELECT * FROM tovsNewback WHERE ida='$view'");
+		//$query1=sql("SELECT * FROM tovsNewback WHERE ida='$view'");
 		$query2=sql("SELECT * FROM tovsNew WHERE ida='$view'");
-		if(mysqli_num_rows($query1)>0){
+		/*if(mysqli_num_rows($query1)){
 			$row = mysqli_fetch_array($query1);
 			$rowVid=$row['Vid'];
 			$roww=mysqli_fetch_array(sql("SELECT * FROM picture WHERE id='".$row['Picture']."'"));$rowPictureR=$roww['name'];
 			$roww=mysqli_fetch_array(sql("SELECT * FROM form WHERE id='".$row['Form']."'"));$rowFormR=$roww['name'];
 			echo printsearch($rowVid.' '.$rowFormR);
-		}
-		elseif(mysqli_num_rows($query2)>0){
+			mysqli_free_result($query1);	
+		}*/
+		if(mysqli_num_rows($query2)>0){
 			$row = mysqli_fetch_array($query2);
 			$rowVid=$row['Vid'];
 			$roww=mysqli_fetch_array(sql("SELECT * FROM picture WHERE id='".$row['Picture']."'"));$rowPictureR=$roww['name'];
@@ -811,7 +944,7 @@ if($view!="") //тут надо поменять на исследование, 
 		elseif($view=='8122811001') echo printsearch("Ландыш Дуэль");
 		elseif($view=='8115701') echo printsearch("Ландыш Да нет");
 		elseif($view=='8119218001') echo printsearch("Яблочко медальон");
-		mysqli_free_result($query1);	
+		
 		mysqli_free_result($query2);///	
 	}
 	echo "</td>";
@@ -826,9 +959,7 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 	echo '<p style="padding-left:'.$shiftleftmenu.'px;padding-top:0px;margin-bottom:10px;font-size:15px;"><b>'.my_strtoupper($tekname).'</b></p>';
 	//echo "<form name='FFilter' method='post' action=''> ";
 	$menu1='menu open';
-	//if(isset($_POST['TipBone']) and   $_POST['TipBone'] == 'yes') {$RightUslovie1=' AND (TipOfMaterial=3 OR TipOfMaterial=4 OR TipOfMaterial=6)';
-	//$checks='checked';$menuc='menu open';} else {$checks='';}
-	//if(isset($_POST['TipHard']) and   $_POST['TipHard'] == 'yes') {$checksh='checked';$menuc='menu open';} else {$checksh='';}
+
 	$hoh=0;
 	for($i=2;$i<count($menu[$m2]);$i=$i+2){
 		if($language=="en") $tekname=$menuenglish[$m2][$i+1]; else $tekname=$menu[$m2][$i+1];
@@ -892,8 +1023,11 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 		if($menu1!='mumnu')  echo "</div>";
 	}
 	//echo 'hotstr='.$HotStr.' sl='.$searchline;
-	if($HotStr!='zu' and $HotStr3==''){
-		echo'</td></tr><tr><td height="0px" style="border-top: 1px #DDDDDD solid;BACKGROUND-COLOR: '.$bgColorOfBottom.';font-size:'.$sizebetweenfilters.'px;">
+if($menuVersion=='ifarfor')
+{
+		if($HotStr!='zu' and $HotStr3==''){
+		echo'</td></tr>';
+		echo'<tr><td height="0px" style="border-top: 1px #DDDDDD solid;BACKGROUND-COLOR: '.$bgColorOfBottom.';font-size:'.$sizebetweenfilters.'px;">
 		&nbsp;
 		</td></tr><tr><td align="left" style="PADDING:10px;PADDING-bottom:'.$sizebottomleftmenu.'px;border : 0;
 		VERTICAL-ALIGN:top ;BACKGROUND-COLOR: #FFFFFF;text-align: left;">
@@ -905,7 +1039,6 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 		//=============================================================================================
 		//=========================Фильтры============================================================ zakaz sklad
 		//=================выбираем группу, по которой будет строиться фильтр===========================
-		//echo 'hh'.$HotStr;
 		$RightUslovie2='';
 		$a = array();
 		if($menuname4==''){
@@ -916,9 +1049,11 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 		else 	$strokeSQL=MakeStrokeSQL($HotStr,$menuname5,$menuname4,"all",$Filter,$Sort,$ShAll);
 		if($strokeSQL=='')$strokeSQL='1=1';
 		$rurus=sql("SELECT * FROM tovsNew LEFT JOIN picture ON picture.id = tovsNew.Picture WHERE ".$strokeSQL);
-		//echo $strokeSQL;
 		//========================Если выбор не пустой, то формируем список Рисунков и добавляем их в массив $a=======
-		if(mysqli_num_rows($rurus)>0) while($roww=mysqli_fetch_array($rurus)) if($roww[$nameof]!='')$a+=array($roww[$nameof]=> $roww['id']);	ksort ($a);
+		if(mysqli_num_rows($rurus)>0) while($roww=mysqli_fetch_array($rurus)) 
+		if($roww[$nameof]!='')
+		$a+=array($roww[$nameof]=> $roww['id']);	
+		ksort ($a);
 		$aform = array();
 		if($menuname4==''){
 			if($menuname3==''){
@@ -955,14 +1090,6 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 		ksort ($abr);
 		mysqli_free_result($rurus);
 		//=======================Рисуем Фильтр по типу фарфора===================================================
-		/*$menuc='menu';
-		if(isset($_POST['TipBone']) and   $_POST['TipBone'] == 'yes') {$RightUslovie1=' AND (TipOfMaterial=3 OR TipOfMaterial=4 OR TipOfMaterial=6)';
-		$checks='checked';$menuc='menu open';} else {$checks='';}
-		if(isset($_POST['TipHard']) and   $_POST['TipHard'] == 'yes') {$checksh='checked';$menuc='menu open';} else {$checksh='';}
-		echo"
-		<div id='filtertip' class='$menuc' ><span class='title'>Тип фарфора</span>
-		<ul><li><input name='TipBone' $checks type='checkbox' value='yes' onclick='FFilter.submit()'>Костяной</li>
-		<li><input name='TipHard' $checksh type='checkbox' value='yes' onclick='FFilter.submit()'>Твердый</li></ul></div> ";*/
 		$RightMatUslovie2='';$menuc='menu';$echomatfor='';
 		foreach($amat as $kmat => $tmat){
 			$checks='';
@@ -1102,6 +1229,8 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 	echo'</div><div class="hot">';echo'<a href="'.aPSID("/index.php?search=tagTEACHER$lang").'" class="link1">'.$TEACHER.'</a>';
 	echo'</div><div class="hot">';echo'<a href="'.aPSID("/index.php?search=tagKIDS$lang").'" class="link1">'.$KIDS.'</a>';
 	echo'</div>';
+	
+}
 	//===========================Все скрипты для фильтров, анимация ==================================			
 	echo"<script>";
 	if($HotStr==''){
@@ -1138,12 +1267,13 @@ elseif(($menuname=="shop" ) and $view==''){//or $searchline!=""
 	//=================Если товар не выбран, то мы выводим каталог==================================
 	$wwidth=strlen($Zagolovok)*9+25;
 	echo '<table align="left" bgcolor="'.$bgColorOfBottom.'" width="100%" height="50px" cellspacing="0" cellpadding="0" border="0" style="padding-bottom:10px;"><tr>
-	<td style="padding-left:10px;padding-right:10px;width:'.$wwidth.'px;background-color:#AD9E82;FONT-SIZE:19px;color:#FFFFFF;text-align:center;">
+	<td style="padding-left:10px;padding-right:10px;width:'.$wwidth.'px;background-color:#'.$bclr.';FONT-SIZE:19px;color:#FFFFFF;text-align:center;">
 	<img src="/empty.gif" width="'.$wwidth.'px" height="1px"><b>'.$Zagolovok.'</b></td>
 	<td  style="padding-right:10px;width:100%;background-color:#FFFFFF;text-align:right;">'.$sortpage.'</td>
 	</tr>
 	</table>';
 	echo '<table align="center" bgcolor="'.$bgColorOfBottom.'" width="100%" height="660px" cellspacing="0" cellpadding="0" border="0"><tr>';
+	if($menuname4=='stoppard' or $menuname3=='stoppard' or $menuname2=='stoppard'){$menuname5='stoppard';}
 	if($menuname4==''){if($menuname3==''){if($menuname2==''){$a='';}
 	else $a=PrintCatalog($HotStr,$menuname5,$menuname2,"all",$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language);
 	}
@@ -1360,7 +1490,7 @@ elseif($menuname=="cabinet"){
 }
 elseif($menuname=='search')echo'';
 else echo $menuname;
-$pagename=$_GET['page'];
+/*$pagename=$_GET['page'];
 $Mozno=0;
 if($pagename=="news.php")$Mozno=1;
 elseif($pagename=="help.php")$Mozno=1;
@@ -1380,9 +1510,13 @@ if($Mozno==1){
 		else include($pagename);
 	}
 	else echo("файл ".$pagename." не найден на сервере.");
-}
+}*/
 //else  //include("news.php");
-echo '</body></html>';
+//echo '<div id="modalform" style="display: none;"><h2>'.$tovarstr.'</h2><span style="font-size:18px;font-weight:300;color:#0000CC;TEXT-DECORATION: underline;" id="modalclose">X</a></div>';
+echo '</body>';
+
+
+echo '</html>';
 //========================================================================================================
 //========================================================================================================
 //========================================================================================================
@@ -1640,49 +1774,42 @@ function MakeStrokeSQLBrand($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$ShAll){
 //========================================================================================================
 //========================================================================================================
 function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language){
-	$dollar=GetCurentKursDolars();
-	if($Uslovie=="all") $Uslovie="";
-	$pobeda=$_GET['pobeda'];
-	if($language=="en"){$strbask="Add to basket";}
-	else{$strbask="в корзину";}
+		global $HotStr3;
+	$dollar=GetCurentKursDolars();if($Uslovie=="all") $Uslovie="";$pobeda=$_GET['pobeda'];if($language=="en")$strbask="Add to basket";else $strbask="в корзину";
+$menuVersion = whichshop3();	
+if($menuVersion=='ifarfor') $bclr='AD9E82'; else $bclr='82a0ae';	
+if($HotStr=='' and $HotStr3=='')
+{	
 	if($Filter!=""){
 		$sql_filter='HAVING 1=1 AND ((zakaz+sklad+grp)>0)'; $qq=explode("|",$Filter); $num = count($qq);
-		for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND (name LIKE "%'.sqlp($qq[$i]).'%")';
-		$Uslovie.=$sql_filter;}
-	// здесь добавляем условие правой части: ================================================== 
-	$Uslovie.=$RightUslovie;
+		for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND (name LIKE "%'.sqlp($qq[$i]).'%")';$Uslovie.=$sql_filter;}
+	$Uslovie.=$RightUslovie." ORDER BY ";
 	switch($Sort){
-		case "n": $Uslovie.=" ORDER BY name";break; case "-n": $Uslovie.=" ORDER BY name DESC";break;
-		case "p": $Uslovie.=" ORDER BY price1s";break; case "-p": $Uslovie.=" ORDER BY price1s DESC";break;
-		case "b": $Uslovie.=" ORDER BY brand";break;case "-b": $Uslovie.=" ORDER BY brand DESC";break;
-		default: $Uslovie.=" ORDER BY name";break;}
-	if($HotStr==""){$SQLZapros="SELECT * FROM tovsNew WHERE (idg='$group' ";
-		$query0=sql("SELECT id FROM tovsNew WHERE idg='$group' AND grp=1 ");
+		case "n": $Uslovie.="name";break; case "-n": $Uslovie.="name DESC";break;
+		case "p": $Uslovie.="price1s";break; case "-p": $Uslovie.="price1s DESC";break;
+		default: $Uslovie.="name";break;
 	}
-	else{
-		$sql_filter='grp=0';
-		$qq=explode(" ",$HotStr);
-		$num = count($qq);
-		for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND (name LIKE "%'.sqlp($qq[$i]).'%")';
-		$Uslovie.=$sql_filter;
-		$query0=sql("SELECT id FROM tovsNew WHERE $Uslovie AND grp=1 ORDER BY name");
-		$SQLZapros="SELECT * FROM tovsNew WHERE ($Uslovie ";
-		//$SQLZapros=" ($Uslovie ";
-	}
+	
+	if($page=='stoppard') $Diameter200="  and zakaz='1' "; else $Diameter200='AND ((zakaz+sklad)>0)'; //AND ((zakaz)>0)
+		
+	$SQLZapros="SELECT * FROM tovsNew WHERE (idg='$group' ";$query0=sql("SELECT id FROM tovsNew WHERE idg='$group' AND grp=1 ");
 	$countquery1=mysqli_num_rows($query0);
 	while($row = mysqli_fetch_array($query0)){$iddd=$row['id'];$SQLZapros=$SQLZapros." or idg ='$iddd'";};
-	if($ShAll==1)  $SQLZapros.=")AND grp=0 AND ((zakaz+sklad+grp)>0) $Uslovie";//post('ShowFoto')=='yes' or 
-	else //Если товаров с фотографиями в группе нет - покажем ка мы даже без фото! 
-	{
-		$SQLZaprosTest=$SQLZapros.")AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad+grp)>0) $Uslovie";
+	if($ShAll==1)  $SQLZapros.=")AND grp=0 $Diameter200 $Uslovie";
+	else {
+		$SQLZaprosTest=$SQLZapros.")AND grp=0 AND Imagefile<>'/icons/noimage.jpg' $Diameter200 $Uslovie";
 		$query1=sql($SQLZaprosTest);
 		$countquery1=mysqli_num_rows($query1);
-		if($countquery1==0) $SQLZapros.=")AND grp=0 AND ((zakaz+sklad+grp)>0) $Uslovie";
-		else				$SQLZapros.=")AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad+grp)>0) $Uslovie";
+		if($countquery1==0) $SQLZapros.=")AND grp=0 $Diameter200 $Uslovie";//Если товаров с фотографиями в группе нет - покажем ка мы даже без фото! 
+		else				$SQLZapros.=")AND grp=0 AND Imagefile<>'/icons/noimage.jpg' $Diameter200 $Uslovie";
 	}
-	if($HotStr=='')$query1=sql($SQLZapros);else{
-		if($ShAll=="1") $SQLZapros="AND grp=0 AND ((zakaz+sklad+grp)>0) ORDER BY name";//post('ShowFoto')=='yes'
-		else $SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad+grp)>0) ORDER BY name";// 
+	$query1=sql($SQLZapros);
+	//echo($SQLZapros);
+}
+elseif($HotStr!='')
+	{
+		if($ShAll=="1") $SQLZapros="AND grp=0 AND ((zakaz+sklad)>0) ORDER BY name";//post('ShowFoto')=='yes'
+		else $SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad)>0) ORDER BY name";// 
 		if($HotStr=="RUSSIANSTYLE"){$HotStr="SELECT * FROM tovsNew WHERE Rstyle='1'  $SQLZapros";}
 		elseif($HotStr=="project"){$HotStr="SELECT * FROM tovsNew WHERE TipAss='Проект'  $SQLZapros";}
 		elseif($HotStr=="cobaltnet"){$HotStr="SELECT  tovsNew.Height,tovsNew.Capacity,tovsNew.Width,tovsNew.Diameter,tovsNew.name,ida, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE (picture.english='Cobalt net' or picture.name='Кобальтовая сетка Модерн') $SQLZapros";}
@@ -1692,27 +1819,22 @@ function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,
 		elseif($HotStr=="nephrit"){$HotStr="SELECT * FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE (picture.name='Нефритовый фон' or  picture.name='Нефритовый фон 2') $SQLZapros";}
 		$query1=sql($HotStr);
 	}
-	global $HotStr3;
+else
+	{
+
 	if($HotStr3!=''){
-		$SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad+grp)>0) ORDER BY name DESC";// 
+		$SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad)>0) ORDER BY name DESC";// 
 		if($HotStr3=="newyear"){$HotStr="SELECT * FROM tovsNew WHERE NY='1' $SQLZapros";}
 		elseif($HotStr3=="cobaltnet"){$HotStr="SELECT  * FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE (picture.english='Cobalt net' or picture.name='Кобальтовая сетка Модерн')
-		AND grp=0 AND ((zakaz+sklad+grp)>0)  AND Imagefile<>'/icons/noimage.jpg' ORDER BY tovsNew.tip ";}
+		AND grp=0 AND ((zakaz+sklad)>0)  AND Imagefile<>'/icons/noimage.jpg' ORDER BY tovsNew.tip ";}
 		elseif($HotStr3=="love"){$HotStr="SELECT * FROM tovsNew WHERE InLove='1' $SQLZapros";}
 		elseif($HotStr3=="easter"){$HotStr="SELECT * FROM tovsNew WHERE Easter='1' $SQLZapros";}
 		elseif($HotStr3=="russianstyle"){$HotStr="SELECT * FROM tovsNew WHERE Rstyle='1' $SQLZapros";}
 		$query1=sql($HotStr);
 	}
-	$countquery1=mysqli_num_rows($query1);
-	$counterofpage=0;
-	$firstpiece=($firstpage-1)*$numberofpages;
-	$lastpiece=$firstpiece+$numberofpages;
-	if($lastpiece==0)$lastpiece=1000;
-	$i=1;$j=1;
-	if($language=="en"){$rownamelang="english";
-	}
-	else{$rownamelang="name";
-	}
+}
+	$countquery1=mysqli_num_rows($query1);$counterofpage=0;$firstpiece=($firstpage-1)*$numberofpages;$lastpiece=$firstpiece+$numberofpages;if($lastpiece==0)$lastpiece=1000;$i=1;$j=1;
+	if($language=="en")$rownamelang="english"; else$rownamelang="name";
 	while($row = mysqli_fetch_array($query1)){
 		$counterofpage++;
 		if($counterofpage>$firstpiece and $counterofpage<=$lastpiece){
@@ -1730,6 +1852,7 @@ function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,
 			$vid=$row['Vid'];
 			$tip=$row['Tip'];
 			$picture=$row['Picture'];$form=$row['Form'];$brandid=$row['Factory'];$engvid=$row['videnglish'];$engtip=$row['tipenglish'];
+			$rurus=sql("SELECT name FROM  brand WHERE id='$brandid'");if(mysqli_num_rows($rurus)>0) {$roww=mysqli_fetch_array($rurus); $brandname=$roww['name'];}
 			$Height=$row['Height'];		$Capacity=$row['Capacity'];		$Diameter=$row['Diameter'];$Width=$row['Width'];
 			$TipOfMaterial=$row['TipOfMaterial'];$flashbackcolor='red';$backcolor='blue';
 			$Person=$row['Person'];$Predmetov=$row['Predmetov'];$AutorPicture=$row['AutorPicture'];
@@ -1737,12 +1860,12 @@ function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,
 				$Height,$Capacity,$Diameter,$Width,$engtip,$engvid,$language);
 			$bottomname=MakeBottomName($brandid,$newprice1,$language);
 			if($perem=='/icons/noimage.jpg') $imginsert="";
-			else $imginsert="<img width='100%' src='$perem'>";
+			else $imginsert="<img width='100%' id='img".$id."' src='$perem'>";
 			if($i<=3) $sti="padding-right:10px;";else $sti='';$Prov=ProverkaNal($id,'5');
 			$result=sql("SELECT * FROM likeengine WHERE id='$id'");
 			$countQuantStr=mysqli_num_rows($result);
-			$printlike='<div id="like'.$id.'" onClick="LikeEngine(\'like'.$id.'\')" style="font-size:14px;font-weight:500;color:#AD9E82;vertical-align:top;cursor: pointer;">'.printlike($id,$countQuantStr,$language).'</div>';
-			if($brandid==16){//Если это тарелки
+			$printlike='<div id="like'.$id.'" onClick="LikeEngine(\'like'.$id.'\')" style="font-size:14px;font-weight:500;color:#'.$bclr.';vertical-align:top;cursor: pointer;">'.printlike($id,$countQuantStr,$language).'</div>';
+			if($brandname=='Stoppard'){//Если это тарелки
 				$printsize=printsize($id,200,$language);
 				if($language=='en') $MM=' mm';else $MM=' мм';
 				if(($Prov=='0') and ($pobeda=='1')){$i=$i-1;echo'1';}//пропускаем товар, которого нет в магазине
@@ -1777,27 +1900,21 @@ function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,
 		$echo.="<td colspan='3' style='padding-top:30px;text-align:center;height:40px;'>
 		<table align='center' cellpadding='2' cellspacing='10'><tr>";
 		$echo.=" <td width='44%'>&nbsp;</td>";
-		//$echo.=" <td><a href='/' target='self'><figure style='padding:20px;  height: 40px;  width: 15%; vertical-align:middle;background-color:#EEEEEE;text-align:center;'>Предыдущая</figure></a></td>";
 		$npage=0;$addecho='';
-		while($npage*$numberofpages<$countquery1){//<button name='btnp$npage' value='yes' formaction=='".$bhref.$addprn.$npage.$numberofpages.$ShAll."' form='FFilter' >$npage</button> 
-			//onclick='FFilter.submit()'
+		while($npage*$numberofpages<$countquery1){
+			
 			if($npage++<9)$addprn='0'; else $addprn="";
 			$echo.=" <td width='1%' style='height: 40px;background-color:#FFFFFF;text-align:center;'>";
 			if($npage==$firstpage)  $echo.="<figure style='width: 5px;height: 30px;  padding-left:10px; padding-bottom:5px;padding-right:10px;padding-top:12px; margin:0px; 
 			vertical-align:middle;font-size:18px;'><b>".$npage."</b></figure>";
 			else $echo.="<input width='15' height='15' type='submit' name='npage'  value='$npage'>";
-			//<a href='".$bhref.$addprn.$npage.$numberofpages.$ShAll."' target='_self' style=''>
-			//<figure style='width: 5px;height: 30px; padding:10px; margin:0px; vertical-align:middle;font-size:18px;'>".$npage."</figure></a>
-			//onclick='FFilter.submit();' //formaction='".$bhref.$addprn.$npage.$numberofpages.$ShAll."' 
-			//	else $echo.="<td onClick='document.forms.FFilter.submit();go_top(\"".$bhref.$addprn.$npage.$numberofpages.$ShAll."\";)' >
-			//	<figure style='width: 5px;height: 30px; padding:10px; margin:0px; vertical-align:middle;font-size:18px;'>".$npage."</figure></td>";
 			$echo.="</td>";
 			if(round($npage/15)==$npage/15){$echo.="<td width='44%'>&nbsp;</td></tr><tr><td width='44%'>&nbsp;</td>";$addecho="<td width='15%' colspan='15'>&nbsp;</td>";}
 		};
-		// $echo.="<td><a href='/' target='self'><figure style='padding:20px;  height: 40px;  width: 15%; vertical-align:middle;background-color:#EEEEEE;text-align:center;'>Следующая</figure></a></td>";
 		$echo.=" $addecho<td width='44%'>&nbsp;</td></tr></table></td>";
 	}
-	mysqli_free_result($query1);mysqli_free_result($query0);
+	//mysqli_free_result($query1);
+	//mysqli_free_result($query0);
 	return $echo;
 }
 //========================================================================================================
@@ -1808,50 +1925,41 @@ function PrintCatalog($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,
 function printsearch($searchline){
 	$searchline=sqlpz($searchline);
 	global $language; global $userid;
+	$rurus=sql("SELECT id FROM  brand WHERE name='Stoppard'");if(mysqli_num_rows($rurus)>0) {$roww=mysqli_fetch_array($rurus); $StoppardID=$roww['id'];}
+	$menuVersion = whichshop3();
+	if($menuVersion=='ifarfor') {$bclr='AD9E82';$StoppardUslovie='';} else {$bclr='82a0ae';$StoppardUslovie=' AND Factory="'.$StoppardID.'" AND zakaz="1"';} 
 	if($language=="en"){$Zagolovok='Searching results';$strbask="Add to basket";$strnothing1="On your request:"; $strnothing2="found nothing. Trying to find something else.";}
 	else{$Zagolovok='Результаты поиска';$strbask="в корзину";$strnothing1="По вашему запросу:"; $strnothing2="ничего не найдено. Попробуйте поискать что-то ещё.";}
 	if(substr($searchline, 0, 7)=="tagform"){
 		$searchline=substr($searchline, 7);
-		/*			$sql_filter='form.name LIKE "%'; 
-		$qq=explode(" ",$searchline); 
-		$num = count($qq);
-		for($i = 0; $i < $num; $i ++ ) {if($i>0)$sql_filter.=' '; $sql_filter.=sqlp($qq[$i]);}
-		$sql_filter.='%"';
-		*/
 		$Uslovie="form.name='$searchline' AND sklad>0 AND Imagefile<>'/icons/noimage.jpg' ";
-		$HotStr="SELECT tovsNew.name,ida, idg,tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM form LEFT JOIN tovsNew ON form.id = tovsNew.Form WHERE $Uslovie ORDER BY tovsNew.name";//
+		$HotStr="SELECT tovsNew.name,ida, idg,tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM form LEFT JOIN tovsNew ON form.id = tovsNew.Form WHERE $Uslovie $StoppardUslovie ORDER BY tovsNew.name";//
 		$r=sql($HotStr);
 	}
 	elseif(substr($searchline, 0, 6)=="tagpic"){
 		$searchline=substr($searchline, 6);
-		/*			$sql_filter='picture.name LIKE "%'; 
-		$qq=explode(" ",$searchline); 
-		$num = count($qq);
-		for($i = 0; $i < $num; $i ++ ) {if($i>0)$sql_filter.=' '; $sql_filter.=sqlp($qq[$i]);}
-		$sql_filter.='%"';
-		$Uslovie.=$sql_filter;*/
 		$Uslovie="picture.name='$searchline' AND sklad>0 AND Imagefile<>'/icons/noimage.jpg' ";
-		$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE $Uslovie ORDER BY tovsNew.name";//
+		$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE $Uslovie $StoppardUslovie ORDER BY tovsNew.name";//
 		$r=sql($HotStr);
 	}
 	elseif(substr($searchline, 0, 7)=="tagapic"){
 		$searchline=substr($searchline, 7);
 		$sql_filter='creator.name = "'.$searchline.'"';
 		$Uslovie.=$sql_filter." AND sklad>0 AND Imagefile<>'/icons/noimage.jpg' ";
-		$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM creator LEFT JOIN tovsNew ON creator.id = tovsNew.AutorPicture WHERE $Uslovie ORDER BY tovsNew.name";//
+		$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM creator LEFT JOIN tovsNew ON creator.id = tovsNew.AutorPicture WHERE $Uslovie $StoppardUslovie ORDER BY tovsNew.name";//
 		$r=sql($HotStr);
 	}
 	elseif(substr($searchline, 0, 8)=="tagaform"){
 		$searchline=substr($searchline, 8);
 		$sql_filter='creator.name = "'.$searchline.'"';
 		$Uslovie.=$sql_filter." AND sklad>0 AND Imagefile<>'/icons/noimage.jpg' ";
-		$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,AutorForm,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM creator LEFT JOIN tovsNew ON creator.id = tovsNew.AutorForm  WHERE $Uslovie ORDER BY tovsNew.name";//
+		$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,AutorForm,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM creator LEFT JOIN tovsNew ON creator.id = tovsNew.AutorForm  WHERE $Uslovie $StoppardUslovie ORDER BY tovsNew.name";//
 		$r=sql($HotStr);
 	}
 	elseif(substr($searchline, 0, 3)=="tag"){
 		$searchline=substr($searchline, 3);
 		$HotStr=$searchline;
-		$SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad+grp)>0) ORDER BY name DESC";
+		$SQLZapros="AND grp=0 $StoppardUslovie AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad+grp)>0)  ORDER BY name DESC";
 		//if($HotStr=="RUSSIANSTYLE"){
 		//elseif($HotStr=="cobaltnet")
 		if($language=="en"){
@@ -1963,16 +2071,13 @@ function printsearch($searchline){
 			$num = count($qq);
 			for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND ( (lowername) LIKE  "%'.mb_strtolower($qq[$i]).'%")';
 			$sql_filter.=') OR (grp=0';
-			//$Uslovie.=$sql_filter;
-			//english
-			//$qq=explode(" ",$searchline); 
-			//$num = count($qq);
 			for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND ((english) LIKE "%'.(($qq[$i])).'%")';
 			$sql_filter.=')';
 			$Uslovie.=$sql_filter;
 		}
 		//	$query="SELECT * FROM tovsNew WHERE sklad>0 AND $Uslovie ORDER BY name";
-		$r=sql("SELECT * FROM tovsNew WHERE sklad>0 AND $Uslovie ORDER BY name");
+		$r=sql("SELECT * FROM tovsNew WHERE sklad>0 $StoppardUslovie AND $Uslovie  ORDER BY name");
+		
 	}
 	//$rtw=sql('show variables like "%collation%"');
 	if(mysqli_num_rows($r)==0)
@@ -1982,7 +2087,7 @@ function printsearch($searchline){
 		if($nametitle!='') $Zagolovok=$nametitle;
 		$wwidth='300px';//1 $rowname,2 $vid,3 $tip,4 $picture,5 $form
 		$echo= '<table align="left" width="100%" height="60px" cellspacing="0" cellpadding="0" border="0" style="padding:20px;padding-bottom:0px;"><tr>
-		<td style="padding-left:10px;padding-right:10px;width:'.$wwidth.'px;background-color:#AD9E82;FONT-SIZE:19px;color:#FFFFFF;text-align:center;">
+		<td style="padding-left:10px;padding-right:10px;width:'.$wwidth.'px;background-color:#'.$bclr.';FONT-SIZE:19px;color:#FFFFFF;text-align:center;">
 		<b>'.$Zagolovok.'</b></td>
 		<td  style="padding-right:10px;width:80%;background-color:#FFFFFF;text-align:right;">&nbsp;</td>
 		</tr>
@@ -2016,7 +2121,7 @@ function printsearch($searchline){
 				$frontname=MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial,$Person,$Predmetov,$AutorPicture, $Height,$Capacity,$Diameter,$Width,$engtip,$engvid,$language);
 				$bottomname=MakeBottomName($brandid,$newprice1,$language);
 				if($perem=='/icons/noimage.jpg') $imginsert="";
-				else $imginsert="<img width='100%' src='$perem'>";
+				else $imginsert="<img width='100%' id='img".$id."' src='$perem'>";
 				if($i<=4) $sti="padding-right:10px;";else $sti='';//1 $rowname,2 $vid,3 $tip,4 $picture,5 $form
 				global $langstr;
 				$stroka_sort=$langstr.'/shop';//		1 $rowname,2 $vid,3 $tip,4 $picture,5 $form,6 $TipOfMaterial,7 $Person,8 $Predmetov,9 $frontname
@@ -2029,7 +2134,7 @@ function printsearch($searchline){
 
 				$result=sql("SELECT * FROM likeengine WHERE id='$id'");
 				$countQuantStr=mysqli_num_rows($result);
-				$printlike='<div id="like'.$id.'" onClick="LikeEngine(\'like'.$id.'\')" style="font-size:14px;font-weight:500;color:#AD9E82;vertical-align:top;cursor: pointer;">';
+				$printlike='<div id="like'.$id.'" onClick="LikeEngine(\'like'.$id.'\')" style="font-size:14px;font-weight:500;color:#'.$bclr.';vertical-align:top;cursor: pointer;">';
 				$printlike.=printlike($id,$countQuantStr,$language);
 				$printlike.='</div>';
 
