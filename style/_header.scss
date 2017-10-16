@@ -1,0 +1,115 @@
+header{
+  margin: 0;
+  height: 150px;
+}
+
+.changeLanguageElement{
+  @extend .link;
+  padding-top: 1px;
+  line-height:21px;
+  a{
+    text-decoration: underline;
+    padding-right: 10px;
+    font-size: 14px!important;
+  }
+}
+
+.logoContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  align-items: center;
+  /* align vertical */
+
+  .logo{
+    @extend .autoMargin;
+    @extend .centered;
+    padding-top: 4px;
+  }
+}
+
+.headerLeftBlock{
+  @extend .link;
+  padding-left: 40px;
+
+  #phoneContainer{
+    font-size: 18px;
+  }
+  #contactsLink{
+    line-height: 50px;
+  }
+}
+.headerRightBlock{
+  padding-right: 30px;
+}
+
+.searchInputContainer{
+  border: 1px solid gray;
+  height: 38px;
+  width: 194px;
+  margin-top: 30px;
+
+  #image{
+    float: left;
+    display: block;
+    padding-top: 5px;
+  }
+}
+
+.searchInput{
+  font-size: 15px;
+  line-height: 36px;
+  height: 36px;
+  display: block;
+  float: left;
+  width: 160px;
+  padding: 5px;
+  color: #444;
+  background: #FFF;
+  font-weight: 300;
+  outline: none;
+  border: none;
+}
+
+.sloganContainer{
+  @extend .thickFont;
+  line-height: 80px;
+  font-size: 17px;
+}
+
+.authContainer{
+  @extend .link;
+  a{
+    font-size: 15px !important;
+  }
+  #registerButton{
+    float: left;
+    display: block;
+  }
+}
+
+.basketBlockTextContent::after{
+  content: "\00a0";
+}
+.basketBlockString{
+  line-height: 15px;
+}
+
+.basketButton{
+  padding-top: 26px;
+  padding-bottom: 16px;
+  a{
+    padding: 4px 9px;
+    background-color: $ifarfor-color;
+    font-size: 19px!important;
+    font-weight: 500!important;
+    color: white!important;
+    text-decoration: none;
+  }
+  a:hover{
+    background-color: $ifarfor-hover-color;
+    text-decoration: none;
+    color: white!important;
+  }
+}

@@ -5,8 +5,10 @@ class SiteMenu
 {
     private static $STOPPART_VERSION = "stoppart";
     private static $IFARFOR_VERSION = "ifarfor";
+
     public function __construct($data,$data2,$language,$searchline,$userid)
     {
+        //echo "<h2>Im SiteMenu $language=".$language."</h2>";
         $menuVersion = whichshop3();
 
         if($menuVersion==self::$STOPPART_VERSION)	{
@@ -42,16 +44,23 @@ class SiteMenu
 
   protected function createNormalMenu($data,$data2,$language,$searchline,$userid){
   	$LK=LK($userid,$language);
-  	if($language=="en") {$langstr="/en";$placeholder=" Search";} else {$langstr="";$placeholder=" Поиск";}
+  	if($language=="en") {
+        $langstr="/en";
+        $placeholder=" Search";
+    }
+    else {
+        $langstr="";
+        $placeholder=" Поиск";
+    }
   	echo '<FORM  name=search1 action="/" method=get><table align="center" bgcolor="#FFFFFF" width="100%" height="46px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
          <tr><td class="tinstop0" style="height:35px;" width="14%">
-         	<input type="text" style="min-width:150px;width:100%" name="search1" placeholder="'.$placeholder.'" value="'.$searchline.'" 
+         	<input id="searchInput" type="text" style="min-width:150px;width:100%" name="search1" placeholder="'.$placeholder.'" value="'.$searchline.'" 
         	style="font-size: 14px;height:25px;display: block;width: 100%;background: #FFF;"></td>
-		 <td onclick="search1.submit();" class="tinstop1"><img src="/icons/zoom.gif" width="14px" alt=">"></td>
-         <td class="tinstop5"><a href="/shop/stoppard" style="FONT-SIZE:16px;color:#FFFFFF;" >ДЕКОРАТИВНЫЕ ТАРЕЛКИ</a></td>
-         <td class="tinstop6"><a href="/shop/stoppard/holder" style="FONT-SIZE:16px;color:#FFFFFF;" >ПОДСТАВКИ</a></td>
-         <td class="tinstop5"><a href="/dealer" style="FONT-SIZE:16px;color:#FFFFFF;" >УСЛОВИЯ СОТРУДНИЧЕСТВА</a></td>
-         <td class="tinstop2"><a href="/price" style="FONT-SIZE:16px;color:#FFFFFF;" >СКАЧАТЬ ПРАЙС ЛИСТ</a></td>
+		 <td id="searchButtonContainer" class="tinstop1"><img src="/icons/zoom.gif" width="14px" alt=">"></td>
+         <td class="tinstop5"><a href="/shop/stoppard" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[0][1].'</a></td>
+         <td class="tinstop6"><a href="/shop/stoppard/holder" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[1][1].'</a></td>
+         <td class="tinstop5"><a href="/dealer" style="FONT-SIZE:16px;color:#FFFFFF;" >УСЛОВИЯ СОТРУДНИЧЕСТВА123</a></td>
+         <td class="tinstop2"><a href="/price" style="FONT-SIZE:16px;color:#FFFFFF;" >СКАЧАТЬ ПРАЙС ЛИСТ123</a></td>
          <td class="tinstop3">'.$LK.'</td>
          <td class="tinstop4">
          <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
@@ -63,11 +72,11 @@ class SiteMenu
   protected function createTipMenu($data,$data2,$language,$searchline,$userid){
   	$LK=LK($userid,$language);
   	if($language=="en") {$langstr="/en";$placeholder=" Search";} else {$langstr="";$placeholder=" Поиск";}
-  	echo '<FORM  name=search1 action="/" method=get><table align="center" bgcolor="#FFFFFF" width="100%" height="36px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
+  	echo '<FORM  id="searchForm" name=search1 action="/" method=get><table align="center" bgcolor="#FFFFFF" width="100%" height="36px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
          <tr><td class="tinstop0" style="height:35px;" width="14%">
-         	<input type="text" style="min-width:150px;width:100%" name="search1" placeholder="'.$placeholder.'" value="'.$searchline.'" 
+         	<input id="searchInput" type="text" style="min-width:150px;width:100%" name="search1" placeholder="'.$placeholder.'" value="'.$searchline.'" 
         	style="font-size: 14px;height:25px;display: block;width: 100%;background: #FFF;"></td>
-		 <td onclick="search1.submit();" class="tinstop1"><img src="/icons/zoom.gif" width="14px" alt=">"></td>
+		 <td id="searchButtonContainer" class="tinstop1"><img src="/icons/zoom.gif" width="14px" alt=">"></td>
          <td class="tinstop5"><a href="/shop/stoppard" style="FONT-SIZE:16px;color:#FFFFFF;" >ДЕКОРАТИВНЫЕ ТАРЕЛКИ</a></td>
          <td class="tinstop6"><a href="/shop/stoppard/holder" style="FONT-SIZE:16px;color:#FFFFFF;" >ПОДСТАВКИ</a></td>
          <td class="tinstop5"><a href="/dealer" style="FONT-SIZE:16px;color:#FFFFFF;" >УСЛОВИЯ СОТРУДНИЧЕСТВА</a></td>
@@ -79,26 +88,33 @@ class SiteMenu
          <img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> <div class="totalBasketElements">0</div></div></a></td>
                 </tr></table></FORM>';
     }
-      protected function createTipMenuifarfor($data,$data2,$language,$searchline,$userid){
-  	$LK=LK($userid,$language);
-  	if($language=="en") {$langstr="/en";$placeholder=" Search";} else {$langstr="";$placeholder=" Поиск";}
-  	echo '<FORM  name=search1 action="/" method=get><table align="center" bgcolor="#FFFFFF" width="100%" height="36px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
-         <tr><td class="tintop0" style="height:35px;" width="14%">
-         	<input type="text" style="min-width:150px;" name="search1" placeholder="'.$placeholder.'" value="'.$searchline.'" 
-        	style="font-size: 14px;height:25px;display: block;width: 100%;background: #FFF;"></td>
-		 <td onclick="search1.submit();" class="tintop1"><img src="/icons/zoom.gif" width="14px" alt=">"></td>
-         <td class="tintop2"><a href="'.$data2[0][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[0][1].'</a></td>
-         <td class="tintop3"><a href="'.$data2[1][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[1][1].'</a></td>
-         <td class="tintop4"><a href="'.$data2[2][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[2][1].'</a></td>
-         <td class="tintop5"><a href="'.$data2[3][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[3][1].'</a></td>'.
-        //<td class="tintop5"><a href="'.$data2[4][0].'" style="FONT-SIZE:14px;color:#FFFFFF;" >'.$data2[4][1].'</a></td>
-        '<td class="tintop6"><a href="'.$data2[5][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[5][1].'</a></td>
-         <td class="tintop7"><a href="'.$data2[6][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[6][1].'</a></td>
-         <td class="tintop8">'.$LK.'</td>
-         <td class="tintop9">
-          <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
-         <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
-         <img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> <div class="totalBasketElements">0</div></div></a></td>
-                </tr></table></FORM>';
+    protected function createTipMenuifarfor($data,$data2,$language,$searchline,$userid){
+        $LK=LK($userid,$language);
+        if($language=="en")
+        {
+            $langstr="/en";
+            $placeholder=" Search";
+        }
+        else {
+            $langstr="";
+            $placeholder=" Поиск";
+        }
+        echo '<FORM  id="searchForm" name=search1 action="/" method=get><table align="center" bgcolor="#FFFFFF" width="100%" height="36px" cellspacing="0" cellpadding="0" border="0" style="vertical-align:top;padding-bottom:0px;">
+             <tr><td class="tintop0" style="height:35px;" width="14%">
+                <input id="searchInput" type="text" style="min-width:150px;" name="search1" placeholder="'.$placeholder.'" value="'.$searchline.'" 
+                style="font-size: 14px;height:25px;display: block;width: 100%;background: #FFF;"></td>
+             <td id="searchButtonContainer"  class="tintop1"><img src="/icons/zoom.gif" width="14px" alt=">"></td>
+             <td class="tintop2"><a href="'.$data2[0][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[0][1].'</a></td>
+             <td class="tintop3"><a href="'.$data2[1][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[1][1].'</a></td>
+             <td class="tintop4"><a href="'.$data2[2][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[2][1].'</a></td>
+             <td class="tintop5"><a href="'.$data2[3][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[3][1].'</a></td>
+             <td class="tintop6"><a href="'.$data2[5][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[5][1].'</a></td>
+             <td class="tintop7"><a href="'.$data2[6][0].'" style="FONT-SIZE:16px;color:#FFFFFF;" >'.$data2[6][1].'</a></td>
+             <td class="tintop8">'.$LK.'</td>
+             <td class="tintop9">
+              <a href="'.aPSID($langstr."/cabinet/basket/").'" target="_top" style="font-size:14px;font-weight: 300;">
+             <div id="basketcontain" style="font-size:14px;font-weight:300;color:#000;vertical-align:middle;" >
+             <img id="basketIcon" src="/icons/basket2.gif" style="vertical-align:top;" width="14px" alt=">"> <div class="totalBasketElements">0</div></div></a></td>
+                    </tr></table></FORM>';
     }
 }

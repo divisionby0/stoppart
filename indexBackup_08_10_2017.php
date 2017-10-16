@@ -1472,8 +1472,14 @@ elseif($menuname=="cabinet"){
 		case "adminwork":  $activemenu=11;break;
 		default:$activemenu=0;}
 	if($language=='en') $langreset="&language=en";
-	if($username!='Неизвестный' and $username!='Гость' ){echo PrintTopLeftMenu($showphoto,$bgColorOfBottom); echo PrintLeftMenu($activemenu);$resettext="&rst=1";} //else echo $username.$userid;
-	if($menuname2=="create") echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="1300px;" id=order name=order src="'.aPSID('/create.php'.$langaddstr).'"></IFRAME>';
+	if($username!='Неизвестный' and $username!='Гость' ){
+		echo PrintTopLeftMenu($showphoto,$bgColorOfBottom); 
+		echo PrintLeftMenu($activemenu);
+		$resettext="&rst=1";
+	}
+	if($menuname2=="create"){
+		echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="1300px;" id=order name=order src="'.aPSID('/create.php'.$langaddstr).'"></IFRAME>';
+	}
 	elseif($menuname2=="worked")	echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="1300px;" id=order name=order src="'.aPSID('/worked.php'.$langaddstr).'"></IFRAME>';
 	elseif($menuname2=="archive")	echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="1300px;" id=order name=order src="'.aPSID('/archive.php'.$langaddstr).'"></IFRAME>';
 	elseif($menuname2=="signin")	echo '<IFRAME hspace="0"  frameborder="0" marginheight="0" marginwidth="0" vspace="0" scrolling="No" width="100%" height="1300px;" id=order name=order src="'.aPSID('/signin.php'.$langaddstr).'"></IFRAME>';

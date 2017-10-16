@@ -5,8 +5,10 @@ function whichshop2(){
 	return "stoppart";
 }//return "ifarfor";
 function whichshop3(){
-	return "stoppart";
+	//return "stoppart";
+	return "ifarfor";
 }//return "ifarfor";stoppart
+
 Error_Reporting(E_ALL & ~E_NOTICE);
 //session_start();
 function get_s_var($id){// возвращает безопасную переменную сессии
@@ -149,16 +151,14 @@ function set_stat($page){
 	)
 	sql("INSERT INTO stat (ip,browser,date,page,userid) VALUES ('$REMOTE_ADDR','$isj$HTTP_USER_AGENT',NOW(),'".sqlp($page)."','".sqlp($_SESSION['s_userid'])."')");
 }
-/*
-function set_stat($page){
-sql("INSERT INTO stat (ip,browser,date,page,userid) VALUES ('".getenv("REMOTE_ADDR")."','".getenv("HTTP_USER_AGENT")."',NOW(),'".sqlp($page)."','".sqlp($_SESSION['s_userid'])."')");
-}*/
-function GET($par){return sqlp($_GET[$par]); }
+
+function GET($par){
+	return sqlp($_GET[$par]); 
+}
 function test($var){
 	echo " $var=<b>".$$var."</b>";
 }
 function is_admin(){
-	//return true;
 	global $userid;
 	$userid=get_s_var('userid');
 	$r=sql("SELECT role FROM users WHERE userid='$userid' AND role='adm' LIMIT 1");
@@ -175,8 +175,10 @@ function is_manager(){
 }
 function sql_logon(){
 	global $link;
-	$link = mysqli_connect('localhost', 'root', 'kljh76RRenJh7','stoppart');
-	if (mysqli_connect_errno()) {    printf("Не удалось подключиться: %s\n", mysqli_connect_error());    exit();}
+	$link = mysqli_connect('localhost', 'root', 'kljh76RRenJh7','stopart1');
+	if (mysqli_connect_errno()) {    
+		printf("Не удалось подключиться: %s\n", mysqli_connect_error());    
+		exit();
+	}
 	return $link; 
 }
-?>

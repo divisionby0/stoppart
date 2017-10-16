@@ -1,0 +1,53 @@
+$footer-height: 25px;
+$ifarfor-color:#887150;
+$ifarfor-hover-color:#553e36;
+$stoppart-color:blue;
+.fullwidth{
+  width: 100%;
+}
+a{
+  color: black;
+}
+a:visited{
+  color: black;
+}
+
+.smallFont{
+  font-size: 14px;
+}
+.fontBold{
+  font-weight: bold;
+}
+.noMargins{
+  margin: 0;
+}
+.floatRight{
+  display: block;
+  float: right;
+}
+.floatLeft{
+  display: block;
+  float: left;
+}
+.autoMargin{
+  margin: auto;
+}
+.centered{
+  text-align: center;
+}
+.fullHeight{
+  height: 100%;
+}
+
+.thickFont{
+  font-weight: 100;
+}
+.link{
+  a{
+    @extend .thickFont;
+    font-size: 17px;
+  }
+}
+.spacer{
+  width: 20px;
+}

@@ -2,8 +2,6 @@ $(document).ready(function(){
     var dragAnimationDuration = 600;
     var destroyAnimationDuration = 100;
 
-    //console.log($(".totalBasketElements"));
-
     var totalBasketElements;
 
     $(".totalBasketElements").each(function(index,element){
@@ -17,14 +15,7 @@ $(document).ready(function(){
     }
 
     function updateTotalBasketElements(){
-
         $(".totalBasketElements").text(totalBasketElements);
-
-        /*
-        $(".totalBasketElements").each(function(index, element){
-            $(element).text(totalBasketElements.toString());
-        });
-        */
     }
 
     $("[id*=ishop]").click(function(){

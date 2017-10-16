@@ -1,7 +1,22 @@
 
-html, body {width: 100%;FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif; font-weight: 300; font-size: 14px; background: #FFFFFF; color: #000000;}
-select {width: 100%;FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif; font-weight: 300; font-size: 14px; background-color: #FFFFFF; color: #000000;}
-input {FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif; font-weight: 300; font-size: 16px; }
+html, body {
+	width: 100%;
+	FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	background: #FFFFFF;
+	color: #000000;
+}
+select {width: 100%;
+	FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	background-color: #FFFFFF;
+	color: #000000;}
+input {FONT-FAMILY: 'Roboto Condensed', 'Trebuchet MS', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+}
 
 .checkbox {
 	position:relative;
@@ -390,6 +405,52 @@ TD.tml{ FONT-WEIGHT: bold; FONT-SIZE: 12pt; WIDTH: 199px; CURSOR: pointer; HEIGH
 		font-size: 13px;
 	}
 }
+
+.big-link {
+	display:block;
+	margin-top: 100px;
+	text-align: center;
+	font-size: 20px;
+	color: #06f;
+}
+#modalform {
+	display: none;
+	top: 100px;
+	left: 50%;
+	margin-left: -300px;
+	width: 350px;
+	background: #FFF url("/jquery/reveal/modal-gloss.png") no-repeat -200px -80px;
+	position: fixed;
+	z-index: 101;
+	padding: 30px 40px 34px;
+	-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+#modalclose {
+	font-size: 22px;
+	line-height: .5;
+	position: absolute;
+	top: 8px;
+	right: 11px;
+	color: #aaa;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+}
+#overlay {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	opacity: 0.1;
+	z-index: 100;
+	display: none;
+	top: 0;
+	left: 0;
+}
+
 
 
 

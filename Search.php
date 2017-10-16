@@ -2,18 +2,47 @@
 
 class Search
 {
-    public function __construct()
+    private $backgroundColorOfButton = "#FFFFFF";
+    public function __construct($backgroundColorOfButton)
     {
+        if(isset($backgroundColorOfButton)){
+            $this->backgroundColorOfButton = $backgroundColorOfButton;
+        }
     }
     
     public function getHTML($searchline){
+        $Uslovie = NULL;
+        //$Zagolovok=NULL;
         $searchline=sqlpz($searchline);
+        
         global $language; global $userid;
-        $rurus=sql("SELECT id FROM  brand WHERE name='Stoppard'");if(mysqli_num_rows($rurus)>0) {$roww=mysqli_fetch_array($rurus); $StoppardID=$roww['id'];}
+        $rurus=sql("SELECT id FROM  brand WHERE name='Stoppard'");
+        
+        if(mysqli_num_rows($rurus)>0) {
+            $roww=mysqli_fetch_array($rurus); 
+            $StoppardID=$roww['id'];
+        }
+        
         $menuVersion = whichshop3();
-        if($menuVersion=='ifarfor') {$bclr='AD9E82';$StoppardUslovie='';} else {$bclr='82a0ae';$StoppardUslovie=' AND Factory="'.$StoppardID.'" AND zakaz="1"';}
-        if($language=="en"){$Zagolovok='Searching results';$strbask="Add to basket";$strnothing1="On your request:"; $strnothing2="found nothing. Trying to find something else.";}
-        else{$Zagolovok='Результаты поиска';$strbask="в корзину";$strnothing1="По вашему запросу:"; $strnothing2="ничего не найдено. Попробуйте поискать что-то ещё.";}
+        if($menuVersion=='ifarfor') {
+            $bclr='AD9E82';
+            $StoppardUslovie='';
+        } else {
+            $bclr='82a0ae';
+            $StoppardUslovie=' AND Factory="'.$StoppardID.'" AND zakaz="1"';
+        }
+        if($language=="en"){
+            $Zagolovok='Searching results';
+            $strbask="Add to basket";
+            $strnothing1="On your request:"; 
+            $strnothing2="found nothing. Trying to find something else.";
+        }
+        else{
+            $Zagolovok='Результаты поиска';
+            $strbask="в корзину";
+            $strnothing1="По вашему запросу:"; 
+            $strnothing2="ничего не найдено. Попробуйте поискать что-то ещё.";
+        }
         if(substr($searchline, 0, 7)=="tagform"){
             $searchline=substr($searchline, 7);
             $Uslovie="form.name='$searchline' AND sklad>0 AND Imagefile<>'/icons/noimage.jpg' ";
@@ -103,54 +132,105 @@ class Search
                     case "KIDS": $nametitle="ДЕТЯМ";break;
                     default: ;break;}
             }
-            if($HotStr=="RUSSIANSTYLE"){$HotStr="SELECT * FROM tovsNew WHERE Rstyle='1' $SQLZapros";}
+            if($HotStr=="RUSSIANSTYLE"){
+                $HotStr="SELECT * FROM tovsNew WHERE Rstyle='1' $SQLZapros";
+            }
             elseif($HotStr=="MYLIKE"){
                 $HotStr="SELECT * FROM likeengine LEFT JOIN tovsNew ON likeengine.id = tovsNew.id WHERE likeengine.userid='$userid' ORDER BY tovsNew.name";
             }
-            elseif($HotStr=="project"){$HotStr="SELECT * FROM tovsNew WHERE TipAss='Проект'  $SQLZapros";}
+            elseif($HotStr=="project"){
+                $HotStr="SELECT * FROM tovsNew WHERE TipAss='Проект'  $SQLZapros";
+            }
             elseif($HotStr=="cobaltnet"){
-                $r=sql("SELECT id FROM picture WHERE name='Кобальтовая сетка'");$row=mysqli_fetch_array($r);$id1=$row[id];
-                $r=sql("SELECT id FROM picture WHERE name='Кобальтовая сетка Модерн'");$row=mysqli_fetch_array($r);$id2=$row[id];
-                $HotStr="SELECT * FROM tovsNew WHERE Picture='$id1' or Picture='$id2' $SQLZapros";}
+                $r=sql("SELECT id FROM picture WHERE name='Кобальтовая сетка'");
+                $row=mysqli_fetch_array($r);
+                $id1=$row['id'];
+                $r=sql("SELECT id FROM picture WHERE name='Кобальтовая сетка Модерн'");
+                $row=mysqli_fetch_array($r);
+                $id2=$row['id'];
+                $HotStr="SELECT * FROM tovsNew WHERE Picture='$id1' or Picture='$id2' $SQLZapros";
+            }
             elseif($HotStr=="nega"){
-                $r=sql("SELECT id FROM form WHERE name='Нега'");$row=mysqli_fetch_array($r);$id1=$row[id];
-                $HotStr="SELECT * FROM tovsNew WHERE Form='$id1' $SQLZapros";}
+                $r=sql("SELECT id FROM form WHERE name='Нега'");
+                $row=mysqli_fetch_array($r);
+                $id1=$row['id'];
+                $HotStr="SELECT * FROM tovsNew WHERE Form='$id1' $SQLZapros";
+            }
             elseif($HotStr=="zamoscow"){
-                $r=sql("SELECT id FROM picture WHERE name='Замоскворечье'");$row=mysqli_fetch_array($r);$id1=$row[id];
-                $HotStr="SELECT * FROM tovsNew WHERE Picture='$id1' $SQLZapros";}
-            //elseif($HotStr=="newyear"){$HotStr="SELECT  tovsNew.Height,tovsNew.Capacity,tovsNew.Width,tovsNew.Diameter,tovsNew.name,ida, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE picture.name='Замоскворечье' $SQLZapros";}
+                $r=sql("SELECT id FROM picture WHERE name='Замоскворечье'");
+                $row=mysqli_fetch_array($r);
+                $id1=$row['id'];
+                $HotStr="SELECT * FROM tovsNew WHERE Picture='$id1' $SQLZapros";
+            }
             elseif($HotStr=="nephrit"){
-                $r=sql("SELECT id FROM picture WHERE name='Нефритовый фон'");$row=mysqli_fetch_array($r);$id1=$row[id];
-                $HotStr="SELECT * FROM tovsNew WHERE Picture='$id1' $SQLZapros";}
-            elseif($HotStr=="FLOWERS"){$HotStr="SELECT * FROM tovsNew WHERE Flower='1' $SQLZapros";}
-            //elseif($HotStr=="ПРОЕКТЫ ИФЗ"){$HotStr="SELECT name,ida,id,idg,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,factory,Imagefile, Person, Predmetov FROM tovsNew WHERE TipAss='Проект' $SQLZapros";}
-            elseif($HotStr=="LITERATURE"){$HotStr="SELECT * FROM tovsNew WHERE Literature='1' $SQLZapros";}
-            elseif($HotStr=="THEATRE"){$HotStr="SELECT * FROM tovsNew WHERE Theatre='1' $SQLZapros";}
-            elseif($HotStr=="PETER"){$HotStr="SELECT * FROM tovsNew WHERE Peterburg='1' $SQLZapros";}
-            elseif($HotStr=="MOSCOW"){$HotStr="SELECT * FROM tovsNew WHERE Moscow='1' $SQLZapros";}
-            elseif($HotStr=="WEDDING"){$HotStr="SELECT * FROM tovsNew WHERE Wedding='1' $SQLZapros";}
-            elseif($HotStr=="HAPPYBD"){$HotStr="SELECT * FROM tovsNew WHERE Birthday='1' $SQLZapros";}
-            elseif($HotStr=="NEWYEAR"){$HotStr="SELECT * FROM tovsNew WHERE NY='1' $SQLZapros";}
-            elseif($HotStr=="VALENTINE"){$HotStr="SELECT * tovsNew WHERE InLove='1' $SQLZapros";}
-            elseif($HotStr=="MASL"){$HotStr="SELECT * FROM tovsNew WHERE PancakeWeek='1' $SQLZapros";}
-            elseif($HotStr=="EASTER"){$HotStr="SELECT * FROM tovsNew WHERE Easter='1' $SQLZapros";}
-            elseif($HotStr=="VICTORY"){$HotStr="SELECT * FROM tovsNew WHERE VictoryDay='1' $SQLZapros";}
-            elseif($HotStr=="FEB23"){$HotStr="SELECT * FROM tovsNew WHERE DefenderDay='1' $SQLZapros";}
-            elseif($HotStr=="MART8"){$HotStr="SELECT * FROM tovsNew WHERE WomanDay='1' $SQLZapros";}
-            elseif($HotStr=="TEACHER"){$HotStr="SELECT * FROM tovsNew WHERE TeacherDay='1' $SQLZapros";}
-            elseif($HotStr=="KIDS"){$HotStr="SELECT * FROM tovsNew WHERE Kids='1' $SQLZapros";}
-            elseif($HotStr=="WHITE"){$HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,Picture,Form,videnglish,tipenglish,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture 
+                $r=sql("SELECT id FROM picture WHERE name='Нефритовый фон'");
+                $row=mysqli_fetch_array($r);
+                $id1=$row['id'];
+                $HotStr="SELECT * FROM tovsNew WHERE Picture='$id1' $SQLZapros";
+            }
+            elseif($HotStr=="FLOWERS"){
+                $HotStr="SELECT * FROM tovsNew WHERE Flower='1' $SQLZapros";
+            }
+            elseif($HotStr=="LITERATURE"){
+                $HotStr="SELECT * FROM tovsNew WHERE Literature='1' $SQLZapros";
+            }
+            elseif($HotStr=="THEATRE"){
+                $HotStr="SELECT * FROM tovsNew WHERE Theatre='1' $SQLZapros";
+            }
+            elseif($HotStr=="PETER"){
+                $HotStr="SELECT * FROM tovsNew WHERE Peterburg='1' $SQLZapros";
+            }
+            elseif($HotStr=="MOSCOW"){
+                $HotStr="SELECT * FROM tovsNew WHERE Moscow='1' $SQLZapros";
+            }
+            elseif($HotStr=="WEDDING"){
+                $HotStr="SELECT * FROM tovsNew WHERE Wedding='1' $SQLZapros";
+            }
+            elseif($HotStr=="HAPPYBD"){
+                $HotStr="SELECT * FROM tovsNew WHERE Birthday='1' $SQLZapros";
+            }
+            elseif($HotStr=="NEWYEAR"){
+                $HotStr="SELECT * FROM tovsNew WHERE NY='1' $SQLZapros";
+            }
+            elseif($HotStr=="VALENTINE"){
+                $HotStr="SELECT * tovsNew WHERE InLove='1' $SQLZapros";
+            }
+            elseif($HotStr=="MASL"){
+                $HotStr="SELECT * FROM tovsNew WHERE PancakeWeek='1' $SQLZapros";
+            }
+            elseif($HotStr=="EASTER"){
+                $HotStr="SELECT * FROM tovsNew WHERE Easter='1' $SQLZapros";
+            }
+            elseif($HotStr=="VICTORY"){
+                $HotStr="SELECT * FROM tovsNew WHERE VictoryDay='1' $SQLZapros";
+            }
+            elseif($HotStr=="FEB23"){
+                $HotStr="SELECT * FROM tovsNew WHERE DefenderDay='1' $SQLZapros";
+            }
+            elseif($HotStr=="MART8"){
+                $HotStr="SELECT * FROM tovsNew WHERE WomanDay='1' $SQLZapros";
+            }
+            elseif($HotStr=="TEACHER"){
+                $HotStr="SELECT * FROM tovsNew WHERE TeacherDay='1' $SQLZapros";
+            }
+            elseif($HotStr=="KIDS"){
+                $HotStr="SELECT * FROM tovsNew WHERE Kids='1' $SQLZapros";
+            }
+            elseif($HotStr=="WHITE"){
+                $HotStr="SELECT tovsNew.name,ida,idg, tovsNew.id,Picture,Form,videnglish,tipenglish,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture 
 			WHERE (picture.name='БЕЛЫЙ' OR picture.name='БЕЛОСНЕЖКА' OR picture.name='Bord Platine Brillant 3176' OR picture.name='Passion Platine 6828' 
 			OR picture.name='Золотая лента' OR picture.name='Платиновая лента' OR picture.name='Bord Or' OR picture.name='Золотая отводка'
 			OR picture.name='Астория' OR picture.name='Гольф'  OR picture.name='Кружево'  OR picture.name='Облака'  OR picture.name='Севилья' 
-			OR picture.name='Феникс'   OR picture.name='Флора'   OR picture.name='Камея'   OR picture.name='Гармония' )AND Imagefile<>'/icons/noimage.jpg'  AND ((zakaz+sklad+grp)>0)  ORDER BY tovsNew.name";}
-            else{$HotStr="SELECT * FROM tovsNew WHERE Rstyle='1'  $SQLZapros";}
+			OR picture.name='Феникс'   OR picture.name='Флора'   OR picture.name='Камея'   OR picture.name='Гармония' )AND Imagefile<>'/icons/noimage.jpg'  AND ((zakaz+sklad+grp)>0)  ORDER BY tovsNew.name";
+            }
+            else{
+                $HotStr="SELECT * FROM tovsNew WHERE Rstyle='1'  $SQLZapros";
+            }
             $r=sql($HotStr);
         }
         else{
             if($searchline!=""){
                 $sql_filter='(grp=0';
-                //$searchline=iconv('utf-8', 'windows-1251', $searchline);
                 $qq=explode(" ",$searchline);
                 $num = count($qq);
                 for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND ( (lowername) LIKE  "%'.mb_strtolower($qq[$i]).'%")';
@@ -159,14 +239,14 @@ class Search
                 $sql_filter.=')';
                 $Uslovie.=$sql_filter;
             }
-            //	$query="SELECT * FROM tovsNew WHERE sklad>0 AND $Uslovie ORDER BY name";
             $r=sql("SELECT * FROM tovsNew WHERE sklad>0 $StoppardUslovie AND $Uslovie  ORDER BY name");
-
         }
-        //$rtw=sql('show variables like "%collation%"');
+        
         if(mysqli_num_rows($r)==0)
-        {$echo="<tr><td style='padding-top:20px;' colspan='5'>$strnothing1 $searchline $strnothing2 </td></tr>";
-            $Zagolovok='';}
+        {
+            $echo="<tr><td style='padding-top:20px;' colspan='5'>$strnothing1 $searchline $strnothing2 </td></tr>";
+            //$Zagolovok='';
+        }
         else{
             if($nametitle!='') $Zagolovok=$nametitle;
             $wwidth='300px';//1 $rowname,2 $vid,3 $tip,4 $picture,5 $form
@@ -176,7 +256,7 @@ class Search
 		<td  style="padding-right:10px;width:80%;background-color:#FFFFFF;text-align:right;">&nbsp;</td>
 		</tr>
 		</table>';//'.$sortpage.' height="1px">
-            $echo.= '<table style="padding:20px;" align="center" bgcolor="'.$bgColorOfBottom.'" width="100%" height="660px" cellspacing="0" cellpadding="0" border="0"><tr>';
+            $echo.= '<table style="padding:20px;" align="center" bgcolor="'.$this->backgroundColorOfButton.'" width="100%" height="660px" cellspacing="0" cellpadding="0" border="0"><tr>';
             $countquery1=mysqli_num_rows($r);
             $i=1;$j=1;
             while($row = mysqli_fetch_array($r)){
@@ -184,7 +264,9 @@ class Search
                 $queryz=sql("SELECT * FROM tovsNew WHERE id='$idg' AND grp=1 ");
                 $countqueryz=mysqli_num_rows($queryz);
                 if($countqueryz>0){
-                    $rowname=$row['name'];$Nnewprice=$row['price1s'];$Nnewprice=$Nnewprice;
+                    $rowname=$row['name'];
+                    $Nnewprice=$row['price1s'];
+                    $Nnewprice=$Nnewprice;
                     $ts=floor($Nnewprice/1000);$ed=$Nnewprice-($ts*1000);
                     if($ts=='0') $ts="";else{if($ed<10)$ed='00'.$ed;elseif($ed<100)$ed='0'.$ed;};
                     $newprice1="$ts $ed <img src='/img/rub-002.png' style='height:14px' alt='р.'>";
