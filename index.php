@@ -18,6 +18,9 @@ require_once("ContactDataFactory.php");
 require_once("Search.php");
 require_once("Catalog.php");
 require_once("php/div0/db/StrokeSQLRequestBuilder.php");
+require_once("php/div0/db/selector/HotStr3NotEmptySelectRequest.php");
+require_once("php/div0/db/selector/HotStrNotEmptySelectRequest.php");
+require_once("php/div0/db/selector/HotStringsEmptySelectRequest.php");
 require_once("php/div0/menu/utils/MenuParser.php");
 require_once("php/div0/localization/SiteLocale.php");
 require_once("php/div0/utils/Cookie.php");
@@ -26,6 +29,8 @@ require_once("php/div0/utils/PerformanceUtil.php");
 require_once("php/div0/utils/Logger.php");
 require_once("php/div0/market/ProductView.php");
 require_once("php/div0/market/ListingsView.php");
+require_once("php/div0/market/GetCatalogListings.php");
+require_once("php/div0/Settings.php");
 prepare_parse("box.inc.html");
 
 session_start();
@@ -47,8 +52,8 @@ else{
 	Cookie::clearSearchString();
 }
 
-Logger::logMessage("link:".$actual_link);
-Logger::logMessage("searchString:".$searchString);
+//Logger::logMessage("link:".$actual_link);
+//Logger::logMessage("searchString:".$searchString);
 
 
 $search = new Search($bgColorOfBottom);
@@ -64,7 +69,7 @@ if($menuVersion=='ifarfor') {
 }
 
 $searchline = $searchString;
-Logger::logMessage("searchLine:".$searchline);
+//Logger::logMessage("searchLine:".$searchline);
 
 $shiftleftmenu='23';
 $sizebetweenfilters='3';
@@ -75,7 +80,7 @@ if($searchline!='') {
 }
 
 $menuname=$urlParameters[0];
-Logger::logMessage("__menuname:".$menuname);
+//Logger::logMessage("__menuname:".$menuname);
 
 // TODO прояснить каждый из параметров
 if($menuname=="en"){
@@ -172,12 +177,14 @@ if($menuname==''){
 		$menuname3='stoppard';	
 	}
 }
+/*
 Logger::logMessage("menuname:".$menuname);
 Logger::logMessage("menuname2:".$menuname2);
 Logger::logMessage("menuname3:".$menuname3);
 Logger::logMessage("menuname4:".$menuname4);
 Logger::logMessage("menuname5:".$menuname5);
 Logger::logMessage("menuname6:".$menuname6);
+*/
 
 $menu=MenuFactory::get("ru", $menuVersion);
 $menuenglish=MenuFactory::get("en", $menuVersion);
@@ -335,7 +342,6 @@ $j=2;
 //====================================================================================================
 //====================================== О П И С А Н И Е==============================================
 //====================================================================================================
-Logger::logMessage("view:".$view);
 if($view!="")
 {
 	new ProductView($view, $search, $language, $langstr, $ComeBackToSearch,$NotOnStock1, $NotOnStock2);
@@ -343,9 +349,7 @@ if($view!="")
 elseif(($menuname=="shop" ) and $view==''){
 	Logger::logMessage("is shop and view is empty");
 	
-	// TODO listings oper time=0.93105316162109 !!!!!
 	new ListingsView($userid, $catalog, $language, $nameof, $menu, $menuenglish, $m2, $shiftleftmenu, $menuname2, $menuname3, $menuname4, $menuname5, $sortstr, $langstr, $menuVersion, $HotStr, $HotStr3, $Filter, $FILTR, $Sort, $sortpage, $ShAll, $stroka_sort, $firstpage, $numberofpages, $Zagolovok, $Typefac, $Typemat, $Typeform, $Typepic, $bgColorOfBottom, $bclr, $sizebetweenfilters, $sizebottomleftmenu, $kusokkoda1);
-	
 }
 elseif($menuname=="company")
 {

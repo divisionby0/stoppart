@@ -27,15 +27,17 @@ class ListingsView
             $spanbegin='';
             $spanend='';
 
-            //oper time=0.018001079559326
             $ruru2=sql("SELECT * FROM tovsNew WHERE idg='$idOfGroup' and grp='1'");
 
             $addstyle="padding-top:10px;padding-bottom:10px;border-top:1px solid #EEEEEE;";
             $tableforspan="<table align='left' width='100%' height='20px' cellspacing='0' cellpadding='1' border='0' ><tr><td style='width:10%;vertical-align:top;$addstyle'>";
 
-            while($rowruru2=mysqli_fetch_array($ruru2))
-            {
-                if($language=="en") $nameeng=$rowruru2['english']; else $nameeng=$rowruru2['name'];
+            while($rowruru2=mysqli_fetch_array($ruru2)) {
+                if($language=="en") {
+                    $nameeng=$rowruru2['english'];
+                } else {
+                    $nameeng=$rowruru2['name'];
+                }
 
                 //oper time=0.021001815795898
                 $ruru5=sql("SELECT * FROM tovsNew WHERE idg='".$rowruru2['id']."' and grp='0'");
@@ -454,36 +456,17 @@ class ListingsView
         //=================Если товар не выбран, то мы выводим каталог==================================
         $wwidth=strlen($Zagolovok)*9+25;
         echo '<table align="left" bgcolor="'.$bgColorOfBottom.'" width="100%" height="50px" cellspacing="0" cellpadding="0" border="0" style="padding-bottom:10px;"><tr><td style="padding-left:10px;padding-right:10px;width:'.$wwidth.'px;background-color:#'.$bclr.';FONT-SIZE:19px;color:#FFFFFF;text-align:center;"><img src="/empty.gif" width="'.$wwidth.'px" height="1px"><b>'.$Zagolovok.'</b></td><td  style="padding-right:10px;width:100%;background-color:#FFFFFF;text-align:right;">'.$sortpage.'</td></tr></table>';
-        echo '<table align="center" bgcolor="'.$bgColorOfBottom.'" width="100%" height="660px" cellspacing="0" cellpadding="0" border="0"><tr>';
 
-        if($menuname4=='stoppard' or $menuname3=='stoppard' or $menuname2=='stoppard'){
-            $menuname5='stoppard';
-        }
+        $arr = array("HotStr"=>$HotStr,"HotStr3"=>$HotStr3, "menuname2"=>$menuname2,"menuname3"=>$menuname3,"menuname4"=>$menuname4,"menuname5"=>$menuname5,"Filter"=>$Filter,"Sort"=>$Sort,"RightUslovie"=>$RightUslovie,"stroka_sort"=>$stroka_sort,"firstpage"=>$firstpage,"numberofpages"=>$numberofpages,"ShAll"=>$ShAll,"language"=>$language, "offset"=>0, "listingsRequestTotalItems"=>Settings::$listingsRequestTotalItems);
+        echo "<div style='display: none;' id='catalogParametersDataContainer'>".json_encode($arr)."</div>";
 
-        PerformanceUtil::start();
-        // show catalog oper time=0.49602794647217
-        if($menuname4==''){
-            if($menuname3==''){
-                if($menuname2==''){
-                    $a='';
-                }
-                else {
-                    $a=$catalog->getHtml($HotStr,$menuname5,$menuname2,"all",$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language);
-                }
-            }
-            else{
-                $a=$catalog->getHtml($HotStr,$menuname5,$menuname3,"all",$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language);
-            }
-        }
-        else{
-            $a=$catalog->getHtml($HotStr,$menuname5,$menuname4,"all",$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language);
-        }
-        echo $a;
-        Logger::logMessage("Show catalog takes ".PerformanceUtil::finish());
+        echo "<button type='button' id='getMoreListingButton'>Get more listings</button>";
+        Logger::logMessage("LISTINGS START");
+        $offset = 0;
+        $catalogListingsGetter = new GetCatalogListings($catalog, $menuname2, $menuname3, $menuname4, $menuname5, $HotStr, $HotStr3, $Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language, $bgColorOfBottom, $offset, Settings::$listingsRequestTotalItems);
+        echo $catalogListingsGetter->getListings();
 
-        echo'</tr></table>';
 
-        echo "<h2>View catalog complete</h2>";
         echo "</td></tr></table>";
         echo "</form>";
     }

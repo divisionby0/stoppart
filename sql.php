@@ -74,9 +74,9 @@ function new_header($loc){// переход для тех, у кого нет к
 	return;
 }
 function sql($q){
-if($link=='') $link=sql_logon();
-$r=mysqli_query($link, $q);
-return $r;
+	if($link=='') $link=sql_logon();
+	$r=mysqli_query($link, $q);
+	return $r;
 }
 function sql1($q){
 	$r=sql($q.' LIMIT 1');

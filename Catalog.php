@@ -2,16 +2,38 @@
 
 class Catalog
 {
+    //private $offset = 0;
     public function __construct()
     {
 
     }
 
-    public function getHtml($HotStr,$page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language){
-        global $HotStr3;
-        $echo="";
-        $dollar=GetCurentKursDolars();
-        if($Uslovie=="all") $Uslovie="";
+    public function getHtml($HotStr,$HotStr3, $page,$group,$Uslovie,$Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language, $offset, $listingsRequestTotalItems){
+
+        /*
+        Logger::logMessage("Catalog getting html...");
+        Logger::logMessage("HotStr=".$HotStr);
+        Logger::logMessage("HotStr3=".$HotStr3);
+        Logger::logMessage("page=".$page);
+        Logger::logMessage("group=".$group);
+        Logger::logMessage("Uslovie=".$Uslovie);
+        Logger::logMessage("Filter=".$Filter);
+        Logger::logMessage("Sort=".$Sort);
+        Logger::logMessage("RightUslovie=".$RightUslovie);
+        Logger::logMessage("stroka_sort=".$stroka_sort);
+        Logger::logMessage("firstpage=".$firstpage);
+        Logger::logMessage("numberofpages=".$numberofpages);
+        Logger::logMessage("ShAll=".$ShAll);
+        Logger::logMessage("language=".$language);
+        Logger::logMessage("offset=".$offset);
+        Logger::logMessage("listingsRequestTotalItems=".$listingsRequestTotalItems);
+        */
+
+        $echo = "";
+
+        if($Uslovie=="all") {
+            $Uslovie="";
+        }
         $pobeda=$_GET['pobeda'];
 
         if($language=="en"){
@@ -28,81 +50,33 @@ class Catalog
             $bclr='82a0ae';
         }
 
-        if($HotStr=='' and $HotStr3=='')
+        if($HotStr=='' && $HotStr3=='')
         {
-            if($Filter!=""){
-                $sql_filter='HAVING 1=1 AND ((zakaz+sklad+grp)>0)'; $qq=explode("|",$Filter); $num = count($qq);
-                for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND (name LIKE "%'.sqlp($qq[$i]).'%")';$Uslovie.=$sql_filter;}
-            $Uslovie.=$RightUslovie." ORDER BY ";
-            switch($Sort){
-                case "n": $Uslovie.="name";break; case "-n": $Uslovie.="name DESC";break;
-                case "p": $Uslovie.="price1s";break; case "-p": $Uslovie.="price1s DESC";break;
-                default: $Uslovie.="name";break;
-            }
-
-            if($page=='stoppard') $Diameter200="  and zakaz='1' "; else $Diameter200='AND ((zakaz+sklad)>0)';
-
-            $SQLZapros="SELECT * FROM tovsNew WHERE (idg='$group' ";$query0=sql("SELECT id FROM tovsNew WHERE idg='$group' AND grp=1 ");
-
-            $countquery1=mysqli_num_rows($query0);
-
-            while($row = mysqli_fetch_array($query0)) {
-                $iddd=$row['id'];
-                $SQLZapros=$SQLZapros." or idg ='$iddd'";
-            }
-
-            if($ShAll==1){
-                $SQLZapros.=")AND grp=0 $Diameter200 $Uslovie";
-            }
-            else {
-                $SQLZaprosTest=$SQLZapros.")AND grp=0 AND Imagefile<>'/icons/noimage.jpg' $Diameter200 $Uslovie";
-                $query1=sql($SQLZaprosTest);
-                $countquery1=mysqli_num_rows($query1);
-                if($countquery1==0){
-                    $SQLZapros.=")AND grp=0 $Diameter200 $Uslovie";
-                }
-                else{
-                    $SQLZapros.=")AND grp=0 AND Imagefile<>'/icons/noimage.jpg' $Diameter200 $Uslovie";
-                }
-            }
-
-            // query1 oper time=0.036002159118652
-            $query1=sql($SQLZapros);
+            $request = new HotStringsEmptySelectRequest($Filter, $Uslovie, $RightUslovie, $Sort, $page, $group, $ShAll, $offset, $listingsRequestTotalItems);
+            $query1=$request->create();
         }
         elseif($HotStr!='')
         {
-            if($ShAll=="1") $SQLZapros="AND grp=0 AND ((zakaz+sklad)>0) ORDER BY name";//post('ShowFoto')=='yes'
-            else $SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad)>0) ORDER BY name";//
-            if($HotStr=="RUSSIANSTYLE"){$HotStr="SELECT * FROM tovsNew WHERE Rstyle='1'  $SQLZapros";}
-            elseif($HotStr=="project"){$HotStr="SELECT * FROM tovsNew WHERE TipAss='Проект'  $SQLZapros";}
-            elseif($HotStr=="cobaltnet"){$HotStr="SELECT  tovsNew.Height,tovsNew.Capacity,tovsNew.Width,tovsNew.Diameter,tovsNew.name,ida, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE (picture.english='Cobalt net' or picture.name='Кобальтовая сетка Модерн') $SQLZapros";}
-            elseif($HotStr=="nega"){$HotStr="SELECT  tovsNew.Height,tovsNew.Capacity,tovsNew.Width,tovsNew.Diameter,tovsNew.name,ida, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM form LEFT JOIN tovsNew ON form.id = tovsNew.Form WHERE form.name='Нега' $SQLZapros";}
-            elseif($HotStr=="zamoscow"){$HotStr="SELECT  tovsNew.Height,tovsNew.Capacity,tovsNew.Width,tovsNew.Diameter,tovsNew.name,ida, tovsNew.id,price1s,sklad,vid,Tip,picture,AutorPicture,form,TipOfMaterial,Factory,Imagefile, Person, Predmetov FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE picture.name='Замоскворечье' $SQLZapros";}
-            elseif($HotStr=="newyear"){$HotStr="SELECT * FROM tovsNew WHERE NY='1' $SQLZapros";}
-            elseif($HotStr=="nephrit"){$HotStr="SELECT * FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE (picture.name='Нефритовый фон' or  picture.name='Нефритовый фон 2') $SQLZapros";}
-
-            $query1=sql($HotStr);
+            $request = new HotStrNotEmptySelectRequest($HotStr, $ShAll, $offset, $listingsRequestTotalItems);
+            $query1=$request->create();
         }
         else
         {
-            if($HotStr3!=''){
-                $SQLZapros="AND grp=0 AND Imagefile<>'/icons/noimage.jpg' AND ((zakaz+sklad)>0) ORDER BY name DESC";//
-                if($HotStr3=="newyear"){$HotStr="SELECT * FROM tovsNew WHERE NY='1' $SQLZapros";}
-                elseif($HotStr3=="cobaltnet"){$HotStr="SELECT  * FROM picture LEFT JOIN tovsNew ON picture.id = tovsNew.Picture WHERE (picture.english='Cobalt net' or picture.name='Кобальтовая сетка Модерн')
-		AND grp=0 AND ((zakaz+sklad)>0)  AND Imagefile<>'/icons/noimage.jpg' ORDER BY tovsNew.tip ";}
-                elseif($HotStr3=="love"){$HotStr="SELECT * FROM tovsNew WHERE InLove='1' $SQLZapros";}
-                elseif($HotStr3=="easter"){$HotStr="SELECT * FROM tovsNew WHERE Easter='1' $SQLZapros";}
-                elseif($HotStr3=="russianstyle"){$HotStr="SELECT * FROM tovsNew WHERE Rstyle='1' $SQLZapros";}
-
-                $query1=sql($HotStr);
+            if($HotStr3!='')
+            {
+                $request = new HotStr3NotEmptySelectRequest($HotStr3, $offset, $listingsRequestTotalItems);
+                $query1=$request->create();
             }
         }
+
         $countquery1=mysqli_num_rows($query1);
+        
         $counterofpage=0;
         $firstpiece=($firstpage-1)*$numberofpages;
         $lastpiece=$firstpiece+$numberofpages;
 
-        if($lastpiece==0){
+        if($lastpiece==0)
+        {
             $lastpiece=1000;
             $i=1;
             $j=1;
@@ -115,18 +89,12 @@ class Catalog
 
         // TODO я предполагаю что 0 это отсутствие на складе а 1 - присутствие
         $images = array("0"=>"bug.gif","1"=>"bag.gif");
-
         $dimensions = array("en"=>" mm",""=>" мм");
 
-        $flashbackcolor='red';
-        $backcolor='blue';
-
-        //PerformanceUtil::start();
-        // IF DOGS SELECTION  http://stoppart/shop/sculpture/animalist/Dogs/sortbycost0142
-        // while loop takes time: 1.2920739650726
+        $items = array();
+        
         while($row = mysqli_fetch_array($query1)){
             $counterofpage++;
-
             if($counterofpage>$firstpiece && $counterofpage<=$lastpiece)
             {
                 $rowname=$row[$rownamelang];
@@ -168,7 +136,6 @@ class Catalog
                 $Predmetov=$row['Predmetov'];
                 $AutorPicture=$row['AutorPicture'];
 
-
                 $frontname=MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial,$Person,$Predmetov,$AutorPicture, $Height,$Capacity,$Diameter,$Width,$engtip,$engvid,$language);
                 $bottomname=MakeBottomName($brandid,$newprice1,$language);
 
@@ -209,7 +176,7 @@ class Catalog
                     if(($Prov=='0') and ($pobeda=='1')){
                         $i=$i-1;
                         echo'1';
-                    }//пропускаем товар, которого нет в магазине
+                    }
                     else{
                         $echo.="<td class='ifzshop' style='$sti'><table  cellpadding='0' cellspacing='0' class='cat'><tr><td class='cat1'><a href='".aPSID("$stroka_sort/view$realname")."' target='_blank'>$frontname</a></td></tr><td class='cat2'><a href='".aPSID("$stroka_sort/view$realname")."' target='_blank'>$imginsert</a></td></tr><td class='cat3'>$bottomname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='".aPSID("/set.php?oper=add_tov&tov_id=$id&language=$language")."' id='ishop$id' target='market'>$strbask </a>$printlike</td></tr></table></td>";
                     }
@@ -222,8 +189,6 @@ class Catalog
             }
         }
 
-        //Logger::logMessage("while loop takes ".PerformanceUtil::finish());
-
         while($j++<3){
             $echo.="<td style='background-color:#FFFFFF;' ></td>";
         }
@@ -231,12 +196,13 @@ class Catalog
         $echo.="</tr><tr>";
         if($numberofpages<$countquery1 and $numberofpages>0){
             $bhref="$stroka_sort/sortbycost";
-            $echo.="<td colspan='3' style='padding-top:30px;text-align:center;height:40px;'>
-		<table align='center' cellpadding='2' cellspacing='10'><tr>";
+            $echo.="<td colspan='3' style='padding-top:30px;text-align:center;height:40px;'><table align='center' cellpadding='2' cellspacing='10'><tr>";
             $echo.=" <td width='44%'>&nbsp;</td>";
             $npage=0;
             $addecho='';
-            while($npage*$numberofpages<$countquery1){
+
+            while($npage*$numberofpages<$countquery1)
+            {
                 if($npage++<9){
                     $addprn='0';
                 } else{

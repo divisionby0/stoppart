@@ -1,6 +1,9 @@
 $(document).ready(function(){
     console.log("doc ready");
 
+    var catalogCurrentOffset = 0;
+    var getCatalogListingsTotalItems = 2;
+
     var scrollMax = 154;
     var currentState;
     var NORMAL = "NORMAL";
@@ -21,7 +24,44 @@ $(document).ready(function(){
     var destroyAnimationDuration = 100;
 
     var totalBasketElements;
-    
+
+    var catalogParametersData = $("#catalogParametersDataContainer").text();
+    var catalogParameters = JSON.parse(catalogParametersData);
+
+    getCatalogListingsTotalItems = catalogParameters.listingsRequestTotalItems;
+
+    console.log("catalogParameters=",catalogParameters);
+
+    $("#getMoreListingButton").click(function(){
+        catalogCurrentOffset+=getCatalogListingsTotalItems;
+        // create ajax
+
+        $.get( "/php/div0/getCatalogListingsRequest.php", {
+            menuname2: catalogParameters.menuname2,
+            menuname3: catalogParameters.menuname3,
+            menuname4: catalogParameters.menuname4,
+            menuname5: catalogParameters.menuname5,
+            HotStr: catalogParameters.HotStr,
+            HotStr3: catalogParameters.HotStr3,
+            Filter: catalogParameters.Filter,
+            Sort: catalogParameters.Sort,
+            RightUslovie: catalogParameters.RightUslovie,
+            stroka_sort: catalogParameters.stroka_sort,
+            firstpage: catalogParameters.firstpage,
+            numberofpages: catalogParameters.numberofpages,
+            ShAll: catalogParameters.ShAll,
+            language: catalogParameters.language,
+            bgColorOfBottom: catalogParameters.bgColorOfBottom,
+            offset: catalogCurrentOffset,
+            listingsRequestTotalItems:catalogParameters.listingsRequestTotalItems
+        } )
+            .done(function( data ) {
+                console.log("ajax response "+data);
+                var infoElement = $(data);
+                infoElement.appendTo($("#catalogListings"));
+            });
+    });
+
     onScroll();
 
     function LikeEngine(tag){

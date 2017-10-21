@@ -509,6 +509,7 @@ function MakeShortName($tovid,$language)
 		}
 	}
 }
+
 function MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial,$Person,$Predmetov,$AutorPicture, $Height,$Capacity,$Diameter,$Width,$engtip,$engvid,$language)
 {
 	$PPPers='';
@@ -713,51 +714,51 @@ $echo.='</div>';
 $echo.='</td></tr></table></td><td>';
 	return $echo;
 }
-function ProverkaNal($tovid,$shop)//проверка наличия на складе
+
+function ProverkaNal($tovid,$shop)
 {
-$QuantStr=sql("SELECT * FROM quants WHERE tov_id='$tovid' and shopid='$shop'");
-$countQuantStr=mysqli_num_rows($QuantStr);mysqli_free_result($QuantStr);
-if($countQuantStr>0) return 1; else return 0;
+	$QuantStr=sql("SELECT * FROM quants WHERE tov_id='$tovid' and shopid='$shop'");
+	$countQuantStr=mysqli_num_rows($QuantStr);
+	mysqli_free_result($QuantStr);
+	if($countQuantStr>0) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
 function QuantsInShop($rowRealID,$case,$language)
 {
-if($language=="en")
-{
-$ostatki="STOCK BALANCE";$MALO="A LITTLE BIT";$NAL="IN STOCK";$MNOGO="A LOT";
-$Addr1="Russia, Togliatty, Vega";
-$Addr2="Russia, Samara, Frunze st., 86";
-$Addr3="Russia, Ulyanovsk, Goncharova st., 5";
-$Addr4="Russia, Samara, Rus";
-$Addr5="Russia, Togliatty, Pobedi st., 78";
-$Addr6="Russia, Ufa, Karl Marx st., 25";
-$Addr7="Russia, Kazan, Chernyshevskii st., 27a";
-$Addr8="Russia, Saratov, Volskaya st., 87";
-$Addr9="Russia, Kazan, Korston, Ershov st., 1a";
-		$Uslovia="<HR style='margin-top:10px;'>
-		<li style='padding-top:10px;'>We can make delivery to any point of world.</li>
-		<li>Our partners of delivery are DHL and Fedex.</li>";
-}
-else
-{
-$ostatki="ОСТАТКИ В МАГАЗИНАХ";$MALO="Мало";$NAL="В наличии";$MNOGO="Много";
-$Addr1="г. Тольятти, ТРЦ Вега, ул. Юбилейная, 40";
-$Addr2="г. Самара, ул. Фрунзе, 86";
-$Addr3="г. Ульяновск, ул. Гончарова, 5";
-$Addr4="г. Самара, ТЦ Русь на Волге";
-$Addr5="г. Тольятти, ул. Победы, 78";
-$Addr6="г. Уфа, ул. Карла Маркса, 25";
-$Addr7="г. Казань, ул. Чернышевского, 27a";
-$Addr8="г. Саратов, ул. Вольская, 87";
-$Addr9="г. Казань, ГТРК Корстон, ул. Н. Ершова, 1а";
-		$Uslovia="<HR style='margin-top:10px;'>
-		<li style='padding-top:10px;'>Предварительной оплаты не требуется. </li>
-		<li>Оплата наличными при получении</li>
-		<li>Доставка в любой город РФ от 300 рублей.</li>
-		<li>Бесплатная доставка до пункта выдачи по России при заказе от 5000 рублей.</li>
-		<li>Бесплатная доставка до адреса по России при заказе от 10000 рублей*.</li>
-		<li>Обычно доставка до адреса по г. Москве осуществляется в течение 2-3 рабочих дней.</li>
-		<li><br><a href='/delivery' class='usuallink1' target='_blank'>*Подробные условия доставки можно посмотреть здесь</a>.</li>";
-}
+	if($language=="en")
+	{
+		$ostatki="STOCK BALANCE";
+		$MALO="A LITTLE BIT";
+		$NAL="IN STOCK";
+		$MNOGO="A LOT";
+		$Addr1="Russia, Togliatty, Vega";
+		$Addr2="Russia, Samara, Frunze st., 86";
+		$Addr3="Russia, Ulyanovsk, Goncharova st., 5";
+		$Addr4="Russia, Samara, Rus";
+		$Addr5="Russia, Togliatty, Pobedi st., 78";
+		$Addr6="Russia, Ufa, Karl Marx st., 25";
+		$Addr7="Russia, Kazan, Chernyshevskii st., 27a";
+		$Addr8="Russia, Saratov, Volskaya st., 87";
+		$Addr9="Russia, Kazan, Korston, Ershov st., 1a";
+		$Uslovia="<HR style='margin-top:10px;'><li style='padding-top:10px;'>We can make delivery to any point of world.</li><li>Our partners of delivery are DHL and Fedex.</li>";
+	}
+	else
+	{
+		$ostatki="ОСТАТКИ В МАГАЗИНАХ";$MALO="Мало";$NAL="В наличии";$MNOGO="Много";
+		$Addr1="г. Тольятти, ТРЦ Вега, ул. Юбилейная, 40";
+		$Addr2="г. Самара, ул. Фрунзе, 86";
+		$Addr3="г. Ульяновск, ул. Гончарова, 5";
+		$Addr4="г. Самара, ТЦ Русь на Волге";
+		$Addr5="г. Тольятти, ул. Победы, 78";
+		$Addr6="г. Уфа, ул. Карла Маркса, 25";
+		$Addr7="г. Казань, ул. Чернышевского, 27a";
+		$Addr8="г. Саратов, ул. Вольская, 87";
+		$Addr9="г. Казань, ГТРК Корстон, ул. Н. Ершова, 1а";
+		$Uslovia="<HR style='margin-top:10px;'><li style='padding-top:10px;'>Предварительной оплаты не требуется. </li><li>Оплата наличными при получении</li><li>Доставка в любой город РФ от 300 рублей.</li><li>Бесплатная доставка до пункта выдачи по России при заказе от 5000 рублей.</li><li>Бесплатная доставка до адреса по России при заказе от 10000 рублей*.</li><li>Обычно доставка до адреса по г. Москве осуществляется в течение 2-3 рабочих дней.</li><li><br><a href='/delivery' class='usuallink1' target='_blank'>*Подробные условия доставки можно посмотреть здесь</a>.</li>";
+	}
 $QuantStr=sql("SELECT * FROM quants WHERE tov_id='$rowRealID' ORDER BY shopid ");
 $countQuantStr=mysqli_num_rows($QuantStr);
 if($countQuantStr>0) {
