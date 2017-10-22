@@ -2,5 +2,5 @@
 
 class Settings
 {
-    public static $listingsRequestTotalItems = 4;
+    public static $listingsRequestTotalItems = 6;
 }

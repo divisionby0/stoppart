@@ -18,8 +18,8 @@ class HTMLHead
 " />
 <meta name="description" content="Императорский фарфор. Официальный магазин ИФЗ." />
 <META http-equiv=content-type content="text/html; charset=UTF-8"><base target="_top"></base>
-';//<link href="/bitrix/templates/gipertwo_/favicon.ico" rel="shortcut icon">
-//Счетчик Гугла
+';
+        echo '<link rel="stylesheet" type="text/css" href="js/libs/bootstrap_4_0_0/css/bootstrap.min.css" />';
         echo '	<script type="text/javascript" src="/jquery-1.8.2.min.js"></script>';
         //echo '	<script type="text/javascript" src="/js/div0/basket.js"></script>';
         echo "<script type='text/javascript'>

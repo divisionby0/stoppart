@@ -71,21 +71,23 @@ color:black;
 vertical-align:top;
 }
 #scrollup {
-position: fixed;
-opacity: 0.5;
-float: right;
-padding: 0px 0px 0px 0px;
-background: #aaa;
-border-radius: 0px;
--webkit-border-radius: 0px;
--moz-border-radius: 0px;
-right: 10px;
-bottom: 10px;
-display: none; 
-cursor: pointer;
-color:black;
-vertical-align:top;
+	position: fixed;
+	opacity: 0.5;
+	float: right;
+	padding: 0px 0px 0px 0px;
+	background: #aaa;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	right: 10px;
+	bottom: 10px;
+	display: none;
+	cursor: pointer;
+	color:black;
+	vertical-align:top;
+	z-index: 3;
 }
+
 #bag {
 position: fixed; 
 opacity: 1.0; 
@@ -450,6 +452,104 @@ TD.tml{ FONT-WEIGHT: bold; FONT-SIZE: 12pt; WIDTH: 199px; CURSOR: pointer; HEIGH
 	top: 0;
 	left: 0;
 }
+
+
+
+.catalogListingsItem{
+	padding: 6px;
+	height: auto;
+}
+.catalogListingsItem img{
+	width: 99%;
+	padding-left: 1px;
+}
+
+.catalogListingsItem:hover{
+	/*
+	box-shadow: 0 1px 11px 1px;
+	border-radius: 4px;
+	*/
+}
+
+.catalogListingsItemHeader{
+	width: 100%!important;
+	height: 100px;
+}
+.catalogListingsItemHeader a{
+	color: black!important;
+}
+.catalogListingsItemHeader a:hover{
+	color: black!important;
+}
+
+.catalogListingsItemContent{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #DDDDDD;
+}
+
+.catalogListingsItemContent:hover{
+	box-shadow: 0 1px 11px 1px;
+	border-radius: 4px;
+}
+
+.catalogListingsItemFooterTextContainer{
+	height: 60px;
+	padding-left: 12px;
+	padding-top: 8px;
+}
+.catalogListingsItemFooterLikeContainer{
+	height: 30px;
+	padding-left: 12px;
+}
+.catalogListingsItemTextView{
+	display: block;
+	float: left;
+}
+.spacer{
+	display: block;
+	float: left;
+	width: 20px;
+}
+.catalogListingsItemTextView::after{
+	content:"\00a0";
+}
+.catalogListingsItemTextView::before{
+	content:"\00a0";
+}
+.catalogListingsItemPriceView{
+	display: block;
+	float: left;
+	font-weight: 700;
+}
+.likeElement{
+	color: #AD9E82;
+	font-size: 14px!important;
+}
+.catalogListingsItemPriceRubView{
+	display: block;
+	float: left;
+	width: 11px;
+	height: 14px;
+	margin-top: -7px;
+	margin-left: 1px;
+	background: url("img/rub-002.png") no-repeat;
+	background-size: cover;
+}
+.likeImage{
+	width: 22px!important;
+	height: 21px!important;
+	margin-top: -6px;
+}
+#menuContainer{
+	z-index: 1;
+}
+#catalogListings{
+	z-index: 0;
+}
+
+
+
 
 
 

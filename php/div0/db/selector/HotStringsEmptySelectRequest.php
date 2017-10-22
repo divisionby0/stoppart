@@ -3,12 +3,18 @@
 class HotStringsEmptySelectRequest
 {
     private $requestString;
+    
     public function __construct($Filter, $Uslovie, $RightUslovie, $Sort, $page, $group, $ShAll, $offset, $numItems = 9)
     {
         $this->requestString = "";
+        
         if($Filter!=""){
-            $sql_filter='HAVING 1=1 AND ((zakaz+sklad+grp)>0)'; $qq=explode("|",$Filter); $num = count($qq);
-            for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND (name LIKE "%'.sqlp($qq[$i]).'%")';$Uslovie.=$sql_filter;}
+            $sql_filter='HAVING 1=1 AND ((zakaz+sklad+grp)>0)'; 
+            $qq=explode("|",$Filter); 
+            $num = count($qq);
+            for($i = 0; $i < $num; $i ++ ) $sql_filter.=' AND (name LIKE "%'.sqlp($qq[$i]).'%")';$Uslovie.=$sql_filter;
+        }
+        
         $Uslovie.=$RightUslovie." ORDER BY ";
         
         switch($Sort){
@@ -76,5 +82,4 @@ class HotStringsEmptySelectRequest
     public function create(){
         return sql($this->requestString);
     }
-    
 }

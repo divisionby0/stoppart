@@ -52,10 +52,6 @@ else{
 	Cookie::clearSearchString();
 }
 
-//Logger::logMessage("link:".$actual_link);
-//Logger::logMessage("searchString:".$searchString);
-
-
 $search = new Search($bgColorOfBottom);
 $catalog = new Catalog();
 $HotStr='';
@@ -177,6 +173,7 @@ if($menuname==''){
 		$menuname3='stoppard';	
 	}
 }
+
 /*
 Logger::logMessage("menuname:".$menuname);
 Logger::logMessage("menuname2:".$menuname2);
@@ -211,9 +208,16 @@ $menuname= $filtersData["menuname"];
 $tekname = $filtersData["tekname"];
 $m2 = $filtersData["m2"];
 
+$addlang = "";
 if($language=='en'){
 	$addlang="&language=en";
+	echo "<div id='currentLanguage'>en</div>";
 }
+else{
+	echo "<div id='currentLanguage'>ru</div>";
+}
+echo "<div id='currentAddLanguage'>".$addlang."</div>";
+echo "<div id='userId'>".$userid."</div>";
 new HTMLHead($userid, $addlang, $MainLabel);
 
 echo '<body bgcolor="#FFFFFF" link="#333366" alink="#333366" vlink="#990099" text="#000000" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0"><link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=cyrillic,latin" rel=stylesheet type=text/css><link href="/'.cssname().'" type=text/css rel=stylesheet>';
@@ -320,8 +324,9 @@ elseif(($menuname=='shop' or $searchline!="") and $view==''){
 	}
 
 	$kusokkoda1.='<div id="scrollup"><img width="50px" alt="'.$Rollupalt.'" src="/img/up.png"></div></td></tr></table></td>';
+
 	//========================средний кадр страницы добавляем в переменную $kusokkoda1===============================
-	$kusokkoda1.='<td id="midFrame" height="342px" align="left" style="VERTICAL-ALIGN: top;BACKGROUND-COLOR: '.$bgColorOfBottom.';padding-left:10px;padding-right:27px;">';//width="776px"
+	$kusokkoda1.='<td id="midFrame" height="342px" align="left" style="VERTICAL-ALIGN: top;BACKGROUND-COLOR: '.$bgColorOfBottom.';padding-left:10px;padding-right:27px;">';
 	//=========нижнюю часть левого кадра страницы для всяких музеев и контактов - заносим в переменную $kusokkoda2=======
 
 	$kusokkoda2='</td></tr><tr><td height="12px" align="left" style="VERTICAL-ALIGN: top;BACKGROUND-COLOR: #F6F6F4;PADDING-LEFT:0px;PADDING-RIGHT:0px;PADDING-TOP:0px;PADDING-BOTTOM:0px;"></td></tr><tr><td width="203px" height="106px" align="left" style="VERTICAL-ALIGN: top;BACKGROUND-COLOR: '.$bgColorOfBottom.';"><a href="http://www.hermitagemuseum.org/html_Ru/12/2003/hm12_3_3.html" target="_blank"><img src="/img/hermitage.gif"></a></td></tr><tr><td width="203px" height="695px" align="left" style="VERTICAL-ALIGN: bottom;BACKGROUND-COLOR: '.$bgColorOfBottom.';color : #999999;">© 1744-2017</td>';

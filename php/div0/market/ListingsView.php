@@ -462,10 +462,14 @@ class ListingsView
 
         echo "<button type='button' id='getMoreListingButton'>Get more listings</button>";
         Logger::logMessage("LISTINGS START");
+        
+        /*
         $offset = 0;
         $catalogListingsGetter = new GetCatalogListings($catalog, $menuname2, $menuname3, $menuname4, $menuname5, $HotStr, $HotStr3, $Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language, $bgColorOfBottom, $offset, Settings::$listingsRequestTotalItems);
         echo $catalogListingsGetter->getListings();
-
+        */
+        echo "<div id='catalogListings' class='row'></div>";
+        
 
         echo "</td></tr></table>";
         echo "</form>";

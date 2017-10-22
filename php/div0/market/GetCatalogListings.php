@@ -20,8 +20,9 @@ class GetCatalogListings
     private $bgColorOfBottom;
     private $offset;
     private $listingsRequestTotalItems;
+    private $userId;
     
-    public function __construct(Catalog $catalog, $menuname2, $menuname3, $menuname4, $menuname5, $HotStr, $HotStr3, $Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language, $bgColorOfBottom, $offset, $listingsRequestTotalItems)
+    public function __construct(Catalog $catalog, $menuname2, $menuname3, $menuname4, $menuname5, $HotStr, $HotStr3, $Filter,$Sort,$RightUslovie,$stroka_sort,$firstpage,$numberofpages,$ShAll,$language, $bgColorOfBottom, $offset, $listingsRequestTotalItems, $userId)
     {
         $this->catalog = $catalog;
         $this->menuname2 = $menuname2;
@@ -41,6 +42,7 @@ class GetCatalogListings
         $this->bgColorOfBottom = $bgColorOfBottom;
         $this->offset = $offset;
         $this->listingsRequestTotalItems = $listingsRequestTotalItems;
+        $this->userId = $userId;
     }
     
     public function getListings($useContainer = true){
@@ -62,15 +64,15 @@ class GetCatalogListings
                     $a='';
                 }
                 else {
-                    $a=$this->catalog->getHtml($this->HotStr, $this->HotStr3, $this->menuname5, $this->menuname2, "all", $this->Filter, $this->Sort, $this->RightUslovie, $this->stroka_sort,$this->firstpage,$this->numberofpages,$this->ShAll,$this->language, $this->offset, $this->listingsRequestTotalItems);
+                    $a=$this->catalog->getData($this->HotStr, $this->HotStr3, $this->menuname5, $this->menuname2, "all", $this->Filter, $this->Sort, $this->RightUslovie, $this->stroka_sort,$this->firstpage,$this->numberofpages,$this->ShAll,$this->language, $this->offset, $this->listingsRequestTotalItems, $this->userId );
                 }
             }
             else{
-                $a=$this->catalog->getHtml($this->HotStr, $this->HotStr3, $this->menuname5, $this->menuname3, "all", $this->Filter, $this->Sort, $this->RightUslovie, $this->stroka_sort,$this->firstpage,$this->numberofpages,$this->ShAll,$this->language, $this->offset, $this->listingsRequestTotalItems);
+                $a=$this->catalog->getData($this->HotStr, $this->HotStr3, $this->menuname5, $this->menuname3, "all", $this->Filter, $this->Sort, $this->RightUslovie, $this->stroka_sort,$this->firstpage,$this->numberofpages,$this->ShAll,$this->language, $this->offset, $this->listingsRequestTotalItems, $this->userId );
             }
         }
         else{
-            $a=$this->catalog->getHtml($this->HotStr, $this->HotStr3, $this->menuname5, $this->menuname4, "all", $this->Filter, $this->Sort, $this->RightUslovie, $this->stroka_sort,$this->firstpage,$this->numberofpages,$this->ShAll,$this->language, $this->offset, $this->listingsRequestTotalItems);
+            $a=$this->catalog->getData($this->HotStr, $this->HotStr3, $this->menuname5, $this->menuname4, "all", $this->Filter, $this->Sort, $this->RightUslovie, $this->stroka_sort,$this->firstpage,$this->numberofpages,$this->ShAll,$this->language, $this->offset, $this->listingsRequestTotalItems, $this->userId );
         }
 
         $resultHtml.=$a;

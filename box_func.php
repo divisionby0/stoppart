@@ -510,10 +510,21 @@ function MakeShortName($tovid,$language)
 	}
 }
 
-function MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial,$Person,$Predmetov,$AutorPicture, $Height,$Capacity,$Diameter,$Width,$engtip,$engvid,$language)
+function MakeFrontName($brandid, $rowname, $vid, $tip, $picture, $form, $TipOfMaterial, $Person, $Predmetov, $AutorPicture, $Height, $Capacity, $Diameter, $Width, $engtip, $engvid, $language)
 {
 	$PPPers='';
-
+	$requestString = "";
+	
+	if($language!="en"){
+		$language = "ru";
+	}
+	
+	$DiameterAliases = array("ru"=>"Диаметр","en"=>"Diameter");
+	$mmAliases = array("ru"=>" мм. ","en"=>" mm. ");
+	$mlAliases = array("ru"=>" мл. ","en"=>" ml. ");
+	$formAliases = array("ru"=>"Форма","en"=>"Form");
+	$heightAliases = array("ru"=>"Высота","en"=>"Height");
+	
 	if($Person!='0' and $Person!='' and $Person!='1'  and $Predmetov!='0' and $Predmetov!='1' and $Predmetov!=''){
 		$PPPers=$Person."/".$Predmetov.' ';
 	}
@@ -533,8 +544,10 @@ function MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial
 		if($formname==""){
 			$formname=$row['name'];
 		}
+
 		$row=mysqli_fetch_array(sql("SELECT * FROM brand where id='$brandid'"));
 		$brand=$row['name'];
+
 		$row=mysqli_fetch_array(sql("SELECT * FROM material where id='$TipOfMaterial'"));
 		$TipOfMaterialname=$row['english'];
 
@@ -543,62 +556,95 @@ function MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial
 		}
 		$row=mysqli_fetch_array(sql("SELECT * FROM creator where id='$AutorPicture'"));
 		$AutorPictureName=$row['english'];
-		$MM=" mm. ";
-		$ML=" ml. ";
-		$formen="Form";
-		$highen="Height";
-		$Diam="Diameter";
 	}
 	else
 	{
-		$row=mysqli_fetch_array(sql("SELECT * FROM picture where id='$picture'"));
-		$picturename=$row['name'];
-		$row=mysqli_fetch_array(sql("SELECT * FROM form where id='$form'"));
-		$formname=$row['name'];
-		$row=mysqli_fetch_array(sql("SELECT * FROM material where id='$TipOfMaterial'"));
-		$TipOfMaterialname=$row['name'];
-		$row=mysqli_fetch_array(sql("SELECT * FROM brand where id='$brandid'"));
-		$brand=$row['name'];
-		$row=mysqli_fetch_array(sql("SELECT * FROM creator where id='$AutorPicture'"));
-		$AutorPictureName=$row['name'];
-		$MM=" мм. ";
-		$ML=" мл. ";
-		$formen="Форма";
-		$highen="Высота";
-		$Diam="Диаметр";
+		$requestString = 'SELECT (SELECT name FROM picture WHERE  id = '.$picture.') AS picture,(SELECT name FROM form WHERE  id = '.$form.') AS form, (SELECT name FROM material WHERE id='.$TipOfMaterial.') as material,(SELECT name FROM creator WHERE id='.$AutorPicture.') AS creator';
+		$row=mysqli_fetch_array(sql($requestString));
+		$picturename=$row["picture"];
+		$formname=$row["form"];
+		$TipOfMaterialname=$row["material"];
+		$AutorPictureName=$row["creator"];
 	}
+
+	$Diam = $DiameterAliases[$language];
+	$MM = $mmAliases[$language];
+	$ML = $mlAliases[$language];
+	$formen = $formAliases[$language];
+	$highen = $heightAliases[$language];
+	
 
 	/////////////////////////Добавка про размеры///////////////////////////////
 	$AddSize='';
-	if ($vid=="Бокал с бл.с крышкой") $vid="Бокал с блюдцем и крышкой";
-	if ($vid=="Комплект детский в чемода") $vid="Комплект детский четырёхпредметный в чемоданчике.";
-	if ($tip=="трёхпредметный в чемоданч")$tip="трёхпредметный в чемоданчике";
-	if ($vid=="Чашка с блюдцем" and $tip=="чайн.") $tip="чайная";
-	if ($vid=="Чашка с блюдцем и крышкой" and $tip=="чайн.") $tip="чайная";
-	if ($vid=="Чашка с блюдцем" and $tip=="кофейн.") $tip="кофейная";
-	if ($vid=="Подарочный набор" and $tip=="кофейн.") $tip="кофейный";
-	if ($vid=="Блюдо" and $Diameter!='' and $Diameter!='0')$AddSize=$Diameter.$MM;
-	elseif ($vid=="Блюдо" and $Width!='' and $Width!='0')$AddSize=$Width.$MM;
-	elseif ($vid=="Ваза" and $Height!='' and $Height!='0')$AddSize=$Height.$MM;
-	elseif ($vid=="Фоторамка" and $Height!='' and $Height!='0' and $Width!='0')$AddSize="$Height x $Width$MM";
-	elseif ($vid=="Шкатулка" and $Diameter!='' and $Diameter!='0' and $Width!='0' and $Height!='0')$AddSize="$Diameter x $Width x $Height$MM";
-	elseif (($vid=="Чашка с блюдцем" or $vid=="Чайник" or $vid=="Кофейник" or $vid=="Подарочный набор"
-	or $vid=="Бокал" or $vid=="Бокал с блюдцем и крышкой" or $vid=="Бокал с блюдцем" or $vid=="Кружка"
-	or $vid=="Чашка" or $vid=="Сахарница" or $vid=="Комплект" or $vid=="Сливочник" or $vid=="Чашка с блюдцем и крышкой"
-	)and $Capacity!='' and $Capacity!='0')$AddSize=$Capacity.$ML;
-	if ($vid=="Скульптура" and $Height!='' and $Height!='0')$AddSize="$highen $Height$MM";
-	if ($vid=="Елочная игрушка" and $Height!='' and $Height!='0')$AddSize="$highen $Height$MM";
-	if ($vid=="Ёлочная игрушка" and $Height!='' and $Height!='0')$AddSize="$highen $Height$MM";
+	if ($vid=="Бокал с бл.с крышкой") {
+		$vid="Бокал с блюдцем и крышкой";
+	}
+	if ($vid=="Комплект детский в чемода") {
+		$vid="Комплект детский четырёхпредметный в чемоданчике.";
+	}
+	if ($tip=="трёхпредметный в чемоданч"){
+		$tip="трёхпредметный в чемоданчике";
+	}
+	if ($vid=="Чашка с блюдцем" and $tip=="чайн.") {
+		$tip="чайная";
+	}
+	if ($vid=="Чашка с блюдцем и крышкой" and $tip=="чайн.") {
+		$tip="чайная";
+	}
+	if ($vid=="Чашка с блюдцем" and $tip=="кофейн.") {
+		$tip="кофейная";
+	}
+	if ($vid=="Подарочный набор" and $tip=="кофейн.") {
+		$tip="кофейный";
+	}
+	if ($vid=="Блюдо" and $Diameter!='' and $Diameter!='0'){
+		$AddSize=$Diameter.$MM;
+	}
+	elseif ($vid=="Блюдо" and $Width!='' and $Width!='0'){
+		$AddSize=$Width.$MM;
+	}
+	elseif ($vid=="Ваза" and $Height!='' and $Height!='0'){
+		$AddSize=$Height.$MM;
+	}
+	elseif ($vid=="Фоторамка" and $Height!='' and $Height!='0' and $Width!='0'){
+		$AddSize="$Height x $Width$MM";
+	}
+	elseif ($vid=="Шкатулка" and $Diameter!='' and $Diameter!='0' and $Width!='0' and $Height!='0'){
+		$AddSize="$Diameter x $Width x $Height$MM";
+	}
+	elseif (($vid=="Чашка с блюдцем" or $vid=="Чайник" or $vid=="Кофейник" or $vid=="Подарочный набор" or $vid=="Бокал" or $vid=="Бокал с блюдцем и крышкой" or $vid=="Бокал с блюдцем" or $vid=="Кружка" or $vid=="Чашка" or $vid=="Сахарница" or $vid=="Комплект" or $vid=="Сливочник" or $vid=="Чашка с блюдцем и крышкой")and $Capacity!='' and $Capacity!='0'){
+		$AddSize=$Capacity.$ML;
+	}
+	if ($vid=="Скульптура" and $Height!='' and $Height!='0'){
+		$AddSize="$highen $Height$MM";
+	}
+	if ($vid=="Елочная игрушка" and $Height!='' and $Height!='0'){
+		$AddSize="$highen $Height$MM";
+	}
+	if ($vid=="Ёлочная игрушка" and $Height!='' and $Height!='0'){
+		$AddSize="$highen $Height$MM";
+	}
+	
 	///////////////////////////////////////////////////////////////////////////
 	if($language=="en")
 		{
 		$vidtip="$engvid $engtip";
-		if($vidtip=="Set Table") $vidtip="Table Set";
-		elseif ($vidtip=="Set Tea") $vidtip="Tea Set";
-		elseif ($vidtip=="Set Coffee") $vidtip="Coffee Set";
-		else $vidtip="$engvid $engtip";
+			
+		if($vidtip=="Set Table") {
+			$vidtip="Table Set";
 		}
-	else $vidtip="$vid $tip";
+		elseif ($vidtip=="Set Tea") {
+			$vidtip="Tea Set";
+		}
+		elseif ($vidtip=="Set Coffee") {
+			$vidtip="Coffee Set";
+		}
+		else {
+			$vidtip="$engvid $engtip";}
+		}
+	else {
+		$vidtip="$vid $tip";
+	}
 	if($tip=='декор.' and $vid=="Тарелка") {
 		$vid="Декоративная тарелка";
 		$tip='';
@@ -606,47 +652,72 @@ function MakeFrontName($brandid,$rowname,$vid,$tip,$picture,$form,$TipOfMaterial
 	if($tip=='декор.' and $vid=="Подарочный набор") {
 		$vidtip="Подарочный набор";
 	}
-	if ($vid=="Декоративная тарелка" or ($tip=='декор.' and $vid=="Подарочный набор"))
-	{
-		if($picturename=='' and $formname=='') return "<b>$rowname</b>";
-		elseif($picturename=='') return "<b>$vidtip «$AutorPictureName»</b><br>$Diam: $Diameter$MM. <br>$TipOfMaterialname";
-		elseif($formname=='') return "<b>$vidtip $AutorPictureName «$picturename"."»</b><br>$Diam: $Diameter$MM. <br>$TipOfMaterialname";
-		elseif($brand=='Stoppard') return "<b>$vidtip $AutorPictureName «$picturename"."»</b><br>$TipOfMaterialname";
-		else return "<b>$vidtip $AutorPictureName «$picturename"."»</b><br>$Diam: $Diameter$MM. <br>$TipOfMaterialname";
-	}
-	elseif($vid!="Скульптура" and $vid!="Сувенир" and $vid!="Набор столовых приборов"){
-		if($picturename=='' and $formname=='') return "<b>$rowname</b>";
-		elseif($picturename=='') return "<b>$vidtip «$formname"."» $PPPers</b><br>$AddSize$TipOfMaterialname";
-		elseif($formname=='') return "<b>$vidtip «$picturename"."» $PPPers</b><br>$AddSize$TipOfMaterialname";
-		else return "<b>$vidtip «$picturename"."» $PPPers</b><br>$formen: $formname. <br>$AddSize$TipOfMaterialname";
-	}
-	else {
-		if($picturename=='' and $formname=='') return "<b>$rowname</b><br>$TipOfMaterialname";
-		elseif($formname=='') return "<b>$vidtip «$picturename"."» </b><br>$AddSize$TipOfMaterialname";
-		elseif($picturename=='') return "<b>$vidtip «$formname"."»</b><br>$AddSize$TipOfMaterialname";
-		else return "<b>$vidtip «$formname"."» $PPPers</b><br>$picturename. $AddSize$TipOfMaterialname";
-	}
+
+	$returnData = array("Diam"=>$Diam,"Diameter"=>$Diameter, "ML"=>$ML, "MM"=>$MM, "highen"=>$highen, "rowname"=>$rowname, "vidtip"=>$vidtip, "vid"=>$vid, "formen"=>$formen, "formname"=>$formname, "PPPers"=>$PPPers, "picturename"=>$picturename, "AddSize"=>$AddSize, "TipOfMaterialname"=>$TipOfMaterialname, "AutorPictureName"=>$AutorPictureName);
+
+	return $returnData;
 }
 
-function MakeBottomName($brandid,$price,$language)
+function MakeBottomName($brandid, $price, $language, $itemId, $userId)
+{
+	$row=mysqli_fetch_array(sql("SELECT * FROM brand where id='$brandid'"));
+	$strana=$row['Strana'];
+	$name=$row['name'];
+
+	if($language=="en") 
 	{
-$row=mysqli_fetch_array(sql("SELECT * FROM brand where id='$brandid'"));
-$strana=$row['Strana'];$name=$row['name'];
-if($language=="en") 
-{$strbrname="Produced by";if($strana=="Россия") $strana="Russia"; elseif($strana=="Китай") $strana="China";}
-else
-{$strbrname="Производство";}
-$proizv="";
-if($name=='Императорский фарфоровый завод') { if($language=="en")$name='Imperial Porcelain Manufacture.';else $name='АО "ИФЗ"'; }
-else $name='';
-//if($name=='Сциталис. Астрахань') $name='ООО "ПФ"';
-if(($strana=='') and ($name=='')) $proizv=""; 
-elseif($name=='')$proizv="$strbrname: $strana<br>";
-else $proizv="$strbrname: $name, $strana<br>";
-//else  
-$proizv="$name $strana<br>";
-return "$proizv<font class='price'>$price</font>";
+		$strbrname="Produced by";
+		if($strana=="Россия") {
+			$strana="Russia";
+		} elseif($strana=="Китай") {
+			$strana="China";
+		}
 	}
+	else
+	{
+		$strbrname="Производство";
+	}
+	$proizv="";
+
+	if($name=='Императорский фарфоровый завод') { 
+		if($language=="en"){
+			$name='Imperial Porcelain Manufacture.';
+		}
+		else {
+			$name='АО "ИФЗ"';
+		} 
+	}
+	else {
+		$name='';
+	}
+	if(($strana=='') and ($name=='')) {
+		$proizv="";
+	} 
+	elseif($name==''){
+		$proizv=$strbrname.":". $strana;
+	}
+	else {
+		$proizv=$strbrname.":". $name. $strana;
+	}
+	$proizv=$name.$strana;
+
+	$countQuantStr = -1;
+	if($language!="en"){
+		$itemId="Ru".$itemId;
+	}
+
+	$selectLikeRequestString = "SELECT * FROM likeengine WHERE id='".$itemId."' and userid='".$userId."'";
+	if(isset($itemId) && isset($userId)){
+		$likeValueRequest = sql($selectLikeRequestString);
+		$countQuantStr = mysqli_num_rows($likeValueRequest);
+	}
+	$dataArray = array("country"=>$strana,"strbrname"=>$strbrname,"name"=>$name,"price"=>$price,"likeValue"=>$countQuantStr);
+	//$dataArray = array("country"=>null,"strbrname"=>null,"name"=>null,"price"=>null,"likeValue"=>null);
+
+	return json_encode($dataArray);
+}
+
+
 FUNCTION TransIdForYandex($id)
 {
 //$id=strtoupper($id);

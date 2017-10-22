@@ -16,7 +16,7 @@ function whichshop(){$ret=whichshop2(); return $ret;}
 function printlike($id,$countQuantStr,$language)
 {	
 	$menuVersion = whichshop3();
-	
+    $echo="";
 	if($menuVersion=='ifarfor') {$colortext='#966D3F';$heart='hheart3';} else {$colortext='#606060';$heart='hhearts';}
 	if($countQuantStr==0){$countQuantStr='';if($menuVersion=='ifarfor') {$colortext='#AD9E82';$heart='heart3';} else {$colortext='#979797';$heart='hearts';}}
 	if($countQuantStr==1)$countQuantStr='';
